@@ -1,0 +1,55 @@
+{
+  "common_core_version": "1.0.0",
+  "core_transversal_assets": [
+    "plantas",
+    "lineas_proceso",
+    "equipos",
+    "consumos_energia_horarios",
+    "produccion_turno",
+    "desvios_proceso",
+    "paradas",
+    "mantenimientos",
+    "emisiones_estimadas",
+    "iniciativas_mejora",
+    "capex_proyectos",
+    "contexto_operativo",
+    "benchmark_externo_proxy",
+    "escenarios_mejora"
+  ],
+  "core_semantic_outputs": [
+    "mart_line_day",
+    "mart_equipment_day",
+    "line_day_features_scored",
+    "line_criticality_scores",
+    "investment_prioritization_final",
+    "executive_kpi_snapshot"
+  ],
+  "sector_dependent_components": [
+    "taxonomy_mapping",
+    "asset_hierarchy",
+    "process_family_definitions",
+    "benchmark_adjustments",
+    "emission_factors",
+    "initiative_library",
+    "criticality_logic",
+    "sector_constraints",
+    "scenario_sensitivities",
+    "metric_caveats"
+  ],
+  "process_dependent_components": [
+    "process_family_map",
+    "benchmark_by_family",
+    "maintenance_rule_by_subsystem"
+  ],
+  "benchmark_and_emissions_dependent_components": [
+    "sec_reference_multiplier_by_family",
+    "oee_reference_shift_by_family",
+    "emission_factor_multiplier_by_energy_source",
+    "carbon_cost_sensitivity"
+  ],
+  "narrative_dependent_components": [
+    "executive_message_priority",
+    "sector_risks_of_misuse",
+    "stakeholder_framing"
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "profile_id": "tubacex",
+  "profile_name": "Tubacex Operating Profile",
+  "profile_version": "1.0.0",
+  "common_core_version_compat": "1.0.0",
+  "taxonomy_mapping": {
+    "familia_proceso": {
+      "Laminacion": "Conformado de Tubo",
+      "TratamientoTermico": "Tratamiento Termico Metalurgico",
+      "Acabado": "Acabado y Calibrado",
+      "InspeccionFinal": "Inspeccion y Ensayos Finales"
+    },
+    "tipo_equipo": {
+      "HornoProceso": "Horno de Tratamiento",
+      "LaminadorPrincipal": "Tren Laminador",
+      "CompresorAire": "Compresor de Servicios",
+      "BombaRecirculacion": "Bomba Hidraulica de Recirculacion",
+      "SistemaControl": "Sistema de Control de Linea",
+      "ManipuladorCarga": "Manipulador de Material"
+    },
+    "categoria_iniciativa": {
+      "EficienciaEnergetica": "Energia y Utilidades",
+      "Confiabilidad": "Confiabilidad de Activos",
+      "OptimizacionProceso": "Optimizacion de Proceso",
+      "TransformacionIndustrial": "Transformacion de Activos"
+    },
+    "tipo_iniciativa": {
+      "QuickWinOperativo": "Disciplina Operativa",
+      "MantenimientoPredictivo": "Fiabilidad Predictiva",
+      "ControlAvanzado": "Control Avanzado de Proceso",
+      "CAPEXTransformacional": "Revamping Estructural"
+    },
+    "fuente_energia": {
+      "Electricidad": "Electricidad Red",
+      "GasNatural": "Gas Natural de Proceso"
+    }
+  },
+  "asset_hierarchy": {
+    "level_1": "planta",
+    "level_2": "linea",
+    "level_3": "equipo",
+    "asset_owner_model": "operaciones_linea"
+  },
+  "process_family_definitions": {
+    "Laminacion": {
+      "sector_process_group": "Conformado Termomecanico",
+      "benchmark_priority": "sec_oee",
+      "kpi_focus": ["sec", "oee_synthetic", "availability_rate"],
+      "operational_risk_focus": "degradacion_de_desempeno_laminador"
+    },
+    "TratamientoTermico": {
+      "sector_process_group": "Ciclos Termicos",
+      "benchmark_priority": "energia_emisiones",
+      "kpi_focus": ["sec", "emissions_per_unit", "process_deviation_density"],
+      "operational_risk_focus": "sobreconsumo_hornos"
+    },
+    "Acabado": {
+      "sector_process_group": "Acabado Final",
+      "benchmark_priority": "calidad_reproceso",
+      "kpi_focus": ["quality_loss_proxy", "scrap_pct", "reproceso_pct"],
+      "operational_risk_focus": "scrap_por_desvio"
+    },
+    "InspeccionFinal": {
+      "sector_process_group": "Control Final de Calidad",
+      "benchmark_priority": "throughput_calidad",
+      "kpi_focus": ["production_volume", "quality_loss_proxy", "stop_density"],
+      "operational_risk_focus": "cuellos_de_botella_finales"
+    }
+  },
+  "benchmark_set": {
+    "sec_multiplier_by_family": {
+      "Laminacion": 1.00,
+      "TratamientoTermico": 1.03,
+      "Acabado": 0.98,
+      "InspeccionFinal": 0.95
+    },
+    "oee_shift_by_family": {
+      "Laminacion": 0.00,
+      "TratamientoTermico": -0.01,
+      "Acabado": 0.01,
+      "InspeccionFinal": 0.01
+    },
+    "availability_shift_by_family": {
+      "Laminacion": 0.00,
+      "TratamientoTermico": -0.01,
+      "Acabado": 0.00,
+      "InspeccionFinal": 0.01
+    },
+    "emissions_multiplier_by_family": {
+      "Laminacion": 1.00,
+      "TratamientoTermico": 1.06,
+      "Acabado": 0.97,
+      "InspeccionFinal": 0.95
+    }
+  },
+  "energy_logic": {
+    "energy_price_pass_through": 0.84,
+    "specific_energy_penalty_low_load": 1.16,
+    "reactive_energy_control_priority": true
+  },
+  "emission_factors": {
+    "multiplier_by_source": {
+      "Electricidad": 1.00,
+      "GasNatural": 1.04
+    },
+    "carbon_cost_eur_ton_base": 85.0
+  },
+  "maintenance_logic": {
+    "subsystem_priority": {
+      "Termico": 1.25,
+      "Mecanico": 1.20,
+      "Hidraulico": 1.10,
+      "Automatizacion": 1.15,
+      "MovimientoMateriales": 1.05,
+      "Utilidades": 1.00
+    },
+    "planned_maintenance_min_hours": 2.0
+  },
+  "initiative_library": {
+    "preferred_sequence": [
+      "QuickWinOperativo",
+      "MantenimientoPredictivo",
+      "ControlAvanzado",
+      "CAPEXTransformacional"
+    ],
+    "mandatory_categories": ["Confiabilidad"]
+  },
+  "criticality_logic": {
+    "weight_sec_gap": 0.30,
+    "weight_downtime": 0.28,
+    "weight_scrap": 0.20,
+    "weight_emissions": 0.12,
+    "weight_process_deviation": 0.10,
+    "equipment_type_multiplier": {
+      "HornoProceso": 1.18,
+      "LaminadorPrincipal": 1.20,
+      "CompresorAire": 1.05,
+      "BombaRecirculacion": 1.04,
+      "SistemaControl": 1.10,
+      "ManipuladorCarga": 1.00
+    }
+  },
+  "constraints_by_sector": {
+    "capex_budget_default_eur": 8000000,
+    "opex_budget_default_eur": 1800000,
+    "max_parallel_shutdown_lines": 2,
+    "max_implementation_waves": 3
+  },
+  "scenario_sensitivities": {
+    "energy_price_beta": 1.00,
+    "carbon_cost_beta": 1.00,
+    "demand_pressure_beta": 1.05,
+    "staff_availability_beta": 0.95
+  },
+  "kpi_priority": {
+    "kpi_weights": {
+      "sec": 0.30,
+      "oee_synthetic": 0.25,
+      "availability_rate": 0.20,
+      "loss_value_proxy": 0.15,
+      "emissions_per_unit": 0.10
+    }
+  },
+  "metric_caveats": [
+    {
+      "metric_name": "sec",
+      "caveat": "Comparar sec solo entre familias con mix metalurgico equivalente.",
+      "misuse_prevention": "No usar sec global para penalizar lineas de tratamiento termico frente a acabados."
+    },
+    {
+      "metric_name": "oee_synthetic",
+      "caveat": "OEE sintetico es señal de screening y no reemplaza OEE auditado de planta.",
+      "misuse_prevention": "Usar para priorizacion relativa y no para KPI contractual."
+    }
+  ],
+  "misuse_risks": [
+    "Confundir benchmark por familia con benchmark corporativo formal.",
+    "Sobreestimar ahorro de CAPEX sin validar ventana de parada real.",
+    "Comparar criticidad de equipos con funciones operativas no equivalentes."
+  ]
+}

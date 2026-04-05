@@ -1,0 +1,136 @@
+{
+  "version": "1.1.0",
+  "metric_version_set": "industrial_metrics_v1_1",
+  "metrics": [
+    {
+      "metric_id": "production_volume",
+      "business_name": "Volumen de producción",
+      "technical_name": "production_volume",
+      "formula": "SUM(unidades_equivalentes)",
+      "grain": ["linea_turno", "linea_dia", "planta_semana"],
+      "unit": "ton",
+      "direction": "higher_better",
+      "owner": "Operaciones"
+    },
+    {
+      "metric_id": "oee_synthetic",
+      "business_name": "OEE sintético",
+      "technical_name": "oee_synthetic",
+      "formula": "availability_rate * performance_rate * quality_rate",
+      "grain": ["linea_dia", "planta_semana"],
+      "unit": "ratio",
+      "direction": "higher_better",
+      "owner": "Excelencia Operativa"
+    },
+    {
+      "metric_id": "sec",
+      "business_name": "Specific Energy Consumption",
+      "technical_name": "sec",
+      "formula": "SUM(consumo_kwh) / SUM(unidades_equivalentes)",
+      "grain": ["linea_turno", "linea_dia", "planta_semana"],
+      "unit": "kWh/ton",
+      "direction": "lower_better",
+      "owner": "Energía"
+    },
+    {
+      "metric_id": "loss_value_proxy",
+      "business_name": "Pérdida económica proxy",
+      "technical_name": "loss_value_proxy",
+      "formula": "coste_energia_exceso + coste_paradas + coste_scrap + coste_emisiones_proxy",
+      "grain": ["linea_dia", "planta_semana"],
+      "unit": "EUR",
+      "direction": "lower_better",
+      "owner": "Performance Office"
+    },
+    {
+      "metric_id": "annual_saving_proxy",
+      "business_name": "Ahorro anual proxy",
+      "technical_name": "annual_saving_proxy",
+      "formula": "net_captured_value_base_scenario (screening/pre-feasibility)",
+      "grain": ["iniciativa"],
+      "unit": "EUR/anual",
+      "direction": "higher_better",
+      "owner": "Finanzas Industriales"
+    },
+    {
+      "metric_id": "npv_risk_adjusted",
+      "business_name": "NPV ajustado por riesgo",
+      "technical_name": "npv_risk_adjusted",
+      "formula": "discounted_value_base_scenario (expected capture, ramp-up y delay)",
+      "grain": ["iniciativa", "portfolio"],
+      "unit": "EUR",
+      "direction": "higher_better",
+      "owner": "Finanzas Industriales"
+    },
+    {
+      "metric_id": "gross_technical_value",
+      "business_name": "Valor técnico bruto",
+      "technical_name": "gross_technical_value",
+      "formula": "gross_technical_value_energy + avoided_loss + gross_technical_value_emissions",
+      "grain": ["iniciativa", "escenario"],
+      "unit": "EUR/anual",
+      "direction": "higher_better",
+      "owner": "Finanzas Industriales"
+    },
+    {
+      "metric_id": "net_captured_value",
+      "business_name": "Valor neto capturado",
+      "technical_name": "net_captured_value",
+      "formula": "gross_technical_value * expected_capture_rate - implementation_opex",
+      "grain": ["iniciativa", "escenario"],
+      "unit": "EUR/anual",
+      "direction": "higher_better",
+      "owner": "Finanzas Industriales"
+    },
+    {
+      "metric_id": "downside_adjusted_value",
+      "business_name": "Valor ajustado por downside",
+      "technical_name": "downside_adjusted_value",
+      "formula": "discounted value con downside_capture_rate",
+      "grain": ["iniciativa", "escenario", "portfolio"],
+      "unit": "EUR",
+      "direction": "higher_better",
+      "owner": "Finanzas Industriales"
+    },
+    {
+      "metric_id": "cost_of_delay_12m",
+      "business_name": "Coste de retraso 12 meses",
+      "technical_name": "cost_of_delay_12m",
+      "formula": "discounted_value(t0) - discounted_value(t0 + 12 meses)",
+      "grain": ["iniciativa", "escenario", "portfolio"],
+      "unit": "EUR",
+      "direction": "lower_better",
+      "owner": "Strategy + PMO"
+    },
+    {
+      "metric_id": "screening_irr_pct",
+      "business_name": "Screening IRR",
+      "technical_name": "screening_irr_pct",
+      "formula": "100 * net_captured_value_annual / capex_effective",
+      "grain": ["iniciativa", "escenario"],
+      "unit": "pct",
+      "direction": "higher_better",
+      "owner": "Finanzas Industriales"
+    },
+    {
+      "metric_id": "screening_var_95_npv",
+      "business_name": "Screening VaR 95 NPV",
+      "technical_name": "screening_var_95_npv",
+      "formula": "max(0, discounted_value - downside_adjusted_value)",
+      "grain": ["iniciativa", "escenario", "portfolio"],
+      "unit": "EUR",
+      "direction": "lower_better",
+      "owner": "Finanzas Industriales"
+    },
+    {
+      "metric_id": "improvement_priority_index",
+      "business_name": "Índice de priorización",
+      "technical_name": "improvement_priority_index",
+      "formula": "composite score (valor, riesgo, factibilidad, relevancia)",
+      "grain": ["iniciativa"],
+      "unit": "score_0_100",
+      "direction": "higher_better",
+      "owner": "Strategy + PMO"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "version": "1.0.0",
+  "profiles": {
+    "minimal_public": {
+      "description": "Repositorio público mínimo y revisable sin payload pesado.",
+      "governance": {
+        "require_readiness_states": [
+          "publish-blocked",
+          "structurally-valid",
+          "analytically-acceptable",
+          "screening-grade-only",
+          "decision-support-only",
+          "not-committee-grade",
+          "committee-candidate",
+          "committee-grade"
+        ],
+        "require_publish_decisions": [
+          "publish",
+          "publish with caveat",
+          "no publish"
+        ]
+      },
+      "include_files": [
+        "README.md",
+        "requirements.txt",
+        "requirements.lock.txt",
+        "manifests/environment_fingerprint.json",
+        "manifests/build_manifest_latest.json",
+        "docs/release/reproducibility_forensics_framework.md",
+        "docs/release/release_operating_model.md",
+        "docs/release/repository_packaging_policy.md",
+        "docs/dashboard/dashboard_build_and_governance.md",
+        "outputs/dashboard/dashboard_inteligencia_operativa.html",
+        "outputs/reports/memo_ejecutivo.md",
+        "outputs/reports/advanced_analysis_report.md",
+        "outputs/reports/validation_report.md",
+        "outputs/reports/final_delivery_manifest.md",
+        "data/samples/raw_consumos_energia_sample.csv",
+        "data/samples/raw_produccion_turno_sample.csv",
+        "data/samples/processed_line_day_features_sample.csv",
+        "data/samples/processed_investment_prioritization_sample.csv"
+      ]
+    },
+    "github_reviewer": {
+      "description": "Pack para reviewer técnico en GitHub: outputs críticos + evidencia de consistencia.",
+      "governance": {
+        "require_readiness_states": [
+          "publish-blocked",
+          "structurally-valid",
+          "analytically-acceptable",
+          "screening-grade-only",
+          "decision-support-only",
+          "not-committee-grade",
+          "committee-candidate",
+          "committee-grade"
+        ],
+        "require_publish_decisions": [
+          "publish",
+          "publish with caveat",
+          "no publish"
+        ]
+      },
+      "include_files": [
+        "README.md",
+        "requirements.txt",
+        "requirements.lock.txt",
+        "manifests/environment_fingerprint.json",
+        "manifests/build_manifest_latest.json",
+        "manifests/artifact_fingerprints_latest.csv",
+        "data/processed/executive_kpi_snapshot.csv",
+        "data/processed/validation_readiness_summary.csv",
+        "data/processed/cross_output_consistency.csv",
+        "data/processed/score_stability_before_after.csv",
+        "data/processed/portfolio_summary.csv",
+        "data/processed/sector_profile_registry.csv",
+        "data/processed/sector_mapping_coverage.csv",
+        "data/processed/dashboard_canonical_dataset.json",
+        "outputs/dashboard/dashboard_inteligencia_operativa.html",
+        "outputs/reports/validation_report.md",
+        "outputs/reports/advanced_analysis_report.md",
+        "outputs/reports/sector_parameterization_evidence.md",
+        "docs/testing/testing_strategy_enterprise.md",
+        "docs/validation/validation_hardening_framework.md",
+        "docs/score_stability_framework.md"
+      ]
+    },
+    "committee_pack": {
+      "description": "Pack de comité industrial: snapshot ejecutivo, decisión, riesgos y validación.",
+      "governance": {
+        "require_readiness_states": [
+          "committee-candidate",
+          "committee-grade"
+        ],
+        "require_publish_decisions": [
+          "publish"
+        ]
+      },
+      "include_files": [
+        "outputs/dashboard/dashboard_inteligencia_operativa.html",
+        "outputs/reports/memo_ejecutivo.md",
+        "outputs/reports/advanced_analysis_report.md",
+        "outputs/reports/validation_report.md",
+        "outputs/reports/financial_before_after_report.md",
+        "outputs/reports/sector_parameterization_evidence.md",
+        "data/processed/executive_kpi_snapshot.csv",
+        "data/processed/portfolio_summary.csv",
+        "data/processed/investment_prioritization_final.csv",
+        "data/processed/scenario_ranking.csv",
+        "data/processed/dashboard_canonical_dataset.json",
+        "data/processed/validation_readiness_summary.csv",
+        "data/processed/recommendation_trace_table.csv"
+      ]
+    }
+  }
+}

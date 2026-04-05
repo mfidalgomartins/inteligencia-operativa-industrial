@@ -1,0 +1,34 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.coverage
+.mypy_cache/
+.ruff_cache/
+data/processed/*.duckdb
+data/processed/*.wal
+
+# Generated raw/processed artifacts (regenerables)
+data/raw/*.csv
+data/processed/*.csv
+data/processed/*.json
+data/processed/sector/**
+
+# Generated outputs and release packs
+outputs/charts/*.png
+outputs/dashboard/*.html
+!outputs/dashboard/dashboard_inteligencia_operativa.html
+outputs/reports/*.md
+outputs/reports/*.csv
+outputs/reports/*.json
+outputs/reports/*.txt
+outputs/release_packs/**
+
+# Generated manifests (rebuildable)
+manifests/build_manifest_latest.json
+manifests/environment_fingerprint.json
+manifests/artifact_fingerprints_latest.csv
+manifests/releases/*.json

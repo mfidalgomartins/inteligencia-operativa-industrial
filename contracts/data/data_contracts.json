@@ -1,0 +1,51 @@
+{
+  "version": "1.1.0",
+  "assets": [
+    {
+      "name": "mart_line_day",
+      "grain": ["fecha", "planta_id", "linea_id"],
+      "required_columns": ["fecha", "planta_id", "linea_id", "sec_kwh_ton", "oee_synthetic", "loss_value_proxy_eur"],
+      "invariants": [
+        "sec_kwh_ton >= 0",
+        "oee_synthetic >= 0",
+        "oee_synthetic <= 1.1",
+        "loss_value_proxy_eur >= 0"
+      ]
+    },
+    {
+      "name": "line_day_features_scored",
+      "grain": ["fecha", "planta_id", "linea_id"],
+      "required_columns": ["fecha", "planta_id", "linea_id", "sec", "oee_synthetic", "loss_value_proxy", "line_criticality_weight"],
+      "invariants": [
+        "sec >= 0",
+        "oee_synthetic >= 0",
+        "production_volume > 0"
+      ]
+    },
+    {
+      "name": "investment_prioritization_final",
+      "grain": ["iniciativa_id"],
+      "required_columns": [
+        "iniciativa_id",
+        "annual_saving_proxy",
+        "net_captured_value",
+        "discounted_value",
+        "downside_adjusted_value",
+        "screening_var_95_npv",
+        "payback_months",
+        "improvement_priority_index",
+        "decision_rule",
+        "financial_maturity_stage"
+      ],
+      "invariants": [
+        "annual_saving_proxy >= 0",
+        "net_captured_value >= 0",
+        "downside_adjusted_value <= discounted_value + 1e-6",
+        "screening_var_95_npv >= 0",
+        "payback_months > 0",
+        "improvement_priority_index >= 0",
+        "improvement_priority_index <= 100"
+      ]
+    }
+  ]
+}

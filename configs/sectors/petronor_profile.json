@@ -1,0 +1,181 @@
+{
+  "profile_id": "petronor",
+  "profile_name": "Petronor Operating Profile",
+  "profile_version": "1.0.0",
+  "common_core_version_compat": "1.0.0",
+  "taxonomy_mapping": {
+    "familia_proceso": {
+      "Laminacion": "Unidades de Conversión",
+      "TratamientoTermico": "Hornos de Proceso",
+      "Acabado": "Tratamiento de Corrientes y Blending",
+      "InspeccionFinal": "Expedición y Control de Calidad"
+    },
+    "tipo_equipo": {
+      "HornoProceso": "Fired Heater",
+      "LaminadorPrincipal": "Unidad Rotativa Crítica",
+      "CompresorAire": "Compresor de Planta",
+      "BombaRecirculacion": "Bomba de Proceso",
+      "SistemaControl": "DCS/Control Avanzado",
+      "ManipuladorCarga": "Logística Interna de Producto"
+    },
+    "categoria_iniciativa": {
+      "EficienciaEnergetica": "Eficiencia Energética Refino",
+      "Confiabilidad": "Integridad y Confiabilidad",
+      "OptimizacionProceso": "Optimización de Severidad Operativa",
+      "TransformacionIndustrial": "Transformación Tecnológica y Descarbonización"
+    },
+    "tipo_iniciativa": {
+      "QuickWinOperativo": "Ajuste Operativo de Unidad",
+      "MantenimientoPredictivo": "Reliability Program",
+      "ControlAvanzado": "APC / Optimización de Setpoints",
+      "CAPEXTransformacional": "Proyecto de Conversión y Eficiencia"
+    },
+    "fuente_energia": {
+      "Electricidad": "Electricidad y Cogeneración",
+      "GasNatural": "Fuel Gas / Gas Natural"
+    }
+  },
+  "asset_hierarchy": {
+    "level_1": "site",
+    "level_2": "unidad_proceso",
+    "level_3": "equipo_critico",
+    "asset_owner_model": "operacion_unidad"
+  },
+  "process_family_definitions": {
+    "Laminacion": {
+      "sector_process_group": "Conversión y Craqueo",
+      "benchmark_priority": "margen_energia",
+      "kpi_focus": ["sec", "loss_value_proxy", "availability_rate"],
+      "operational_risk_focus": "degradacion_conversion"
+    },
+    "TratamientoTermico": {
+      "sector_process_group": "Fired Heaters y Utilidades Térmicas",
+      "benchmark_priority": "energia_emisiones",
+      "kpi_focus": ["sec", "emissions_per_unit", "process_deviation_density"],
+      "operational_risk_focus": "eficiencia_combustion"
+    },
+    "Acabado": {
+      "sector_process_group": "Blending y Calidad de Producto",
+      "benchmark_priority": "calidad_disponibilidad",
+      "kpi_focus": ["quality_loss_proxy", "reproceso_pct", "stop_density"],
+      "operational_risk_focus": "offspec_y_reblend"
+    },
+    "InspeccionFinal": {
+      "sector_process_group": "Expedición y Balance Final",
+      "benchmark_priority": "cumplimiento_y_cadencia",
+      "kpi_focus": ["production_volume", "availability_rate", "loss_value_proxy"],
+      "operational_risk_focus": "despachos_y_confiabilidad"
+    }
+  },
+  "benchmark_set": {
+    "sec_multiplier_by_family": {
+      "Laminacion": 1.08,
+      "TratamientoTermico": 1.12,
+      "Acabado": 1.02,
+      "InspeccionFinal": 1.00
+    },
+    "oee_shift_by_family": {
+      "Laminacion": -0.02,
+      "TratamientoTermico": -0.03,
+      "Acabado": -0.01,
+      "InspeccionFinal": -0.01
+    },
+    "availability_shift_by_family": {
+      "Laminacion": -0.02,
+      "TratamientoTermico": -0.02,
+      "Acabado": -0.01,
+      "InspeccionFinal": -0.01
+    },
+    "emissions_multiplier_by_family": {
+      "Laminacion": 1.12,
+      "TratamientoTermico": 1.18,
+      "Acabado": 1.05,
+      "InspeccionFinal": 1.02
+    }
+  },
+  "energy_logic": {
+    "energy_price_pass_through": 1.10,
+    "specific_energy_penalty_low_load": 1.22,
+    "reactive_energy_control_priority": false
+  },
+  "emission_factors": {
+    "multiplier_by_source": {
+      "Electricidad": 1.10,
+      "GasNatural": 1.18
+    },
+    "carbon_cost_eur_ton_base": 105.0
+  },
+  "maintenance_logic": {
+    "subsystem_priority": {
+      "Termico": 1.30,
+      "Mecanico": 1.22,
+      "Hidraulico": 1.08,
+      "Automatizacion": 1.18,
+      "MovimientoMateriales": 0.95,
+      "Utilidades": 1.15
+    },
+    "planned_maintenance_min_hours": 4.0
+  },
+  "initiative_library": {
+    "preferred_sequence": [
+      "MantenimientoPredictivo",
+      "ControlAvanzado",
+      "QuickWinOperativo",
+      "CAPEXTransformacional"
+    ],
+    "mandatory_categories": ["Confiabilidad", "TransformacionIndustrial"]
+  },
+  "criticality_logic": {
+    "weight_sec_gap": 0.26,
+    "weight_downtime": 0.24,
+    "weight_scrap": 0.10,
+    "weight_emissions": 0.24,
+    "weight_process_deviation": 0.16,
+    "equipment_type_multiplier": {
+      "HornoProceso": 1.30,
+      "LaminadorPrincipal": 1.18,
+      "CompresorAire": 1.15,
+      "BombaRecirculacion": 1.12,
+      "SistemaControl": 1.08,
+      "ManipuladorCarga": 0.92
+    }
+  },
+  "constraints_by_sector": {
+    "capex_budget_default_eur": 12000000,
+    "opex_budget_default_eur": 2400000,
+    "max_parallel_shutdown_lines": 1,
+    "max_implementation_waves": 4
+  },
+  "scenario_sensitivities": {
+    "energy_price_beta": 1.18,
+    "carbon_cost_beta": 1.20,
+    "demand_pressure_beta": 0.98,
+    "staff_availability_beta": 0.90
+  },
+  "kpi_priority": {
+    "kpi_weights": {
+      "sec": 0.24,
+      "oee_synthetic": 0.16,
+      "availability_rate": 0.18,
+      "loss_value_proxy": 0.16,
+      "emissions_per_unit": 0.26
+    }
+  },
+  "metric_caveats": [
+    {
+      "metric_name": "emissions_per_unit",
+      "caveat": "La intensidad de emisiones depende del mix de combustible y severidad de operación.",
+      "misuse_prevention": "No usar sin segmentar por unidad y condición operativa."
+    },
+    {
+      "metric_name": "loss_value_proxy",
+      "caveat": "En refino, el valor perdido depende del crack spread y slate comercial.",
+      "misuse_prevention": "Tratar como señal de screening y no como P&L auditado."
+    }
+  ],
+  "misuse_risks": [
+    "Tomar savings de energía como margen neto sin reconciliación de mercado.",
+    "Subestimar riesgos de ventana de parada en unidades de proceso continuo.",
+    "Comparar unidades con severidades y objetivos de producto distintos."
+  ]
+}
