@@ -170,18 +170,20 @@ Narrativa y fronteras de claim:
 <!-- AUTO:EXEC_DECISION:END -->
 
 ## Repository Structure
-- `contracts/`
-- `data/raw/`
-- `data/processed/`
-- `docs/`
-- `manifests/`
-- `notebooks/`
-- `outputs/charts/`
-- `outputs/dashboard/`
-- `outputs/reports/`
-- `sql/`
-- `src/`
-- `tests/`
+- `README.md`
+- `requirements.txt` / `requirements.lock.txt`
+- `.gitignore`
+- `src/` (núcleo de pipeline y lógica analítica)
+- `data/` (`raw/`, `processed/`, `samples/`)
+- `sql/` (layer SQL oficial + `legacy/` histórico aislado)
+- `docs/` (arquitectura, governance, validación, narrativa)
+- `tests/` (QA por dominio y checks cross-output)
+- `outputs/` (dashboard, reports, charts, release packs generados)
+- `notebooks/` (exploración y narrativa analítica)
+- `configs/` (perfiles sectoriales y release config)
+- `scripts/` (entrypoints operativos standalone)
+- `contracts/` (data/metric contracts y waivers)
+- `manifests/` (trazabilidad de build y release discipline)
 
 ## How to Run
 ```bash

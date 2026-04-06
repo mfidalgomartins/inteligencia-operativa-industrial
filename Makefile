@@ -1,4 +1,4 @@
-.PHONY: install lock run test test-quick test-full pack all
+.PHONY: install lock generate-synthetic run test test-quick test-full pack all
 
 install:
 	python -m venv .venv
@@ -6,6 +6,9 @@ install:
 
 lock:
 	./.venv/bin/python -m pip freeze > requirements.lock.txt
+
+generate-synthetic:
+	./.venv/bin/python scripts/generate_synthetic_data.py
 
 run:
 	./.venv/bin/python -m src.run_pipeline
