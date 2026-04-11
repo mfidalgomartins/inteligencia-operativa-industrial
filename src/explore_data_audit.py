@@ -420,49 +420,12 @@ def _build_markdown_report(
 
     return "\n".join(md)
 
-
-def _build_html_report(md_text: str, table_summary: pd.DataFrame, issues: pd.DataFrame) -> str:
-    kpi_cards = {
-        "datasets": len(table_summary),
-        "filas_totales": int(table_summary["filas"].sum()),
-        "issues_p1": int((issues["severity"] == "P1").sum()),
-        "issues_totales": len(issues),
-    }
-
-    html = f"""
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8" />
-<title>Explore Data Audit</title>
-<style>
-body {{ font-family: Arial, sans-serif; margin: 26px; background:#f7fafc; color:#1f2937; }}
-h1, h2 {{ color:#0f172a; }}
-.grid {{ display:grid; grid-template-columns: repeat(4, minmax(160px,1fr)); gap:12px; margin-bottom:16px; }}
-.card {{ background:white; border-radius:10px; padding:12px; box-shadow:0 1px 4px rgba(0,0,0,0.1); }}
-.card .v {{ font-size:22px; font-weight:700; }}
-pre {{ white-space: pre-wrap; background:white; padding:16px; border-radius:10px; box-shadow:0 1px 4px rgba(0,0,0,0.08); }}
-</style>
-</head>
-<body>
-<h1>Explore-Data Audit</h1>
-<div class="grid">
-  <div class="card"><div>Datasets</div><div class="v">{kpi_cards['datasets']}</div></div>
-  <div class="card"><div>Filas totales</div><div class="v">{kpi_cards['filas_totales']:,}</div></div>
-  <div class="card"><div>Issues P1</div><div class="v">{kpi_cards['issues_p1']}</div></div>
-  <div class="card"><div>Issues totales</div><div class="v">{kpi_cards['issues_totales']}</div></div>
-</div>
-<h2>Informe completo</h2>
-<pre>{md_text}</pre>
-</body>
-</html>
-"""
-    return html
-
-
 def run_explore_data_audit() -> dict[str, pd.DataFrame]:
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    legacy_html_report = REPORTS_DIR / "explore_data_audit_report.html"
+    if legacy_html_report.exists():
+        legacy_html_report.unlink()
 
     tables = _load_tables()
     table_summary = _build_table_summary(tables)
@@ -479,9 +442,6 @@ def run_explore_data_audit() -> dict[str, pd.DataFrame]:
 
     report_md = _build_markdown_report(table_summary, column_summary, issues, joins, marts)
     (REPORTS_DIR / "explore_data_audit_report.md").write_text(report_md, encoding="utf-8")
-
-    report_html = _build_html_report(report_md, table_summary, issues)
-    (REPORTS_DIR / "explore_data_audit_report.html").write_text(report_html, encoding="utf-8")
 
     return {
         "table_summary": table_summary,

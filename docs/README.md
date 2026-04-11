@@ -45,6 +45,3 @@ Esta carpeta está organizada por dominios de decisión para reducir fricción d
 - `score_stability_framework.md`
 - `score_comparability_policy.md`
 - `sector_parameterization_framework.md`
-
-## Archivo
-- `archive/claims/` (claims históricos y narrativa de soporte consolidada)

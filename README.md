@@ -129,9 +129,6 @@ Incluye:
   - `outputs/reports/phase_transformation_status.md`
   - `outputs/reports/validation_report.md`
 
-Narrativa y fronteras de claim:
-- `docs/archive/claims/` (política de claims y posicionamiento histórico consolidado)
-
 ## Sector Adaptation (Technical, Not Only Narrative)
 - Núcleo común estable + perfiles sectoriales versionados por configuración.
 - Adaptación técnica de:

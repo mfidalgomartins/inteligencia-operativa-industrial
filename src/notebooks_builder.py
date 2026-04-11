@@ -43,6 +43,9 @@ def _write_notebook(path: Path, cells: list[dict]) -> None:
 
 def build_notebooks() -> None:
     NOTEBOOKS_DIR.mkdir(parents=True, exist_ok=True)
+    legacy_scenarios_nb = NOTEBOOKS_DIR / "02_notebook_escenarios.ipynb"
+    if legacy_scenarios_nb.exists():
+        legacy_scenarios_nb.unlink()
 
     nb_main = [
         _md_cell(
@@ -69,27 +72,6 @@ def build_notebooks() -> None:
         ),
     ]
     _write_notebook(NOTEBOOKS_DIR / "01_notebook_principal.ipynb", nb_main)
-
-    nb_scenarios = [
-        _md_cell(
-            "# Notebook de Escenarios e Inversiones\n"
-            "Evaluación de trade-offs entre quick wins, mantenimiento, optimización y CAPEX."
-        ),
-        _code_cell(
-            "import pandas as pd\n"
-            "from pathlib import Path\n\n"
-            "root = Path.cwd().resolve().parents[0]\n"
-            "processed = root / 'data' / 'processed'\n\n"
-            "scenario = pd.read_csv(processed / 'scenario_ranking.csv')\n"
-            "invest = pd.read_csv(processed / 'investment_prioritization_final.csv')\n"
-            "scenario[['iniciativa_id','escenario_label','ahorro_economico_anual_proxy','payback_meses','score_tradeoff']].head(15)"
-        ),
-        _code_cell("invest[['iniciativa_id','decision_rule','improvement_priority_index','main_business_case']].head(20)"),
-        _code_cell(
-            "invest.groupby('decision_rule')[['annual_saving_proxy','capex_estimado']].sum().sort_values('annual_saving_proxy', ascending=False)"
-        ),
-    ]
-    _write_notebook(NOTEBOOKS_DIR / "02_notebook_escenarios.ipynb", nb_scenarios)
 
 
 if __name__ == "__main__":
