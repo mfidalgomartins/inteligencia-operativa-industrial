@@ -54,6 +54,6 @@ Estandarizar qué se puede afirmar públicamente según la madurez real del sist
 
 ## Enforcement
 - Cada release debe revisar esta policy junto con:
-  - `docs/claims_matrix.md`
-  - `docs/narrative_governance.md`
-  - `docs/committee_safe_positioning.md`
+  - `docs/archive/claims/claims_matrix.md`
+  - `docs/archive/claims/narrative_governance.md`
+  - `docs/archive/claims/committee_safe_positioning.md`

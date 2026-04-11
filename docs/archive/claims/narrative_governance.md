@@ -16,7 +16,7 @@ Evitar overclaim y asegurar que README, memo, dashboard y reportes usen el mismo
   - `outputs/reports/memo_ejecutivo.md` (y su fuente `src/reporting.py`)
   - `outputs/dashboard/dashboard_inteligencia_operativa.html` (y su fuente `src/dashboard.py`)
 - Matriz de claims:
-  - `docs/claims_matrix.md`
+  - `docs/archive/claims/claims_matrix.md`
 
 ## Cambios de hardening aplicados
 - README reposicionado como:
@@ -39,7 +39,7 @@ Evitar overclaim y asegurar que README, memo, dashboard y reportes usen el mismo
   - dependencia de supuestos.
 
 ## Gate narrativo mínimo antes de release
-1. `docs/claims_matrix.md` actualizado.
+1. `docs/archive/claims/claims_matrix.md` actualizado.
 2. README y memo sin claims clasificados como `too strong` o `should be removed`.
 3. Dashboard con disclaimer de madurez.
 4. Coherencia con `validation_report.md` y `validation_readiness_summary.csv`.

@@ -130,10 +130,7 @@ Incluye:
   - `outputs/reports/validation_report.md`
 
 Narrativa y fronteras de claim:
-- `docs/narrative_governance.md`
-- `docs/claims_policy.md`
-- `docs/committee_safe_positioning.md`
-- `docs/claims_matrix.md`
+- `docs/archive/claims/` (política de claims y posicionamiento histórico consolidado)
 
 ## Sector Adaptation (Technical, Not Only Narrative)
 - Núcleo común estable + perfiles sectoriales versionados por configuración.
