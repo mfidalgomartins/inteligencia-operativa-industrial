@@ -8,7 +8,6 @@ Tener un único dashboard oficial, gobernado y consistente con métricas certifi
 - HTML oficial único: `outputs/dashboard/dashboard_inteligencia_operativa.html`.
 - Dataset oficial único: `data/processed/dashboard_canonical_dataset.json`.
 - Auditoría de serving: `data/processed/dashboard_serving_audit.csv`.
-- Reporte de refactor de serving: `outputs/reports/dashboard_serving_refactor.md`.
 
 ## Secciones obligatorias
 1. Header ejecutivo con stamping (`run_id`, `snapshot_id`, `metric_version_set`, `decision_model_version`, `validation_state`, `dashboard_mode`).

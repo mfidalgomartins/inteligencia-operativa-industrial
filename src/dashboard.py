@@ -14,7 +14,7 @@ MAX_CANONICAL_SIZE_BYTES = 4_000_000
 CANONICAL_HTML = OUTPUT_DASHBOARD_DIR / "dashboard_inteligencia_operativa.html"
 CANONICAL_DATASET_JSON = DATA_PROCESSED_DIR / "dashboard_canonical_dataset.json"
 SERVING_AUDIT_CSV = DATA_PROCESSED_DIR / "dashboard_serving_audit.csv"
-SERVING_REPORT_MD = OUTPUT_REPORTS_DIR / "dashboard_serving_refactor.md"
+CHARTJS_BUNDLE = Path(__file__).resolve().parents[1] / "assets" / "vendor" / "chart.umd.min.js"
 
 LEGACY_DASHBOARD_OUTPUTS = [
     OUTPUT_DASHBOARD_DIR / "dashboard_executive_light.html",
@@ -27,6 +27,12 @@ LEGACY_DASHBOARD_OUTPUTS = [
 
 def _compact_json(payload: dict[str, Any]) -> str:
     return json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+
+
+def _load_chartjs_bundle() -> str:
+    if CHARTJS_BUNDLE.exists():
+        return CHARTJS_BUNDLE.read_text(encoding="utf-8")
+    return ""
 
 
 def _round_df(df: pd.DataFrame, digits: int = 3) -> pd.DataFrame:
@@ -401,6 +407,12 @@ def _render_canonical_html(dataset: dict[str, Any]) -> str:
     decision = dataset["decision_summary"]
     priority_kpis = {"OEE sintético", "SEC medio", "Pérdidas económicas proxy", "Ahorro anual proxy", "NPV ajustado por riesgo"}
     text_heavy_kpis = {"Validation state"}
+    chartjs_inline = _load_chartjs_bundle()
+    chartjs_tag = (
+        f"<script>{chartjs_inline}</script>"
+        if chartjs_inline
+        else "<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>"
+    )
     kpi_html = "".join(
         (
             f"<div class='kpi-card {'kpi-priority' if row['name'] in priority_kpis else ''} "
@@ -451,7 +463,7 @@ def _render_canonical_html(dataset: dict[str, Any]) -> str:
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cockpit Ejecutivo Industrial (Canónico)</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{chartjs_tag}
 <style>
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
 :root{{
@@ -462,11 +474,14 @@ def _render_canonical_html(dataset: dict[str, Any]) -> str:
   --surface-elev:#f8fbff;
   --ink:#102a43;
   --ink-soft:#486581;
+  --ink-muted:#6b7c93;
   --line:#d4dee8;
   --line-strong:#c2d3e4;
   --accent:#0f766e;
   --accent-2:#1d4ed8;
   --warn:#b45309;
+  --critical:#b91c1c;
+  --success:#0f766e;
   --chart-grid:rgba(39,73,109,.16);
   --chart-text:#2f4f6d;
   --chart-tooltip-bg:#ffffff;
@@ -484,11 +499,14 @@ def _render_canonical_html(dataset: dict[str, Any]) -> str:
   --surface-elev:#182b46;
   --ink:#e8f0fa;
   --ink-soft:#9eb7d1;
+  --ink-muted:#7f97b2;
   --line:#25415f;
   --line-strong:#315778;
   --accent:#19a49a;
   --accent-2:#4a7cff;
   --warn:#d08a32;
+  --critical:#ef4444;
+  --success:#22c55e;
   --chart-grid:rgba(173,204,237,.18);
   --chart-text:#bdd2e9;
   --chart-tooltip-bg:#1b3049;
@@ -502,47 +520,59 @@ body{{font-family:'IBM Plex Sans','Avenir Next','Segoe UI',sans-serif;margin:0;c
 radial-gradient(1200px 500px at -10% -20%,rgba(49,177,160,.22) 0%,transparent 55%),
 radial-gradient(900px 450px at 120% -20%,rgba(62,111,232,.18) 0%,transparent 50%),
 linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);overflow-x:hidden;transition:background .22s ease,color .22s ease}}
-.container{{position:relative;max-width:1320px;margin:0 auto;padding:14px 16px 20px}}
-.ux-toolbar{{position:sticky;top:8px;z-index:80;display:flex;gap:10px;justify-content:flex-end;margin-bottom:10px}}
-.ux-btn{{border:1px solid var(--line-strong);background:color-mix(in srgb, var(--panel) 88%, transparent);color:var(--ink);border-radius:14px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;transition:all .18s ease;box-shadow:var(--shadow-sm);backdrop-filter:blur(6px)}}
+.container{{position:relative;max-width:1220px;margin:0 auto;padding:12px 16px 18px}}
+.ux-toolbar{{position:sticky;top:8px;z-index:80;display:flex;gap:8px;justify-content:flex-end;margin-bottom:8px}}
+.ux-btn{{border:1px solid var(--line-strong);background:color-mix(in srgb, var(--panel) 88%, transparent);color:var(--ink);border-radius:12px;padding:7px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s ease;box-shadow:var(--shadow-sm);backdrop-filter:blur(6px)}}
 .ux-btn:hover{{transform:translateY(-1px);border-color:color-mix(in srgb, var(--accent-2) 45%, var(--line-strong));box-shadow:var(--shadow-md)}}
 .ux-btn-theme{{display:inline-flex;align-items:center;gap:8px}}
 .theme-dot{{width:10px;height:10px;border-radius:50%;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:inline-block}}
 .quick-nav{{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}}
 .quick-nav a{{text-decoration:none;font-size:12px;font-weight:700;color:var(--ink-soft);background:var(--surface-elev);border:1px solid var(--line-strong);border-radius:999px;padding:7px 12px;transition:all .16s ease}}
 .quick-nav a:hover{{transform:translateY(-1px);border-color:color-mix(in srgb, var(--accent-2) 46%, var(--line-strong));color:var(--ink)}}
-.header{{position:relative;overflow:hidden;background:linear-gradient(128deg,#0d766e 0%,#176fb2 45%,#264fca 100%);color:#fff;padding:12px 14px 13px;border-radius:var(--radius-xl);box-shadow:var(--shadow-md)}}
+.header{{position:relative;overflow:hidden;background:linear-gradient(128deg,#0d766e 0%,#176fb2 45%,#264fca 100%);color:#fff;padding:10px 14px 11px;border-radius:var(--radius-xl);box-shadow:var(--shadow-md)}}
 .header::after{{content:'';position:absolute;right:-120px;top:-110px;width:360px;height:360px;background:radial-gradient(circle,rgba(255,255,255,.26) 0%,rgba(255,255,255,0) 65%)}}
-.header h1{{position:relative;font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(22px,2.3vw,30px);line-height:1.12;letter-spacing:-.015em;margin:0 0 5px;max-width:1180px}}
-.header-subtitle{{position:relative;font-size:13px;opacity:.96;max-width:980px}}
-.header-stats{{position:relative;margin-top:6px;font-size:12px;opacity:.95}}
-.callouts{{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:10px}}
-.callout{{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);padding:8px 9px;border-radius:10px;font-size:12px;line-height:1.28;backdrop-filter:blur(2px)}}
-.kpi-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:10px 0}}
-.kpi-card{{position:relative;background:var(--panel);border-radius:12px;padding:8px 8px 9px;border:1px solid var(--line);box-shadow:var(--shadow-sm);overflow:hidden;min-height:84px;display:flex;flex-direction:column;justify-content:flex-start}}
+.header h1{{position:relative;font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(20px,2.1vw,27px);line-height:1.12;letter-spacing:-.015em;margin:0 0 4px;max-width:1100px}}
+.header-subtitle{{position:relative;font-size:12.5px;opacity:.95;max-width:900px}}
+.header-stats{{position:relative;margin-top:6px;font-size:11.5px;opacity:.9}}
+.header-micro{{position:relative;margin-top:6px;display:flex;flex-wrap:wrap;gap:8px}}
+.header-pill{{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:5px 8px;border-radius:999px;font-size:11px}}
+.callouts{{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:7px;margin-top:8px}}
+.callout{{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);padding:7px 9px;border-radius:10px;font-size:11.5px;line-height:1.3;backdrop-filter:blur(2px)}}
+.kpi-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin:10px 0}}
+.kpi-card{{position:relative;background:var(--panel);border-radius:12px;padding:8px 10px;border:1px solid var(--line);box-shadow:var(--shadow-sm);overflow:hidden;min-height:78px;display:flex;flex-direction:column;justify-content:flex-start}}
 .kpi-card::before{{content:'';position:absolute;left:0;top:0;width:100%;height:4px;background:linear-gradient(90deg,#11867d,#2f72ca)}}
 .kpi-card.kpi-priority{{border-color:#a9d7d2;box-shadow:0 8px 22px rgba(15,118,110,.16)}}
 .kpi-card.kpi-priority::before{{background:linear-gradient(90deg,#0f766e,#2d66d1)}}
-.kpi-name{{font-size:11px;font-weight:600;color:var(--ink-soft)}}
-.kpi-value{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(15px,1vw,19px);font-weight:700;letter-spacing:-.01em;color:var(--ink);line-height:1.16;margin-top:3px;overflow-wrap:anywhere;word-break:break-word}}
+.kpi-name{{font-size:11px;font-weight:600;color:var(--ink-muted)}}
+.kpi-value{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(14px,.95vw,18px);font-weight:700;letter-spacing:-.01em;color:var(--ink);line-height:1.16;margin-top:3px;overflow-wrap:anywhere;word-break:break-word}}
 .kpi-card.kpi-long .kpi-value{{font-size:clamp(13px,.9vw,17px);line-height:1.2}}
 .kpi-card.kpi-textual .kpi-value{{font-family:'IBM Plex Sans','Avenir Next','Segoe UI',sans-serif;font-size:clamp(12px,.95vw,16px);line-height:1.18;overflow-wrap:anywhere}}
 .section{{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;margin:9px 0;box-shadow:var(--shadow-sm);overflow:hidden}}
-.section h2{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(20px,1.5vw,24px);letter-spacing:-.01em;color:var(--ink);margin:1px 0 8px;display:flex;align-items:center;gap:8px}}
+.section h2{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(18px,1.4vw,22px);letter-spacing:-.01em;color:var(--ink);margin:1px 0 8px;display:flex;align-items:center;gap:8px}}
 .section h2::before{{content:'';display:inline-block;width:10px;height:28px;border-radius:99px;background:linear-gradient(180deg,#0f766e,#1d4ed8)}}
-.chart-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:10px;align-items:stretch}}
-.chart-card{{background:var(--panel-soft);border:1px solid var(--line);border-radius:10px;padding:10px;min-width:0;overflow:hidden}}
-.chart-title{{font-size:12px;font-weight:700;color:var(--ink-soft);margin-bottom:8px;line-height:1.3}}
-.chart-canvas-wrap{{position:relative;height:300px;min-width:0}}
+.section-subtitle{{font-size:12px;color:var(--ink-muted);margin:-2px 0 8px}}
+.chart-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px;align-items:stretch}}
+.chart-card{{background:var(--panel-soft);border:1px solid var(--line);border-radius:10px;padding:9px;min-width:0;overflow:hidden}}
+.chart-title{{font-size:12px;font-weight:700;color:var(--ink-soft);margin-bottom:7px;line-height:1.3}}
+.chart-canvas-wrap{{position:relative;height:260px;min-width:0}}
 .chart-canvas-wrap canvas{{position:absolute;inset:0;width:100% !important;height:100% !important;display:block}}
-.insight-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}}
-.insight-card{{background:linear-gradient(180deg,var(--surface-elev) 0%,var(--panel-soft) 100%);border:1px solid var(--line);border-radius:12px;padding:11px;min-width:0;box-shadow:0 2px 6px rgba(16,42,67,.05)}}
-.insight-title{{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px}}
+.insight-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}}
+.insight-card{{background:linear-gradient(180deg,var(--surface-elev) 0%,var(--panel-soft) 100%);border:1px solid var(--line);border-radius:12px;padding:10px;min-width:0;box-shadow:0 2px 6px rgba(16,42,67,.05)}}
+.insight-title{{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px}}
 .insight-detail{{font-size:11px;color:var(--ink-soft);line-height:1.4}}
-.insight-action{{margin-top:7px;font-size:11px;color:var(--ink);background:color-mix(in srgb, var(--accent-2) 12%, var(--panel));border:1px solid color-mix(in srgb, var(--accent-2) 30%, var(--line));padding:5px 7px;border-radius:8px}}
+.insight-action{{margin-top:6px;font-size:11px;color:var(--ink);background:color-mix(in srgb, var(--accent-2) 12%, var(--panel));border:1px solid color-mix(in srgb, var(--accent-2) 30%, var(--line));padding:5px 7px;border-radius:8px}}
+
+.decision-card{{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;background:linear-gradient(180deg,var(--surface-elev),var(--panel));border:1px solid var(--line-strong);border-radius:12px;padding:10px}}
+.decision-item{{background:var(--panel-soft);border:1px solid var(--line);border-radius:10px;padding:8px}}
+.decision-item b{{display:block;font-size:12px;color:var(--ink-muted);margin-bottom:4px}}
+.decision-item span{{font-size:13px;font-weight:700;color:var(--ink)}}
+.badge{{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700;border:1px solid transparent}}
+.badge.critical{{background:color-mix(in srgb,var(--critical) 12%, var(--panel));border-color:color-mix(in srgb,var(--critical) 40%, var(--line));color:var(--critical)}}
+.badge.warn{{background:color-mix(in srgb,var(--warn) 12%, var(--panel));border-color:color-mix(in srgb,var(--warn) 40%, var(--line));color:var(--warn)}}
+.badge.ok{{background:color-mix(in srgb,var(--success) 12%, var(--panel));border-color:color-mix(in srgb,var(--success) 40%, var(--line));color:var(--success)}}
 .table-toolbar{{display:flex;gap:8px;align-items:center;margin-bottom:8px}}
-.table-toolbar input{{padding:8px 10px;border:1px solid var(--line-strong);border-radius:10px;min-width:250px;font-size:12px;background:var(--surface-elev);color:var(--ink)}}
-.table-wrap{{overflow:auto;max-height:430px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}}
+.table-toolbar input{{padding:7px 9px;border:1px solid var(--line-strong);border-radius:10px;min-width:250px;font-size:12px;background:var(--surface-elev);color:var(--ink)}}
+.table-wrap{{overflow:auto;max-height:360px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}}
 table{{width:100%;border-collapse:collapse;font-size:12px}}
 th,td{{padding:7px;border-bottom:1px solid var(--line);text-align:left;color:var(--ink)}}
 th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
@@ -561,21 +591,29 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
 .sr-only{{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}
 @media (max-width:900px){{
   .ux-toolbar{{position:static;justify-content:flex-start}}
-  .ux-btn{{font-size:13px;padding:8px 12px}}
-  .header h1{{font-size:24px}}
+  .ux-btn{{font-size:12px;padding:7px 11px}}
+  .header h1{{font-size:22px}}
   .header-subtitle{{font-size:12px}}
-  .kpi-grid{{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}}
-  .kpi-value{{font-size:17px}}
-  .kpi-card.kpi-textual .kpi-value{{font-size:15px}}
-  .section h2{{font-size:18px}}
+  .kpi-grid{{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}}
+  .kpi-value{{font-size:16px}}
+  .kpi-card.kpi-textual .kpi-value{{font-size:14px}}
+  .section h2{{font-size:17px}}
   .chart-grid{{grid-template-columns:1fr}}
-  .chart-canvas-wrap{{height:255px}}
+  .chart-canvas-wrap{{height:230px}}
   .table-toolbar{{display:block}}
   .table-toolbar input{{min-width:0;width:100%;box-sizing:border-box}}
 }}
 @media print{{
+  body{{background:#fff}}
   .ux-toolbar,.quick-nav{{display:none !important}}
-  .section{{break-inside:avoid}}
+  .header{{box-shadow:none}}
+  .section{{break-inside:avoid;box-shadow:none}}
+  .kpi-card,.insight-card,.chart-card{{box-shadow:none}}
+  .chart-canvas-wrap{{height:220px}}
+  .table-wrap{{max-height:none}}
+  th{{position:static}}
+  a{{color:inherit;text-decoration:none}}
+  *{{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 }}
 </style>
 </head>
@@ -603,7 +641,12 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
   <div class="header">
     <h1 style="margin:0">Cockpit Ejecutivo de Inteligencia Operativa Industrial</h1>
     <div class="header-subtitle">Vista ejecutiva para priorizar pérdidas, riesgos operativos y captura de valor en planta industrial.</div>
-    <div class="header-stats">Cobertura: {meta['coverage_start']} a {meta['coverage_end']} | Plantas: {meta['n_plants']} | Líneas: {meta['n_lines']} | Equipos: {meta['n_equipment']}</div>
+    <div class="header-stats">Cobertura: {meta['coverage_start']} a {meta['coverage_end']} · Plantas: {meta['n_plants']} · Líneas: {meta['n_lines']} · Equipos: {meta['n_equipment']}</div>
+    <div class="header-micro">
+      <span class="header-pill">Modo: ejecutivo</span>
+      <span class="header-pill">KPIs gobernados</span>
+      <span class="header-pill">Decisión: screening</span>
+    </div>
     <div class="callouts">{callout_html}</div>
     <div class="sr-only" aria-hidden="true">dashboard_mode: {meta['dashboard_mode']} | run_id: {meta['run_id']} | snapshot_id: {meta['snapshot_id']} | metric_version_set: {meta['metric_version_set']} | decision_model_version: {meta['decision_model_version']} | validation_state: {meta['validation_state']}</div>
   </div>
@@ -612,11 +655,13 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
 
   <div class="section" id="sec-insights">
     <h2>Insights Ejecutivos</h2>
+    <div class="section-subtitle">Señales clave que explican pérdidas, riesgos y oportunidades de captura de valor.</div>
     <div class="insight-grid">{insights_html}</div>
   </div>
 
   <div class="section" id="sec-eff">
     <h2>Vista de Eficiencia Operativa</h2>
+    <div class="section-subtitle">Tendencias críticas de SEC y OEE para líneas con mayor impacto.</div>
     <div class="chart-grid">
       <div class="chart-card">
         <div class="chart-title">Tendencia SEC por línea</div>
@@ -631,6 +676,7 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
 
   <div class="section" id="sec-energy">
     <h2>Vista Energética y Coste</h2>
+    <div class="section-subtitle">Coste energético por línea y anomalías por equipo prioritario.</div>
     <div class="chart-grid">
       <div class="chart-card">
         <div class="chart-title">Coste energético total por línea</div>
@@ -645,6 +691,7 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
 
   <div class="section" id="sec-process">
     <h2>Vista de Proceso y Causas Raíz</h2>
+    <div class="section-subtitle">Drivers dominantes de pérdida y variabilidad operativa.</div>
     <div class="chart-grid">
       <div class="chart-card">
         <div class="chart-title">Pérdida económica por causa raíz</div>
@@ -659,6 +706,7 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
 
   <div class="section" id="sec-portfolio">
     <h2>Vista de Cartera y Riesgo</h2>
+    <div class="section-subtitle">Valor capturable, downside y distribución de iniciativas.</div>
     <div class="chart-grid">
       <div class="chart-card">
         <div class="chart-title">Valor descontado vs valor downside-adjusted</div>
@@ -676,7 +724,8 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
   </div>
 
   <div class="section" id="sec-table">
-    <h2>Tabla Final Interactiva de Priorización</h2>
+    <h2>Tabla Final de Priorización</h2>
+    <div class="section-subtitle">Filtra por iniciativa, línea o decisión para preparar el comité.</div>
     <div class="table-toolbar">
       <input id="tableSearch" type="text" placeholder="Buscar iniciativa, línea, clase o decisión..." />
     </div>
@@ -685,13 +734,33 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
 
   <div class="section" id="sec-decision">
     <h2>Decisión Ejecutiva</h2>
-    <ul>
-      <li>Línea a intervenir primero: <b>{decision['linea_prioritaria']}</b> (score {decision['line_criticality_score']:.2f}).</li>
-      <li>Equipo a priorizar: <b>{decision['equipo_prioritario']}</b> (score {decision['equipment_energy_anomaly_score']:.2f}).</li>
-      <li>Ahorro potencial top-5 ejecutar ahora (proxy): <b>{decision['ahorro_now_top5']:,.0f} EUR/año</b>.</li>
-      <li>Riesgo de inacción 12m (proxy): <b>{decision['risk_of_inaction_12m']:,.0f} EUR</b>.</li>
-      <li>{decision['committee_note']}</li>
-    </ul>
+    <div class="section-subtitle">Síntesis accionable para comité: foco, riesgo y valor.</div>
+    <div class="decision-card">
+      <div class="decision-item">
+        <b>Línea prioritaria</b>
+        <span>{decision['linea_prioritaria']}</span>
+        <div class="badge critical">Criticidad {decision['line_criticality_score']:.2f}</div>
+      </div>
+      <div class="decision-item">
+        <b>Equipo prioritario</b>
+        <span>{decision['equipo_prioritario']}</span>
+        <div class="badge warn">Anomalía {decision['equipment_energy_anomaly_score']:.2f}</div>
+      </div>
+      <div class="decision-item">
+        <b>Ahorro top-5 ahora</b>
+        <span>{decision['ahorro_now_top5']:,.0f} EUR/año</span>
+        <div class="badge ok">Capturable inmediato</div>
+      </div>
+      <div class="decision-item">
+        <b>Riesgo de inacción 12m</b>
+        <span>{decision['risk_of_inaction_12m']:,.0f} EUR</span>
+        <div class="badge critical">Coste por demora</div>
+      </div>
+      <div class="decision-item">
+        <b>Nota de comité</b>
+        <span>{decision['committee_note']}</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -743,6 +812,11 @@ function setChartFallback(message){{
     wrap.innerHTML=`<div style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;color:#486581;font-size:12px;padding:10px;border:1px dashed #bfd2e6;border-radius:8px;background:#f8fbfe">${{message}}</div>`;
   }});
 }}
+function setChartFallbackSingle(id,message){{
+  const wrap=document.querySelector(`.chart-canvas-wrap[data-chart-id="${{id}}"]`);
+  if(!wrap) return;
+  wrap.innerHTML=`<div style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;color:#486581;font-size:12px;padding:10px;border:1px dashed #bfd2e6;border-radius:8px;background:#f8fbfe">${{message}}</div>`;
+}}
 function getBaseOptions(){{
   const palette=chartPalette();
   return {{
@@ -779,7 +853,9 @@ function truncateLabel(value,maxLen=24){{
   return txt.length>maxLen ? txt.slice(0,maxLen-1)+'…' : txt;
 }}
 function toFiniteNumber(value){{
-  const num=Number(value);
+  if(value === null || value === undefined) return null;
+  const cleaned=String(value).replace(/,/g,'');
+  const num=Number(cleaned);
   return Number.isFinite(num) ? num : null;
 }}
 function sanitizeSeries(values){{
@@ -883,22 +959,26 @@ function renderAllCharts(){{
     }}));
     const secBounds=seriesBounds(secDatasets,0,100);
     const secPad=(secBounds.max-secBounds.min)*0.08;
-    renderChart(
-      'secTrend',
-      'line',
-      DATA.charts.sec_trend.labels,
-      secDatasets,
-      {{
-        ...denseCategoryOptions(DATA.charts.sec_trend.labels,false),
-        scales:{{
-          y:{{
-            min:secBounds.hasData ? secBounds.min-secPad : 0,
-            max:secBounds.hasData ? secBounds.max+secPad : 100,
-            ticks:{{maxTicksLimit:7,font:{{size:11}}}}
+    if(!secBounds.hasData){{
+      setChartFallbackSingle('secTrend','Sin datos disponibles para SEC.');
+    }} else {{
+      renderChart(
+        'secTrend',
+        'line',
+        DATA.charts.sec_trend.labels,
+        secDatasets,
+        {{
+          ...denseCategoryOptions(DATA.charts.sec_trend.labels,false),
+          scales:{{
+            y:{{
+              min:secBounds.min-secPad,
+              max:secBounds.max+secPad,
+              ticks:{{maxTicksLimit:7,font:{{size:11}}}}
+            }}
           }}
         }}
-      }}
-    );
+      );
+    }}
     const oeeDatasets=DATA.charts.oee_trend.datasets.map((d,i)=>({{
       label:d.label,
       data:sanitizeSeries(d.data),
@@ -912,98 +992,139 @@ function renderAllCharts(){{
     const oeeBounds=seriesBounds(oeeDatasets,0.8,1.0);
     const oeeMin=Math.max(0, (oeeBounds.hasData ? oeeBounds.min : 0.8)-0.01);
     const oeeMax=Math.min(1, (oeeBounds.hasData ? oeeBounds.max : 1.0)+0.01);
-    renderChart(
-      'oeeTrend',
-      'line',
-      DATA.charts.oee_trend.labels,
-      oeeDatasets,
-      {{
-        ...denseCategoryOptions(DATA.charts.oee_trend.labels,false),
-        scales:{{
-          y:{{
-            min:oeeMin,
-            max:oeeMax,
-            ticks:{{maxTicksLimit:7,font:{{size:11}}}}
+    if(!oeeBounds.hasData){{
+      setChartFallbackSingle('oeeTrend','Sin datos disponibles para OEE.');
+    }} else {{
+      renderChart(
+        'oeeTrend',
+        'line',
+        DATA.charts.oee_trend.labels,
+        oeeDatasets,
+        {{
+          ...denseCategoryOptions(DATA.charts.oee_trend.labels,false),
+          scales:{{
+            y:{{
+              min:oeeMin,
+              max:oeeMax,
+              ticks:{{maxTicksLimit:7,font:{{size:11}}}}
+            }}
           }}
         }}
-      }}
-    );
+      );
+    }}
 
     const energyLabels=DATA.charts.energy_cost_line.map(r=>r.linea_id);
-    renderChart(
-      'energyCostLine',
-      'bar',
-      energyLabels,
-      [{{label:'Coste energía (EUR)',data:DATA.charts.energy_cost_line.map(r=>toFiniteNumber(r.coste_energia_total)),backgroundColor:'#1d4ed8'}}],
-      {{...denseCategoryOptions(energyLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
-    );
+    const energyValues=DATA.charts.energy_cost_line.map(r=>toFiniteNumber(r.coste_energia_total));
+    if(!energyValues.some(v=>v!==null)){{
+      setChartFallbackSingle('energyCostLine','Sin datos disponibles de coste energético.');
+    }} else {{
+      renderChart(
+        'energyCostLine',
+        'bar',
+        energyLabels,
+        [{{label:'Coste energía (EUR)',data:energyValues,backgroundColor:'#1d4ed8'}}],
+        {{...denseCategoryOptions(energyLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
+      );
+    }}
 
     const eqLabels=DATA.charts.equipment_anomaly.map(r=>r.equipo_id);
-    renderChart(
-      'equipmentAnomaly',
-      'bar',
-      eqLabels,
-      [{{label:'Anomaly score',data:DATA.charts.equipment_anomaly.map(r=>toFiniteNumber(r.anomaly_score)),backgroundColor:'#b91c1c'}}],
-      {{...denseCategoryOptions(eqLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
-    );
+    const eqValues=DATA.charts.equipment_anomaly.map(r=>toFiniteNumber(r.anomaly_score));
+    if(!eqValues.some(v=>v!==null)){{
+      setChartFallbackSingle('equipmentAnomaly','Sin datos disponibles de anomalía.');
+    }} else {{
+      renderChart(
+        'equipmentAnomaly',
+        'bar',
+        eqLabels,
+        [{{label:'Anomaly score',data:eqValues,backgroundColor:'#b91c1c'}}],
+        {{...denseCategoryOptions(eqLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
+      );
+    }}
 
     const causeLabels=DATA.charts.root_cause.map(r=>r.causa_parada);
-    renderChart(
-      'rootCause',
-      'bar',
-      causeLabels,
-      [{{label:'Loss root cause score',data:DATA.charts.root_cause.map(r=>toFiniteNumber(r.loss_root_cause_score)),backgroundColor:'#0f766e'}}],
-      {{...denseCategoryOptions(causeLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
-    );
+    const causeValues=DATA.charts.root_cause.map(r=>toFiniteNumber(r.loss_root_cause_score));
+    if(!causeValues.some(v=>v!==null)){{
+      setChartFallbackSingle('rootCause','Sin datos disponibles de causas raíz.');
+    }} else {{
+      renderChart(
+        'rootCause',
+        'bar',
+        causeLabels,
+        [{{label:'Loss root cause score',data:causeValues,backgroundColor:'#0f766e'}}],
+        {{...denseCategoryOptions(causeLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
+      );
+    }}
 
     const shiftLabels=DATA.charts.shift_variance.map(r=>r.label);
-    renderChart(
-      'shiftVariance',
-      'bar',
-      shiftLabels,
-      [{{label:'Shift variance score',data:DATA.charts.shift_variance.map(r=>toFiniteNumber(r.shift_variance_score)),backgroundColor:'#334155'}}],
-      {{...denseCategoryOptions(shiftLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
-    );
+    const shiftValues=DATA.charts.shift_variance.map(r=>toFiniteNumber(r.shift_variance_score));
+    if(!shiftValues.some(v=>v!==null)){{
+      setChartFallbackSingle('shiftVariance','Sin datos disponibles de variabilidad.');
+    }} else {{
+      renderChart(
+        'shiftVariance',
+        'bar',
+        shiftLabels,
+        [{{label:'Shift variance score',data:shiftValues,backgroundColor:'#334155'}}],
+        {{...denseCategoryOptions(shiftLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
+      );
+    }}
 
     const scenLabels=DATA.charts.scenario_value.map(r=>r.macro_scenario);
-    renderChart(
-      'scenarioValue',
-      'bar',
-      scenLabels,
-      [
-        {{label:'Discounted value',data:DATA.charts.scenario_value.map(r=>toFiniteNumber(r.discounted_value)),backgroundColor:'#0ea5e9'}},
-        {{label:'Downside-adjusted value',data:DATA.charts.scenario_value.map(r=>toFiniteNumber(r.downside_adjusted_value)),backgroundColor:'#0f766e'}}
-      ],
-      {{...denseCategoryOptions(scenLabels,false)}}
-    );
+    const scenDisc=DATA.charts.scenario_value.map(r=>toFiniteNumber(r.discounted_value));
+    const scenDown=DATA.charts.scenario_value.map(r=>toFiniteNumber(r.downside_adjusted_value));
+    if(!scenDisc.some(v=>v!==null) && !scenDown.some(v=>v!==null)){{
+      setChartFallbackSingle('scenarioValue','Sin datos disponibles de escenarios.');
+    }} else {{
+      renderChart(
+        'scenarioValue',
+        'bar',
+        scenLabels,
+        [
+          {{label:'Discounted value',data:scenDisc,backgroundColor:'#0ea5e9'}},
+          {{label:'Downside-adjusted value',data:scenDown,backgroundColor:'#0f766e'}}
+        ],
+        {{...denseCategoryOptions(scenLabels,false)}}
+      );
+    }}
 
-    renderChart(
-      'portfolioWave',
-      'doughnut',
-      DATA.charts.portfolio_wave.map(r=>r.portfolio_wave),
-      [{{data:DATA.charts.portfolio_wave.map(r=>toFiniteNumber(r.n_iniciativas)),backgroundColor:['#047857','#1d4ed8','#7c3aed','#64748b']}}],
-      {{plugins:{{legend:{{display:true,position:'bottom'}}}}}}
-    );
+    const waveLabels=DATA.charts.portfolio_wave.map(r=>r.portfolio_wave);
+    const waveValues=DATA.charts.portfolio_wave.map(r=>toFiniteNumber(r.n_iniciativas));
+    if(!waveValues.some(v=>v!==null)){{
+      setChartFallbackSingle('portfolioWave','Sin datos disponibles de olas.');
+    }} else {{
+      renderChart(
+        'portfolioWave',
+        'doughnut',
+        waveLabels,
+        [{{data:waveValues,backgroundColor:['#047857','#1d4ed8','#7c3aed','#64748b']}}],
+        {{plugins:{{legend:{{display:true,position:'bottom'}}}}}}
+      );
+    }}
 
-    renderChart(
-      'priorityScatter',
-      'bubble',
-      [],
-      [{{
-        label:'Prioridad vs viabilidad',
-        data:DATA.charts.priority_scatter
-          .map(r=>({{x:toFiniteNumber(r.implementation_feasibility_score),y:toFiniteNumber(r.improvement_priority_index),r:toFiniteNumber(r.bubble_r)}}))
-          .filter(p=>p.x!==null && p.y!==null && p.r!==null),
-        backgroundColor:'rgba(180,83,9,.78)'
-      }}],
-      {{
-        plugins:{{legend:{{display:false}}}},
-        scales:{{
-          x:{{title:{{display:true,text:'Viabilidad implementación'}},ticks:{{maxTicksLimit:7,font:{{size:11}}}}}},
-          y:{{title:{{display:true,text:'Prioridad compuesta'}},ticks:{{maxTicksLimit:7,font:{{size:11}}}}}}
+    const scatterPoints=DATA.charts.priority_scatter
+      .map(r=>({{x:toFiniteNumber(r.implementation_feasibility_score),y:toFiniteNumber(r.improvement_priority_index),r:toFiniteNumber(r.bubble_r)}}))
+      .filter(p=>p.x!==null && p.y!==null && p.r!==null);
+    if(!scatterPoints.length){{
+      setChartFallbackSingle('priorityScatter','Sin datos disponibles de priorización.');
+    }} else {{
+      renderChart(
+        'priorityScatter',
+        'bubble',
+        [],
+        [{{
+          label:'Prioridad vs viabilidad',
+          data:scatterPoints,
+          backgroundColor:'rgba(180,83,9,.78)'
+        }}],
+        {{
+          plugins:{{legend:{{display:false}}}},
+          scales:{{
+            x:{{title:{{display:true,text:'Viabilidad implementación'}},ticks:{{maxTicksLimit:7,font:{{size:11}}}}}},
+            y:{{title:{{display:true,text:'Prioridad compuesta'}},ticks:{{maxTicksLimit:7,font:{{size:11}}}}}}
+          }}
         }}
-      }}
-    );
+      );
+    }}
   }} catch (error) {{
     console.error('Dashboard chart rendering failed:', error);
     setChartFallback('Ocorreu um erro ao renderizar os gráficos. Regera o dashboard ou verifica a consola do browser.');
@@ -1126,23 +1247,6 @@ def build_dashboard() -> Path:
         ]
     )
     audit.to_csv(SERVING_AUDIT_CSV, index=False)
-
-    report_lines = [
-        "# Dashboard Build And Serving (Canónico)",
-        "",
-        "## Artefacto oficial",
-        f"- HTML oficial único: `{CANONICAL_HTML}`",
-        f"- Dataset oficial único: `{CANONICAL_DATASET_JSON}`",
-        "",
-        "## Gobernanza aplicada",
-        "- Eliminados outputs legacy (`executive_light`, `full_offline`, `board_pack`).",
-        "- Sin recálculo KPI crítico en frontend.",
-        "- Version stamping obligatorio en header.",
-        "",
-        "## Auditoría de serving",
-        audit.to_markdown(index=False),
-    ]
-    SERVING_REPORT_MD.write_text("\n".join(report_lines), encoding="utf-8")
     return CANONICAL_HTML
 
 

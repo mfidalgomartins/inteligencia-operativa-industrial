@@ -445,41 +445,11 @@ def run_repro_packaging() -> dict[str, pd.DataFrame]:
         samples.to_markdown(index=False),
         "",
         "## Cleanup Applied",
-        "- SQL legado movido a `sql/legacy/` para separar flujo operativo y artefactos históricos.",
         "- Lockfile pinneado (`requirements.lock.txt`) y fingerprint de entorno habilitado.",
         "- Packs de publicación (`minimal_public`, `github_reviewer`, `committee_pack`) generados.",
     ]
     (PROJECT_ROOT / "outputs" / "reports" / "repro_packaging_summary.md").write_text(
         "\n".join(summary_lines),
-        encoding="utf-8",
-    )
-
-    cleanup_lines = [
-        "# Repository Packaging Cleanup (Executed)",
-        "",
-        "## Structural cleanup",
-        "- SQL legacy moved to `sql/legacy/`.",
-        "- Official SQL execution path remains `sql/01...11`.",
-        "",
-        "## Reproducibility hardening",
-        "- Added `requirements.lock.txt`.",
-        "- Added `manifests/environment_fingerprint.json`.",
-        "- Added `manifests/artifact_fingerprints_latest.csv`.",
-        "",
-        "## Packaging modes generated",
-        packaging_audit.to_markdown(index=False),
-        "",
-        "## Packaging governance",
-        governance_df.to_markdown(index=False),
-        "",
-        "## Sample data strategy executed",
-        samples.to_markdown(index=False),
-        "",
-        "## Retention policy materialized",
-        "- `data/processed/output_retention_audit.csv`",
-    ]
-    (PROJECT_ROOT / "outputs" / "reports" / "repository_packaging_cleanup.md").write_text(
-        "\n".join(cleanup_lines),
         encoding="utf-8",
     )
 

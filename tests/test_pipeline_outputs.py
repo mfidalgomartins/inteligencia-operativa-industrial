@@ -78,7 +78,7 @@ def test_dashboard_generated_and_contains_sections() -> None:
     html = DASHBOARD.read_text(encoding="utf-8")
     assert "Vista de Eficiencia Operativa" in html
     assert "Vista Energética" in html
-    assert "Tabla Final Interactiva de Priorización" in html
+    assert "Tabla Final de Priorización" in html
     assert "Decisión Ejecutiva" in html
 
 

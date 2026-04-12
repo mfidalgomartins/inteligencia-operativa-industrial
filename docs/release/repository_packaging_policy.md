@@ -22,8 +22,7 @@ Reducir fricción de revisión y evitar repositorios inflados sin perder auditab
 
 ## SQL cleanup policy
 - SQL operativo oficial: `sql/01...11`.
-- SQL histórico/legacy: `sql/legacy/`.
-- Regla: ningún runner productivo debe leer `sql/legacy/`.
+- SQL histórico/legacy removido para mantener un flujo único y curado.
 
 ## Output retention policy
 - Policy materializada en `data/processed/output_retention_audit.csv`.

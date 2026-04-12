@@ -397,8 +397,6 @@ def build_root_cause_ranking() -> dict[str, pd.DataFrame]:
         "- Si domina desvío de proceso: ingeniería de control, ventanas operativas y estandarización de receta.",
         "- Si dominan paradas: mantenimiento predictivo y fiabilidad de subsistemas críticos.",
     ]
-    (OUTPUT_REPORTS_DIR / "diagnostico_causas_raiz.md").write_text("\n".join(report_lines), encoding="utf-8")
-
     _build_diagnostic_framework_doc(str(DOCS_DIR / "diagnostic_framework.md"))
 
     return {

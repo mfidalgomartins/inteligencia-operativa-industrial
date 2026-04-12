@@ -423,10 +423,6 @@ def _build_markdown_report(
 def run_explore_data_audit() -> dict[str, pd.DataFrame]:
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    legacy_html_report = REPORTS_DIR / "explore_data_audit_report.html"
-    if legacy_html_report.exists():
-        legacy_html_report.unlink()
-
     tables = _load_tables()
     table_summary = _build_table_summary(tables)
     column_summary = _build_column_summary(tables)
@@ -439,9 +435,6 @@ def run_explore_data_audit() -> dict[str, pd.DataFrame]:
     issues.to_csv(PROCESSED_DIR / "explore_data_issues.csv", index=False)
     joins.to_csv(PROCESSED_DIR / "explore_data_official_joins.csv", index=False)
     marts.to_csv(PROCESSED_DIR / "explore_data_mart_candidates.csv", index=False)
-
-    report_md = _build_markdown_report(table_summary, column_summary, issues, joins, marts)
-    (REPORTS_DIR / "explore_data_audit_report.md").write_text(report_md, encoding="utf-8")
 
     return {
         "table_summary": table_summary,

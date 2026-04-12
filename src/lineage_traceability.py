@@ -527,38 +527,6 @@ def build_traceability_layer(run_id: str) -> dict[str, pd.DataFrame]:
 
     lineage_edges = pd.DataFrame(edge_rows).drop_duplicates().reset_index(drop=True)
 
-    # Before/After recommendation explanation sample
-    sample = recommendation_trace_table.sort_values(["selected_flag", "objective_contribution"], ascending=[False, False]).head(1)
-    sample_row = sample.iloc[0] if not sample.empty else None
-    before_after_lines = [
-        "# Recommendation Traceability Before/After",
-        "",
-        "## Before",
-        "- Recomendación vista como ranking + decisión final sin reconstrucción completa de drivers.",
-        "- Falta de evidencia explícita de métricas/scores/constraints/versiones por recomendación.",
-        "",
-        "## After",
-    ]
-    if sample_row is not None:
-        before_after_lines.extend(
-            [
-                f"- recommendation_id: **{sample_row['recommendation_id']}**",
-                f"- selected_flag: **{sample_row['selected_flag']}**",
-                f"- objective contribution: **{float(sample_row['objective_contribution']):,.2f} EUR**",
-                f"- dominant drivers: `{sample_row['dominant_drivers']}`",
-                f"- metrics involved: `{sample_row['metrics_involved']}`",
-                f"- scores involved: `{sample_row['scores_involved']}`",
-                f"- active constraints: `{sample_row['active_constraints']}`",
-                f"- scenario used: `{sample_row['scenario_used']}` / `{sample_row['scenario_key_used']}`",
-                f"- trade-offs: `{sample_row['trade_offs']}`",
-                f"- confidence: **{float(sample_row['confidence_score']):.2f} ({sample_row['confidence_band']})**",
-                f"- caveat codes: `{sample_row['caveat_codes']}`",
-                f"- versions: metric_set=`{sample_row['metric_version_set']}`, registry=`{sample_row['metric_registry_version']}`, contracts=`{sample_row['data_contract_version']}`",
-            ]
-        )
-    else:
-        before_after_lines.append("- No recommendations found.")
-
     # Persist artefacts
     dataset_lineage.to_csv(DATA_PROCESSED_DIR / "dataset_lineage.csv", index=False)
     metric_lineage.to_csv(DATA_PROCESSED_DIR / "metric_lineage.csv", index=False)
@@ -573,8 +541,6 @@ def build_traceability_layer(run_id: str) -> dict[str, pd.DataFrame]:
     recommendation_trace_table.to_csv(DATA_PROCESSED_DIR / "recommendation_trace_table.csv", index=False)
     executive_output_trace_table.to_csv(DATA_PROCESSED_DIR / "executive_output_trace_table.csv", index=False)
     version_dependency_map.to_csv(DATA_PROCESSED_DIR / "version_dependency_map.csv", index=False)
-
-    (OUTPUT_REPORTS_DIR / "recommendation_trace_before_after.md").write_text("\n".join(before_after_lines), encoding="utf-8")
 
     return {
         "dataset_lineage": dataset_lineage,

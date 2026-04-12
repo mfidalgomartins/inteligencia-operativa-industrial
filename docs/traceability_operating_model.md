@@ -26,4 +26,3 @@
 - Solo `committee-candidate`/`committee-grade` con traza completa y sin blockers.
 
 ## Artefacto de evidencia before/after
-- `outputs/reports/recommendation_trace_before_after.md`

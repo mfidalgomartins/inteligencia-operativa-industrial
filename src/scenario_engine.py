@@ -876,36 +876,6 @@ def run_scenario_engine() -> dict[str, pd.DataFrame]:
         ]
     )
 
-    narrative = [
-        "# Scenario Engine - Financial Hardening",
-        "",
-        "## Alcance de madurez",
-        "- Esta capa es válida para screening financiero y pre-feasibility.",
-        "- No sustituye un business case corporativo auditado para comité de inversión.",
-        "",
-        "## Rediseño aplicado",
-        "- Separación explícita baseline exposure -> gross technical value -> net captured value.",
-        "- Guardas anti doble conteo entre energía y avoided loss.",
-        "- Sensibilidad explícita: precio energía, carbono, margen, retraso, CAPEX overrun y capture shortfall.",
-        "- Distinción entre métricas de priorización y métricas candidatas para comité.",
-        "",
-        "## Taxonomía financiera activa",
-        "- gross_technical_value",
-        "- avoided_loss",
-        "- net_captured_value",
-        "- discounted_value",
-        "- downside_adjusted_value",
-        "- cost_of_delay_12m",
-        "- capital_efficiency",
-        "- screening_irr_pct",
-        "- formal_irr_candidate_pct",
-        "- screening_var_95_npv",
-        "- robust_risk_metric_candidate_npv",
-        "",
-        "## Caveat obligatorio",
-        "- `formal_irr_candidate_pct` y métricas de riesgo no son equivalentes a evaluación financiera corporativa final.",
-    ]
-
     scenario_table.to_csv(DATA_PROCESSED_DIR / "scenario_table.csv", index=False)
     baseline_snapshot.to_csv(DATA_PROCESSED_DIR / "scenario_base_vs_improved.csv", index=False)
     scenario_ranking.to_csv(DATA_PROCESSED_DIR / "scenario_ranking.csv", index=False)
@@ -917,8 +887,6 @@ def run_scenario_engine() -> dict[str, pd.DataFrame]:
     scenario_sensitivity_table.to_csv(DATA_PROCESSED_DIR / "scenario_financial_sensitivity.csv", index=False)
     financial_logic_audit.to_csv(DATA_PROCESSED_DIR / "financial_logic_audit_table.csv", index=False)
     before_after.to_csv(DATA_PROCESSED_DIR / "financial_metrics_before_after.csv", index=False)
-
-    (OUTPUT_REPORTS_DIR / "scenario_engine_narrative.md").write_text("\n".join(narrative), encoding="utf-8")
 
     return {
         "scenario_table": scenario_table,

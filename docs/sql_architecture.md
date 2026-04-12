@@ -28,7 +28,7 @@
 - Ejecutar secuencialmente del `01` al `11`.
 - Runner: `src/sql_pipeline.py`.
 - Log de ejecución exportado en `data/processed/sql_execution_log.csv`.
-- Scripts históricos fuera de flujo operativo: `sql/legacy/`.
+- Scripts históricos removidos para mantener SQL operativo curado.
 
 ## Objetos analíticos clave
 - `vw_line_energy_performance`

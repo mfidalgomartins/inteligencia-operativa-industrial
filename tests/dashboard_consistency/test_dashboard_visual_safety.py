@@ -51,7 +51,7 @@ def test_dashboard_kpi_cards_are_compact_and_overflow_safe() -> None:
     html = DASHBOARD_HTML.read_text(encoding="utf-8")
 
     expected = [
-        ".kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))",
+        ".kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))",
         ".kpi-card{position:relative;background:var(--panel)",
         ".kpi-card.kpi-long .kpi-value",
         "overflow-wrap:anywhere",
