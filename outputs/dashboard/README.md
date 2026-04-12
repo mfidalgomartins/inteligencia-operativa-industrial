@@ -2,10 +2,10 @@
 
 Esta pasta contém o dashboard interativo do projeto.
 
-**Abrir dashboard (recomendado):**  
+**Dashboard en vivo (recomendado):**  
 https://mfidalgomartins.github.io/inteligencia-operativa-industrial/
 
-**Alternativa local (secundária):**  
+**Acceso alternativo (local):**  
 `industrial-operating-command-center.html`
 
 Nota: no GitHub, abrir o `.html` mostra o código. Use o link acima para a versão interativa.
