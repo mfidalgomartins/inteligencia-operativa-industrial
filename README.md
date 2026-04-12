@@ -32,6 +32,9 @@ Raw → SQL (staging/integration/marts) → semantic KPIs → features/scores �
 - Reports clave: `outputs/reports/validation_report.md`, `memo_ejecutivo.md`, `advanced_analysis_report.md`
 - Datos y manifests: `data/processed/`, `manifests/`
 
+## Dashboard en vivo
+GitHub Pages: https://mfidalgomartins.github.io/inteligencia-operativa-industrial/
+
 ## Por qué este proyecto es fuerte
 No es solo visualización: hay gobernanza de métricas, trazabilidad de decisión y priorización con restricciones reales. La lógica financiera es explícita y marcada como screening/pre‑feasibility, evitando sobreclaims.
 
