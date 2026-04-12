@@ -5,7 +5,7 @@ Tener un único dashboard oficial, gobernado y consistente con métricas certifi
 
 ## Implementación oficial
 - Generador oficial único: `src/dashboard.py` (`build_dashboard`).
-- HTML oficial único: `outputs/dashboard/dashboard_inteligencia_operativa.html`.
+- HTML oficial único: `outputs/dashboard/industrial-operating-command-center.html`.
 - Dataset oficial único: `data/processed/dashboard_canonical_dataset.json`.
 - Auditoría de serving: `data/processed/dashboard_serving_audit.csv`.
 
@@ -27,5 +27,5 @@ Tener un único dashboard oficial, gobernado y consistente con métricas certifi
 
 ## Uso
 1. Ejecutar `python -m src`.
-2. Abrir `outputs/dashboard/dashboard_inteligencia_operativa.html`.
+2. Abrir `outputs/dashboard/industrial-operating-command-center.html`.
 3. Validar flags de serving en `data/processed/dashboard_serving_audit.csv`.

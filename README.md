@@ -27,7 +27,7 @@ Raw → SQL (staging/integration/marts) → semantic KPIs → features/scores �
 - `configs/` perfiles sectoriales
 
 ## Outputs que importan
-- Dashboard: `outputs/dashboard/dashboard_inteligencia_operativa.html`
+- Dashboard: `outputs/dashboard/industrial-operating-command-center.html`
 - Charts: `outputs/charts/`
 - Reports clave: `outputs/reports/validation_report.md`, `memo_ejecutivo.md`, `advanced_analysis_report.md`
 - Datos y manifests: `data/processed/`, `manifests/`

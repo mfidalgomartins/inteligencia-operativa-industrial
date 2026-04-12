@@ -5,7 +5,7 @@ Mantener capacidad decisional ejecutiva con payload ligero, datasets gobernados 
 
 ## Modo de serving oficial
 1. `canonical_single_html`
-- Archivo oficial: `outputs/dashboard/dashboard_inteligencia_operativa.html`.
+- Archivo oficial: `outputs/dashboard/industrial-operating-command-center.html`.
 - Uso: comité, dirección industrial, operaciones y energía.
 - Principio: KPI + trade-offs + decisión en <3 minutos, con drill-down interactivo controlado.
 - Policy de tamaño: <= 4 MB.
@@ -18,7 +18,7 @@ Mantener capacidad decisional ejecutiva con payload ligero, datasets gobernados 
 - No KPI headline calculado en frontend.
 - Visuales alimentadas por datasets pre-agregados.
 - `run_id`, `snapshot_id`, `metric_version_set`, `decision_model_version`, `validation_state` y `dashboard_mode` obligatorios en HTML.
-- Dashboard canónico de release = `dashboard_inteligencia_operativa.html`.
+- Dashboard canónico de release = `industrial-operating-command-center.html`.
 - Outputs legacy de dashboard deben eliminarse en build.
 
 ## Before/After (refactor)

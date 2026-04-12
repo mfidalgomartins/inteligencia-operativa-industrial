@@ -112,7 +112,7 @@ Outputs:
 
 ## Dashboard (Decision Cockpit)
 Archivo final:
-- `outputs/dashboard/dashboard_inteligencia_operativa.html`
+- `outputs/dashboard/industrial-operating-command-center.html`
 
 Incluye:
 - KPI ejecutivo + metadata (`run_id`, `metric_version_set`),

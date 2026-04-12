@@ -190,12 +190,12 @@ def build_traceability_layer(run_id: str) -> dict[str, pd.DataFrame]:
                 "contract_ref": "contracts/metrics/metric_registry.json",
             },
             {
-                "dataset_name": "dashboard_inteligencia_operativa.html",
+                "dataset_name": "industrial-operating-command-center.html",
                 "lineage_level": "executive output lineage",
                 "layer": "executive_serving",
                 "upstream_datasets": "executive_kpi_snapshot;investment_prioritization_final;scenario_table;line_criticality_scores",
                 "owner": "BI Lead",
-                "contract_ref": "outputs/dashboard/dashboard_inteligencia_operativa.html",
+                "contract_ref": "outputs/dashboard/industrial-operating-command-center.html",
             },
         ]
     )
@@ -382,7 +382,7 @@ def build_traceability_layer(run_id: str) -> dict[str, pd.DataFrame]:
             {
                 "output_id": "EXEC_DASHBOARD_DECISION",
                 "output_name": "Dashboard Decision Block",
-                "output_path": "outputs/dashboard/dashboard_inteligencia_operativa.html",
+                "output_path": "outputs/dashboard/industrial-operating-command-center.html",
                 "output_type": "dashboard",
                 "run_id": run_id,
                 "source_datasets": "executive_kpi_snapshot;investment_prioritization_final;line_criticality_scores;scenario_table",
@@ -423,8 +423,8 @@ def build_traceability_layer(run_id: str) -> dict[str, pd.DataFrame]:
                 "scenario_engine_code_sha256": _sha256(PROJECT_ROOT / "src" / "scenario_engine.py"),
                 "investment_prioritization_code_sha256": _sha256(PROJECT_ROOT / "src" / "investment_prioritization.py"),
                 "lineage_module_sha256": _sha256(PROJECT_ROOT / "src" / "lineage_traceability.py"),
-                "dashboard_sha256": _sha256(OUTPUT_DASHBOARD_DIR / "dashboard_inteligencia_operativa.html")
-                if (OUTPUT_DASHBOARD_DIR / "dashboard_inteligencia_operativa.html").exists()
+                "dashboard_sha256": _sha256(OUTPUT_DASHBOARD_DIR / "industrial-operating-command-center.html")
+                if (OUTPUT_DASHBOARD_DIR / "industrial-operating-command-center.html").exists()
                 else "",
                 "validation_readiness_level": readiness_level,
                 "validation_publish_decision": str(readiness["publish_decision"]),

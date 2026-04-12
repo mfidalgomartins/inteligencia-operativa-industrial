@@ -11,7 +11,7 @@ DATA_RAW = PROJECT_ROOT / "data" / "raw"
 DATA_PROCESSED = PROJECT_ROOT / "data" / "processed"
 OUTPUTS = PROJECT_ROOT / "outputs"
 REPORTS = OUTPUTS / "reports"
-DASHBOARD_HTML = OUTPUTS / "dashboard" / "dashboard_inteligencia_operativa.html"
+DASHBOARD_HTML = OUTPUTS / "dashboard" / "industrial-operating-command-center.html"
 MANIFEST_LATEST = PROJECT_ROOT / "manifests" / "build_manifest_latest.json"
 
 

@@ -30,7 +30,7 @@
         "docs/release/release_operating_model.md",
         "docs/release/repository_packaging_policy.md",
         "docs/dashboard/dashboard_build_and_governance.md",
-        "outputs/dashboard/dashboard_inteligencia_operativa.html",
+        "outputs/dashboard/industrial-operating-command-center.html",
         "outputs/reports/memo_ejecutivo.md",
         "outputs/reports/advanced_analysis_report.md",
         "outputs/reports/validation_report.md",
@@ -74,7 +74,7 @@
         "data/processed/sector_profile_registry.csv",
         "data/processed/sector_mapping_coverage.csv",
         "data/processed/dashboard_canonical_dataset.json",
-        "outputs/dashboard/dashboard_inteligencia_operativa.html",
+        "outputs/dashboard/industrial-operating-command-center.html",
         "outputs/reports/validation_report.md",
         "outputs/reports/advanced_analysis_report.md",
         "outputs/reports/sector_parameterization_evidence.md",
@@ -95,7 +95,7 @@
         ]
       },
       "include_files": [
-        "outputs/dashboard/dashboard_inteligencia_operativa.html",
+        "outputs/dashboard/industrial-operating-command-center.html",
         "outputs/reports/memo_ejecutivo.md",
         "outputs/reports/advanced_analysis_report.md",
         "outputs/reports/validation_report.md",

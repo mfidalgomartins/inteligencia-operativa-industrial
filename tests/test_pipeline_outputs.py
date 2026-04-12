@@ -7,7 +7,7 @@ import pytest
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROCESSED = PROJECT_ROOT / "data" / "processed"
 OUTPUTS = PROJECT_ROOT / "outputs"
-DASHBOARD = OUTPUTS / "dashboard" / "dashboard_inteligencia_operativa.html"
+DASHBOARD = OUTPUTS / "dashboard" / "industrial-operating-command-center.html"
 
 
 @pytest.mark.blocker

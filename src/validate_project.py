@@ -297,7 +297,7 @@ def run_full_validation() -> dict[str, pd.DataFrame]:
     optimization_meta_path = DATA_PROCESSED_DIR / "portfolio_optimization_metadata.csv"
     optimization_meta = pd.read_csv(optimization_meta_path) if optimization_meta_path.exists() else pd.DataFrame()
 
-    dashboard_path = OUTPUT_DASHBOARD_DIR / "dashboard_inteligencia_operativa.html"
+    dashboard_path = OUTPUT_DASHBOARD_DIR / "industrial-operating-command-center.html"
     dashboard_dataset_path = DATA_PROCESSED_DIR / "dashboard_canonical_dataset.json"
     legacy_dashboard_paths = [
         OUTPUT_DASHBOARD_DIR / "dashboard_executive_light.html",

@@ -1,7 +1,7 @@
 # Dashboard Build And Governance
 
 ## Artefactos oficiales
-- HTML oficial: `outputs/dashboard/dashboard_inteligencia_operativa.html`
+- HTML oficial: `outputs/dashboard/industrial-operating-command-center.html`
 - Dataset oficial: `data/processed/dashboard_canonical_dataset.json`
 - Auditoría de serving: `data/processed/dashboard_serving_audit.csv`
 - Generador oficial: `src/dashboard.py` (`build_dashboard`)

@@ -4,7 +4,7 @@ dataset::line_day_features_scored,line_day_features_scored,dataset,dataset linea
 dataset::scenario_table,scenario_table,dataset,dataset lineage,decision,Decision Science,20260411T221240Z,n/a,dataset lineage node
 dataset::investment_prioritization_final,investment_prioritization_final,dataset,dataset lineage,decision,Strategy + PMO Analytics,20260411T221240Z,contracts/data/data_contracts.json#investment_prioritization_final,dataset lineage node
 dataset::executive_kpi_snapshot,executive_kpi_snapshot,dataset,executive output lineage,executive_serving,BI Lead,20260411T221240Z,contracts/metrics/metric_registry.json,dataset lineage node
-dataset::dashboard_inteligencia_operativa.html,dashboard_inteligencia_operativa.html,dataset,executive output lineage,executive_serving,BI Lead,20260411T221240Z,outputs/dashboard/dashboard_inteligencia_operativa.html,dataset lineage node
+dataset::industrial-operating-command-center.html,industrial-operating-command-center.html,dataset,executive output lineage,executive_serving,BI Lead,20260411T221240Z,outputs/dashboard/industrial-operating-command-center.html,dataset lineage node
 metric::production_volume,production_volume,metric,metric lineage,semantic_layer,Operaciones,industrial_metrics_v1_1,contracts/metrics/metric_registry.json,metric lineage node
 metric::oee_synthetic,oee_synthetic,metric,metric lineage,semantic_layer,Excelencia Operativa,industrial_metrics_v1_1,contracts/metrics/metric_registry.json,metric lineage node
 metric::sec,sec,metric,metric lineage,semantic_layer,Energía,industrial_metrics_v1_1,contracts/metrics/metric_registry.json,metric lineage node
@@ -75,5 +75,5 @@ decision::DEC_INI_0000036,DEC_INI_0000036,decision,decision lineage,decision,Str
 decision::DEC_INI_0000028,DEC_INI_0000028,decision,decision lineage,decision,Strategy + PMO,20260411T221240Z,data/processed/investment_prioritization_final.csv,decision lineage node
 decision::DEC_INI_0000008,DEC_INI_0000008,decision,decision lineage,decision,Strategy + PMO,20260411T221240Z,data/processed/investment_prioritization_final.csv,decision lineage node
 output::EXEC_SNAPSHOT_MAIN,Executive KPI Snapshot,executive_output,executive output lineage,executive_serving,BI Lead,20260411T221240Z,data/processed/executive_kpi_snapshot.csv,executive output lineage node
-output::EXEC_DASHBOARD_DECISION,Dashboard Decision Block,executive_output,executive output lineage,executive_serving,BI Lead,20260411T221240Z,outputs/dashboard/dashboard_inteligencia_operativa.html,executive output lineage node
+output::EXEC_DASHBOARD_DECISION,Dashboard Decision Block,executive_output,executive output lineage,executive_serving,BI Lead,20260411T221240Z,outputs/dashboard/industrial-operating-command-center.html,executive output lineage node
 output::EXEC_ADVANCED_ANALYSIS_REPORT,Advanced Analysis Report,executive_output,executive output lineage,executive_serving,BI Lead,20260411T221240Z,outputs/reports/advanced_analysis_report.md,executive output lineage node

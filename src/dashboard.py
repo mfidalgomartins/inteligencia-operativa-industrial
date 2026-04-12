@@ -11,7 +11,7 @@ from .config import DATA_PROCESSED_DIR, OUTPUT_DASHBOARD_DIR, OUTPUT_REPORTS_DIR
 
 
 MAX_CANONICAL_SIZE_BYTES = 4_000_000
-CANONICAL_HTML = OUTPUT_DASHBOARD_DIR / "dashboard_inteligencia_operativa.html"
+CANONICAL_HTML = OUTPUT_DASHBOARD_DIR / "industrial-operating-command-center.html"
 CANONICAL_DATASET_JSON = DATA_PROCESSED_DIR / "dashboard_canonical_dataset.json"
 SERVING_AUDIT_CSV = DATA_PROCESSED_DIR / "dashboard_serving_audit.csv"
 CHARTJS_BUNDLE = Path(__file__).resolve().parents[1] / "assets" / "vendor" / "chart.umd.min.js"

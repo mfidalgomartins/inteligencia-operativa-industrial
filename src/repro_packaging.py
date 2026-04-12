@@ -153,7 +153,7 @@ def _build_artifact_fingerprints() -> pd.DataFrame:
         DATA_PROCESSED_DIR / "portfolio_summary.csv",
         DATA_PROCESSED_DIR / "sector_profile_registry.csv",
         PROJECT_ROOT / "outputs" / "reports" / "validation_report.md",
-        PROJECT_ROOT / "outputs" / "dashboard" / "dashboard_inteligencia_operativa.html",
+        PROJECT_ROOT / "outputs" / "dashboard" / "industrial-operating-command-center.html",
     ]
     for path in targets:
         if not path.exists():

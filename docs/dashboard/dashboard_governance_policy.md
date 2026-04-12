@@ -22,7 +22,7 @@ El dashboard oficial debe incluir:
 - Si supera threshold: release con `publish-blocked` o `publish with caveat` según severidad.
 
 ## 5) Release checks mínimos
-- Existencia de un único HTML oficial (`dashboard_inteligencia_operativa.html`).
+- Existencia de un único HTML oficial (`industrial-operating-command-center.html`).
 - Ausencia de HTMLs legacy activos (`dashboard_executive_light.html`, `dashboard_full_offline.html`, `dashboard_board_pack.html`).
 - Ausencia de datasets legacy activos (`dashboard_exec_dataset.json`, `dashboard_full_dataset.json`).
 - Alineación de stamping con snapshot.
