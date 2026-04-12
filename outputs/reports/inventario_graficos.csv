@@ -1,0 +1,19 @@
+grafico,archivo,insight
+trend sec por línea,01_trend_sec_por_linea.png,Evolución temporal de intensidad energética.
+trend OEE por línea,02_trend_oee_por_linea.png,Identifica deterioro sostenido de desempeño.
+consumo energético y coste por línea,03_consumo_coste_por_linea.png,Detecta líneas con doble penalización energía-coste.
+top líneas por pérdidas,04_top_lineas_perdidas.png,Concentración de pérdida por línea.
+top equipos por sobreconsumo,05_top_equipos_sobreconsumo.png,Prioriza activos para inspección energética.
+mapa de anomalías por equipo,06_mapa_anomalias_equipo.png,Patrón espacial de anomalías por activos.
+desviaciones de proceso por familia,07_desviaciones_por_familia.png,Áreas de inestabilidad de proceso.
+paradas por causa,08_paradas_por_causa.png,Frecuencia de eventos por causa operativa.
+pérdida económica por causa raíz,09_perdida_por_causa_raiz.png,Jerarquiza causas por impacto económico.
+emisiones por línea,10_emisiones_por_linea.png,Prioriza líneas para abatimiento de emisiones.
+quick wins vs CAPEX,11_quick_wins_vs_capex.png,Compara retorno agregado por tipo de iniciativa.
+payback vs impacto,12_payback_vs_impacto.png,Trade-off retorno financiero y prioridad.
+waterfall de ahorro potencial,13_waterfall_ahorro_potencial.png,Contribución incremental de escenarios al valor.
+ranking de iniciativas,14_ranking_iniciativas.png,Iniciativas con mayor valor anual estimado.
+matriz criticidad vs viabilidad,15_matriz_criticidad_viabilidad.png,Selecciona cartera equilibrada por impacto y factibilidad.
+comparación por turno,16_comparacion_por_turno.png,Identifica turnos con mayor penalización operativa.
+benchmark interno y externo,17_benchmark_interno_externo.png,Brecha estructural frente a referencia externa.
+sensibilidad al precio de energía,18_sensibilidad_precio_energia.png,Robustez del portafolio ante shocks energéticos.

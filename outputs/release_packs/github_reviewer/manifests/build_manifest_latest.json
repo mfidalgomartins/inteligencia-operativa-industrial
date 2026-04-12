@@ -1,0 +1,58 @@
+{
+  "run_id": "20260411T221240Z",
+  "generated_at_utc": "2026-04-11T22:12:40",
+  "overall_status": "RUNNING",
+  "steps": [],
+  "validation_readiness": {
+    "overall_readiness_level": "screening-grade-only",
+    "technical_state": "structurally-valid",
+    "decision_state": "committee-candidate",
+    "committee_readiness_state": "not-committee-grade",
+    "evidence_grade": "C",
+    "publish_decision": "publish with caveat",
+    "unwaived_blockers": 0,
+    "unwaived_critical": 1
+  },
+  "lineage_traceability": {
+    "recommendations_traced": 48,
+    "selected_recommendations_traced": 24,
+    "lineage_nodes": 78,
+    "lineage_ready": true
+  },
+  "version_dependency": {
+    "run_id": "20260411T220719Z",
+    "metric_version_set": "industrial_metrics_v1_1",
+    "metric_registry_version": "1.1.0",
+    "data_contract_version": "1.1.0",
+    "metric_registry_sha256": "2a5140a87bd2f3f777912de6c8568d7295022906d065a36129afb24b1e506271",
+    "data_contract_sha256": "4e7e0c47716f06537ed2cea32f7f5a3c3281053445d591a81ca1aeec78a4f070",
+    "scenario_engine_code_sha256": "1bd09b5702b21613fc59ed1447801ef1bd0b8e3457df1e8ad36dde71bba8f61a",
+    "investment_prioritization_code_sha256": "d41404198354ef37103e3910d63e0d296eee791e20ce597b5b04c42241d13108",
+    "lineage_module_sha256": "d0708aca44bf5fb4c8b9ec17c1f131f911eca4e2f83671ad85f8656d9efa96e9",
+    "dashboard_sha256": "0cbf50e280b21b0f0ab892c9da975e33231aa14608ea4195d8779995ba986e53",
+    "validation_readiness_level": "screening-grade-only",
+    "validation_publish_decision": "publish with caveat",
+    "generated_at_utc": "2026-04-11T22:10:14"
+  },
+  "environment_fingerprint": {
+    "generated_at_utc": "2026-04-11T22:10:14+00:00",
+    "python_executable": "/Users/miguelfidalgo/Documents/sistema-inteligencia-eficiencia-operativa-industrial/.venv/bin/python",
+    "python_version": "3.12.13",
+    "platform": "macOS-15.5-arm64-arm-64bit",
+    "machine": "arm64",
+    "requirements_txt_sha256": "02a5e34d2658258da02e874c5861a4a16b272de9286f7843fcef87f1d745b06f",
+    "requirements_lock_sha256": "d63a00388e8fb55b80ac4b434d7539e3023d529768cec005f83cea2baaa1e60c",
+    "requirements_lock_normalized_sha256": "03e6b335ca2835defffc2c69e53e2dd54819fe2b32e0f9d84c8897f1e8c8e718",
+    "pip_freeze_sha256": "03e6b335ca2835defffc2c69e53e2dd54819fe2b32e0f9d84c8897f1e8c8e718",
+    "pip_freeze_packages": 20,
+    "lockfile_present": true,
+    "lockfile_sync_with_runtime": true
+  },
+  "packaging_summary": {
+    "packs_generated": 3,
+    "min_reduction_pct": 99.669,
+    "max_pack_size_mb": 1.939,
+    "profiles_blocked": 1,
+    "profiles_allowed": 2
+  }
+}

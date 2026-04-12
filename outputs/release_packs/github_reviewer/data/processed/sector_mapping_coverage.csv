@@ -1,0 +1,11 @@
+sector_profile_id,domain,observed_values,mapped_values,mapping_coverage_pct
+petronor,familia_proceso,4,4,100.0
+petronor,tipo_equipo,6,6,100.0
+petronor,categoria_iniciativa,4,4,100.0
+petronor,tipo_iniciativa,4,4,100.0
+petronor,fuente_energia,2,2,100.0
+tubacex,familia_proceso,4,4,100.0
+tubacex,tipo_equipo,6,6,100.0
+tubacex,categoria_iniciativa,4,4,100.0
+tubacex,tipo_iniciativa,4,4,100.0
+tubacex,fuente_energia,2,2,100.0

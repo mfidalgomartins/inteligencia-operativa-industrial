@@ -1,0 +1,2 @@
+validation_timestamp_utc,technical_state,decision_state,committee_readiness_state,committee_readiness_domain_state,overall_readiness_level,evidence_grade,publish_decision,unwaived_blockers,unwaived_critical,unwaived_high,open_risks_count,readiness_overstated_flag,committee_presentation_allowed,requested_usage_level_for_waivers
+2026-04-11T22:14:39,structurally-valid,committee-candidate,not-committee-grade,committee-grade,screening-grade-only,C,publish with caveat,0,1,3,4,0,0,committee-candidate

@@ -1,0 +1,14 @@
+{
+  "generated_at_utc": "2026-04-11T22:14:39+00:00",
+  "python_executable": "/Users/miguelfidalgo/Documents/sistema-inteligencia-eficiencia-operativa-industrial/.venv/bin/python",
+  "python_version": "3.12.13",
+  "platform": "macOS-15.5-arm64-arm-64bit",
+  "machine": "arm64",
+  "requirements_txt_sha256": "02a5e34d2658258da02e874c5861a4a16b272de9286f7843fcef87f1d745b06f",
+  "requirements_lock_sha256": "d63a00388e8fb55b80ac4b434d7539e3023d529768cec005f83cea2baaa1e60c",
+  "requirements_lock_normalized_sha256": "03e6b335ca2835defffc2c69e53e2dd54819fe2b32e0f9d84c8897f1e8c8e718",
+  "pip_freeze_sha256": "03e6b335ca2835defffc2c69e53e2dd54819fe2b32e0f9d84c8897f1e8c8e718",
+  "pip_freeze_packages": 20,
+  "lockfile_present": true,
+  "lockfile_sync_with_runtime": true
+}

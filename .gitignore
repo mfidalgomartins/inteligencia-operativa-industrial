@@ -21,11 +21,11 @@ data/processed/sector/**
 # Keep curated dashboard + charts for GitHub review
 outputs/dashboard/*.html
 !outputs/dashboard/dashboard_inteligencia_operativa.html
-outputs/reports/*.md
-outputs/reports/*.csv
-outputs/reports/*.json
-outputs/reports/*.txt
-outputs/release_packs/**
+!outputs/reports/*.md
+!outputs/reports/*.csv
+!outputs/reports/*.json
+!outputs/reports/*.txt
+!outputs/release_packs/**
 
 # Generated manifests (rebuildable)
 manifests/build_manifest_latest.json

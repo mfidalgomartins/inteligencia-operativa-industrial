@@ -1,0 +1,2 @@
+profile,description,relative_path,exists_flag,size_bytes,sha256,governance_status,governance_reason
+committee_pack,"Pack de comité industrial: snapshot ejecutivo, decisión, riesgos y validación.",committee_pack/README_BLOCKED.md,1,571,143dd96942f35b9dea946d980fcd450285aa517d3c777c3184d2f6535ca2264f,BLOCKED,"blocked_by_governance: readiness=screening-grade-only; publish_decision=publish with caveat; allowed_states=['committee-candidate', 'committee-grade']; allowed_publish=['publish']"
