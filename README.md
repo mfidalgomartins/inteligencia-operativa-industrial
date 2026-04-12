@@ -1,48 +1,39 @@
 # Sistema de Inteligencia Operativa Industrial
 
-Plataforma analítica para identificar pérdidas de eficiencia y energía, explicar causas raíz y priorizar iniciativas con lógica económica y de riesgo.
+Este proyecto es un cockpit de decisión para planta industrial: combina datos de producción, energía, paradas y calidad para explicar pérdidas, estimar valor capturable y priorizar iniciativas con restricciones reales. Está pensado para hablar el lenguaje de dirección de operaciones, energía y mantenimiento sin perder rigor técnico.
 
-## Problema de negocio
-Las plantas industriales pierden valor por ineficiencia, consumo energético y paradas no explicadas. Sin un sistema integrado, se ejecutan mejoras sin foco ni secuencia óptima.
+## El problema que resuelve
+Las plantas toman decisiones de mejora con información fragmentada: energía por un lado, OEE por otro, mantenimiento en otro sistema. El resultado es inversión dispersa y poca trazabilidad de valor. Este sistema ordena la señal, cuantifica el impacto y propone una secuencia ejecutable.
 
-## Qué hace el sistema
-- Integra producción, energía, paradas, desvíos y emisiones en una capa gobernada.
-- Calcula KPIs y scores interpretables por línea, equipo y turno.
-- Simula escenarios y prioriza iniciativas bajo restricciones reales.
-- Entrega un cockpit ejecutivo con trazabilidad y límites explícitos de madurez.
+## Qué hace realmente
+Integra producción, consumo y fiabilidad en una capa gobernada; calcula KPIs y scores interpretables por línea, equipo y turno; simula escenarios y prioriza iniciativas bajo restricciones de CAPEX/OPEX y capacidad; y entrega un dashboard ejecutivo con trazabilidad y límites explícitos de madurez.
 
 ## Decisiones que soporta
+- Dónde se pierde más valor y por qué.
 - Qué líneas y equipos intervenir primero.
-- Qué causas raíz explican más pérdida y coste.
-- Qué iniciativas ejecutar ahora vs en siguiente ola.
+- Qué iniciativas ejecutar ahora vs. siguiente ola.
 - Qué cartera cabe en presupuesto y capacidad.
 
-## Arquitectura (alto nivel)
-- Datos raw → SQL (staging/integration/marts)
-- Semantic layer (SSOT KPIs)
-- Features + scores
-- Scenario & portfolio
-- Dashboard ejecutivo
+## Arquitectura, en una línea
+Raw → SQL (staging/integration/marts) → semantic KPIs → features/scores → scenario & portfolio → dashboard.
 
-## Estructura del repositorio
-- `src/` núcleo analítico y pipeline
+## Estructura del repositorio (núcleo)
+- `src/` pipeline y lógica analítica
 - `sql/` capa SQL oficial
 - `data/` raw, processed y samples
-- `outputs/` dashboard, reports, charts
-- `docs/` arquitectura, governance y metodología
-- `tests/` QA y validaciones
+- `outputs/` dashboard, charts, reports
+- `docs/` arquitectura, governance, validación
+- `tests/` QA y consistencia
 - `configs/` perfiles sectoriales
 
-## Outputs principales
+## Outputs que importan
 - Dashboard: `outputs/dashboard/dashboard_inteligencia_operativa.html`
 - Charts: `outputs/charts/`
-- Reportes clave: `outputs/reports/validation_report.md`, `memo_ejecutivo.md`, `advanced_analysis_report.md`
-- Datos procesados y manifests en `data/processed/` y `manifests/`
+- Reports clave: `outputs/reports/validation_report.md`, `memo_ejecutivo.md`, `advanced_analysis_report.md`
+- Datos y manifests: `data/processed/`, `manifests/`
 
 ## Por qué este proyecto es fuerte
-- End-to-end real: datos → KPIs → decisión → cockpit ejecutivo.
-- Gobernanza y trazabilidad explícitas.
-- Priorización con restricciones reales y supuestos visibles.
+No es solo visualización: hay gobernanza de métricas, trazabilidad de decisión y priorización con restricciones reales. La lógica financiera es explícita y marcada como screening/pre‑feasibility, evitando sobreclaims.
 
 ## Cómo ejecutar
 ```bash
@@ -54,8 +45,8 @@ pytest -q
 ```
 
 ## Limitaciones
-- Datos sintéticos (no históricos reales).
-- Métricas financieras en modo screening/pre-feasibility.
+- Dataset sintético.
+- Métricas financieras en modo screening/pre‑feasibility.
 - Requiere calibración sectorial con datos reales para comité final.
 
 ## Herramientas
