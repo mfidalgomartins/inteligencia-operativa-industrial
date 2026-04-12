@@ -1,0 +1,21 @@
+sector_profile_id,domain,source_value,target_value
+petronor,familia_proceso,Laminacion,Unidades de Conversión
+petronor,familia_proceso,TratamientoTermico,Hornos de Proceso
+petronor,familia_proceso,Acabado,Tratamiento de Corrientes y Blending
+petronor,familia_proceso,InspeccionFinal,Expedición y Control de Calidad
+petronor,tipo_equipo,HornoProceso,Fired Heater
+petronor,tipo_equipo,LaminadorPrincipal,Unidad Rotativa Crítica
+petronor,tipo_equipo,CompresorAire,Compresor de Planta
+petronor,tipo_equipo,BombaRecirculacion,Bomba de Proceso
+petronor,tipo_equipo,SistemaControl,DCS/Control Avanzado
+petronor,tipo_equipo,ManipuladorCarga,Logística Interna de Producto
+petronor,categoria_iniciativa,EficienciaEnergetica,Eficiencia Energética Refino
+petronor,categoria_iniciativa,Confiabilidad,Integridad y Confiabilidad
+petronor,categoria_iniciativa,OptimizacionProceso,Optimización de Severidad Operativa
+petronor,categoria_iniciativa,TransformacionIndustrial,Transformación Tecnológica y Descarbonización
+petronor,tipo_iniciativa,QuickWinOperativo,Ajuste Operativo de Unidad
+petronor,tipo_iniciativa,MantenimientoPredictivo,Reliability Program
+petronor,tipo_iniciativa,ControlAvanzado,APC / Optimización de Setpoints
+petronor,tipo_iniciativa,CAPEXTransformacional,Proyecto de Conversión y Eficiencia
+petronor,fuente_energia,Electricidad,Electricidad y Cogeneración
+petronor,fuente_energia,GasNatural,Fuel Gas / Gas Natural

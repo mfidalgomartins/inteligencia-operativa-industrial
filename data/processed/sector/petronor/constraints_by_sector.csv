@@ -1,0 +1,5 @@
+sector_profile_id,constraint_name,constraint_value
+petronor,capex_budget_default_eur,12000000
+petronor,max_implementation_waves,4
+petronor,max_parallel_shutdown_lines,1
+petronor,opex_budget_default_eur,2400000

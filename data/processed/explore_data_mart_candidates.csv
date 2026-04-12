@@ -1,0 +1,6 @@
+mart_name,grain,main_inputs,business_use
+mart_line_day,linea-dia,produccion_turno + energia agregada + emisiones + paradas + desvios,Diagnóstico diario de eficiencia y pérdidas
+mart_equipment_day,equipo-dia,consumos_energia_horarios + paradas + mantenimientos + desvios,Riesgo y sobreconsumo por equipo
+mart_line_shift,linea-turno-dia,produccion_turno + contexto_operativo + energia agregada,Variabilidad operativa por turno
+mart_root_cause,causa-linea-mes,paradas + desvios + impacto economico proxy,Priorización de causas raíz
+mart_initiative_value_pool,iniciativa,iniciativas_mejora + capex_proyectos + criticidad,Cartera de mejora y secuencia de ejecución

@@ -1,0 +1,2 @@
+selection_model,optimization_status,optimality_degree,runtime_sec,time_limit_sec,nodes_visited,nodes_pruned_bound,nodes_pruned_infeasible,timed_out_flag,feasible_solution_found,objective_best,formulation_note
+branch_and_bound_binary_selection,solved_exact,exact_for_formulation,1.1534336249460466,6.0,528642,155641,108533,0,1,40737285.797698654,Óptimo exacto para formulación binaria con branch-and-bound en horizonte actual.

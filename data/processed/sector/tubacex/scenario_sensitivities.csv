@@ -1,0 +1,5 @@
+sector_profile_id,sensitivity_name,sensitivity_value
+tubacex,carbon_cost_beta,1.0
+tubacex,demand_pressure_beta,1.05
+tubacex,energy_price_beta,1.0
+tubacex,staff_availability_beta,0.95

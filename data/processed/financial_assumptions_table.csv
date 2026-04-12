@@ -1,0 +1,4 @@
+assumption_id,description,value,unit,maturity
+base_carbon_cost,Coste de carbono de screening/pre-feasibility,90.0,EUR/tCO2e,proxy
+discount_rate,Tasa de descuento para discounted value de screening,0.1,ratio,proxy
+analysis_horizon_years,Horizonte de evaluación financiera,6.0,years,defendible

@@ -1,0 +1,5 @@
+dimension,before,after,impact
+selection_method,greedy ranking con checks secuenciales,branch-and-bound binario con restricciones explícitas,mayor trazabilidad y defensabilidad de selección
+constraint_handling,validación inline durante recorrido,formulación explícita CAPEX/OPEX/capacidad/dependencias/conflictos,mejor control de factibilidad y auditoría
+optimality_statement,no cuantificada,exact_for_formulation,claim de optimalidad acotado y verificable
+constraint_pressure,no disponible,constraint_pressure_summary + unlocked_value_analysis,visibilidad de valor perdido por restricción

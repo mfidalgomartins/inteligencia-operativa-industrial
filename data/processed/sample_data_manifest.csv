@@ -1,0 +1,5 @@
+sample_file,source_file,status,rows_written
+raw_consumos_energia_sample.csv,data/raw/consumos_energia_horarios.csv,OK,4000
+raw_produccion_turno_sample.csv,data/raw/produccion_turno.csv,OK,2000
+processed_line_day_features_sample.csv,data/processed/line_day_features_scored.csv,OK,2000
+processed_investment_prioritization_sample.csv,data/processed/investment_prioritization_final.csv,OK,48

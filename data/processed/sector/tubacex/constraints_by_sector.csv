@@ -1,0 +1,5 @@
+sector_profile_id,constraint_name,constraint_value
+tubacex,capex_budget_default_eur,8000000
+tubacex,max_implementation_waves,3
+tubacex,max_parallel_shutdown_lines,2
+tubacex,opex_budget_default_eur,1800000

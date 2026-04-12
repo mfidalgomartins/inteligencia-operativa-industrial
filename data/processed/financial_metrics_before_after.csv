@@ -1,0 +1,6 @@
+metric_before,metric_after,semantic_change,decision_use
+gross_annual_savings,gross_technical_value,Se explicita composición energía + avoided_loss + emisiones.,screening/pre-feasibility
+net_annual_savings,net_captured_value,Ahora incorpora tasa de captura esperada y penalizaciones dependencia/conflicto.,priorización
+npv_risk_adjusted,discounted_value,"Mantiene estructura NPV, pero separa explícitamente downside-adjusted.",pre-feasibility
+value_at_risk_95,screening_var_95_npv,Se añade versión NPV y robust risk candidate para sensibilidad.,screening de riesgo
+irr_proxy_pct,screening_irr_pct + formal_irr_candidate_pct,Se separa métrica de screening vs candidato pre-feasibility.,screening / gating de business case

@@ -1,0 +1,2 @@
+data/raw/consumos_energia_horarios.csv filter=lfs diff=lfs merge=lfs -text
+data/processed/int_line_hour.csv filter=lfs diff=lfs merge=lfs -text

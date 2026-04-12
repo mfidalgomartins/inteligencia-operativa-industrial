@@ -1,0 +1,154 @@
+{
+  "run_id": "20260411T205853Z",
+  "generated_at_utc": "2026-04-11T21:00:52",
+  "overall_status": "SUCCESS",
+  "steps": [
+    {
+      "step": "generate_synthetic_data",
+      "status": "OK",
+      "duration_seconds": 95.63858158403309
+    },
+    {
+      "step": "run_explore_data_audit",
+      "status": "OK",
+      "duration_seconds": 4.270529874949716
+    },
+    {
+      "step": "run_sql_pipeline",
+      "status": "OK",
+      "duration_seconds": 5.958634334034286
+    },
+    {
+      "step": "build_feature_layer",
+      "status": "OK",
+      "duration_seconds": 1.7605440419865772
+    },
+    {
+      "step": "build_root_cause_ranking",
+      "status": "OK",
+      "duration_seconds": 0.7240180000080727
+    },
+    {
+      "step": "run_scenario_engine",
+      "status": "OK",
+      "duration_seconds": 0.09732908400474116
+    },
+    {
+      "step": "run_investment_prioritization",
+      "status": "OK",
+      "duration_seconds": 3.7095077499980107
+    },
+    {
+      "step": "run_metric_governance",
+      "status": "OK",
+      "duration_seconds": 0.19596275000367314
+    },
+    {
+      "step": "run_sector_parameterization",
+      "status": "OK",
+      "duration_seconds": 1.2351767080253921
+    },
+    {
+      "step": "run_advanced_analysis",
+      "status": "OK",
+      "duration_seconds": 0.4125431249849498
+    },
+    {
+      "step": "generate_charts",
+      "status": "OK",
+      "duration_seconds": 1.4019279580097646
+    },
+    {
+      "step": "build_dashboard",
+      "status": "OK",
+      "duration_seconds": 0.15437133301747963
+    },
+    {
+      "step": "run_full_validation",
+      "status": "OK",
+      "duration_seconds": 1.3039320419775322
+    },
+    {
+      "step": "build_dashboard_post_validation",
+      "status": "OK",
+      "duration_seconds": 0.1517322919680737
+    },
+    {
+      "step": "run_full_validation_final",
+      "status": "OK",
+      "duration_seconds": 1.2723496250109747
+    },
+    {
+      "step": "build_traceability_layer",
+      "status": "OK",
+      "duration_seconds": 0.030130084021948278
+    },
+    {
+      "step": "build_reports",
+      "status": "OK",
+      "duration_seconds": 0.011032542039174587
+    },
+    {
+      "step": "run_repro_packaging",
+      "status": "OK",
+      "duration_seconds": 0.3701691249734722
+    },
+    {
+      "step": "build_notebooks",
+      "status": "OK",
+      "duration_seconds": 0.00015208299737423658
+    }
+  ],
+  "validation_readiness": {
+    "overall_readiness_level": "screening-grade-only",
+    "technical_state": "structurally-valid",
+    "decision_state": "committee-candidate",
+    "committee_readiness_state": "not-committee-grade",
+    "evidence_grade": "B",
+    "publish_decision": "publish with caveat",
+    "unwaived_blockers": 0,
+    "unwaived_critical": 0
+  },
+  "lineage_traceability": {
+    "recommendations_traced": 48,
+    "selected_recommendations_traced": 24,
+    "lineage_nodes": 78,
+    "lineage_ready": true
+  },
+  "version_dependency": {
+    "run_id": "20260411T205853Z",
+    "metric_version_set": "industrial_metrics_v1_1",
+    "metric_registry_version": "1.1.0",
+    "data_contract_version": "1.1.0",
+    "metric_registry_sha256": "2a5140a87bd2f3f777912de6c8568d7295022906d065a36129afb24b1e506271",
+    "data_contract_sha256": "4e7e0c47716f06537ed2cea32f7f5a3c3281053445d591a81ca1aeec78a4f070",
+    "scenario_engine_code_sha256": "7b7ebd00d44febae4a18d6f930d5bf08743e15d2dcf3b27290f57669cdf642a5",
+    "investment_prioritization_code_sha256": "d41404198354ef37103e3910d63e0d296eee791e20ce597b5b04c42241d13108",
+    "lineage_module_sha256": "e7d8b146555c5d30f990075061a7d1ea887da90e77ddf26b20185f1bcbd5fa53",
+    "dashboard_sha256": "a406a2abab764b5fe7b6ca0fb8372092d58ab971fc7a75014b6cc3d82ee6ec58",
+    "validation_readiness_level": "screening-grade-only",
+    "validation_publish_decision": "publish with caveat",
+    "generated_at_utc": "2026-04-11T21:00:52"
+  },
+  "environment_fingerprint": {
+    "generated_at_utc": "2026-04-11T21:00:52+00:00",
+    "python_executable": "/Users/miguelfidalgo/Documents/sistema-inteligencia-eficiencia-operativa-industrial/.venv/bin/python",
+    "python_version": "3.12.13",
+    "platform": "macOS-15.5-arm64-arm-64bit",
+    "machine": "arm64",
+    "requirements_txt_sha256": "02a5e34d2658258da02e874c5861a4a16b272de9286f7843fcef87f1d745b06f",
+    "requirements_lock_sha256": "d63a00388e8fb55b80ac4b434d7539e3023d529768cec005f83cea2baaa1e60c",
+    "requirements_lock_normalized_sha256": "03e6b335ca2835defffc2c69e53e2dd54819fe2b32e0f9d84c8897f1e8c8e718",
+    "pip_freeze_sha256": "03e6b335ca2835defffc2c69e53e2dd54819fe2b32e0f9d84c8897f1e8c8e718",
+    "pip_freeze_packages": 20,
+    "lockfile_present": true,
+    "lockfile_sync_with_runtime": true
+  },
+  "packaging_summary": {
+    "packs_generated": 3,
+    "min_reduction_pct": 99.702,
+    "max_pack_size_mb": 1.743,
+    "profiles_blocked": 1,
+    "profiles_allowed": 2
+  }
+}

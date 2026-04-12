@@ -1,0 +1,15 @@
+tabla,grain,candidate_key,foreign_keys_esperadas,filas,columnas,columna_temporal_referencia,cobertura_inicio,cobertura_fin,null_rate_promedio,duplicados_candidate_key,cardinalidad_promedio_columnas,utilidad_analitica
+plantas,1 fila por planta,planta_id,,3,7,,,,0.0,0,2.71,Base maestra para slicing de KPI y benchmarking por planta.
+lineas_proceso,1 fila por linea,linea_id,planta_id -> plantas.planta_id,12,8,,,,0.0,0,7.88,"Define capacidades, objetivos de OEE/SEC y criticidad estructural."
+equipos,1 fila por equipo,equipo_id,linea_id -> lineas_proceso.linea_id,72,9,,,,0.0,0,42.22,"Soporta analitica de consumo, confiabilidad y riesgo por activo."
+consumos_energia_horarios,1 fila por equipo-hora-fuente,timestamp + equipo_id + fuente_energia,planta_id -> plantas; linea_id -> lineas_proceso; equipo_id -> equipos,1263168,11,timestamp,2024-01-01T00:00:00,2025-12-31T23:00:00,0.0,0,403080.82,"Base para SEC, coste unitario, anomalías energéticas y emisiones."
+produccion_turno,1 fila por linea-turno-dia,fecha + turno + linea_id,planta_id -> plantas; linea_id -> lineas_proceso,26316,13,fecha,2024-01-01T00:00:00,2025-12-31T00:00:00,0.0,0,7398.08,"Base operativa para productividad, utilización, calidad y OEE sintético."
+desvios_proceso,1 fila por evento de desvio,desvio_id,planta_id; linea_id; equipo_id,5939,13,timestamp,2024-01-01T02:38:00,2025-12-31T22:32:00,0.0,0,2517.85,Permite explicar degradación de proceso y pérdidas de calidad/energía.
+paradas,1 fila por evento de parada,parada_id,planta_id; linea_id; equipo_id,1266,12,fecha_inicio,2024-01-01T14:00:00,2025-12-31T03:00:00,0.0,0,623.0,Impacto de disponibilidad y coste por causas operativas.
+mantenimientos,1 fila por intervención,mantenimiento_id,planta_id; linea_id; equipo_id,1383,12,fecha_inicio,2024-01-01T14:00:00,2025-12-31T03:00:00,0.0,0,560.08,Relaciona carga de mantenimiento con desempeño y riesgo.
+emisiones_estimadas,1 fila por linea-hora-fuente,timestamp + linea_id + fuente_energia,planta_id; linea_id,421056,8,timestamp,2024-01-01T00:00:00,2025-12-31T23:00:00,0.0,0,157228.0,Cuantifica intensidad de emisiones y potencial de abatimiento.
+iniciativas_mejora,1 fila por iniciativa,iniciativa_id,planta_id; linea_id; equipo_id (opcional),48,12,,,,0.013889,0,21.17,Base de priorización de valor operativo/energético.
+capex_proyectos,1 fila por proyecto,proyecto_id,iniciativa_id -> iniciativas_mejora.iniciativa_id,48,9,,,,0.0,0,32.0,Evalúa factibilidad económica y payback de iniciativas.
+contexto_operativo,1 fila por planta-turno-dia,fecha + turno + planta_id,planta_id -> plantas,6579,8,fecha,2024-01-01T00:00:00,2025-12-31T00:00:00,0.0,0,2293.25,"Contextualiza performance por demanda, mix y precio energético."
+benchmark_externo_proxy,1 fila por periodo-familia,periodo + familia_proceso,familia_proceso -> lineas_proceso.familia_proceso,96,6,periodo,2024-01-01T00:00:00,2025-12-01T00:00:00,0.0,0,68.5,Comparador externo para detectar gaps estructurales.
+escenarios_mejora,1 fila por periodo-escenario,fecha + escenario,,96,6,fecha,2024-01-01T00:00:00,2025-12-01T00:00:00,0.0,0,57.17,Shocks exógenos para stress-testing del scenario engine.

@@ -1,0 +1,3 @@
+sector_profile_id,metric_name,caveat,misuse_prevention
+tubacex,sec,Comparar sec solo entre familias con mix metalurgico equivalente.,No usar sec global para penalizar lineas de tratamiento termico frente a acabados.
+tubacex,oee_synthetic,OEE sintetico es señal de screening y no reemplaza OEE auditado de planta.,Usar para priorizacion relativa y no para KPI contractual.

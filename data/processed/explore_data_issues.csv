@@ -1,0 +1,2 @@
+severity,table,issue,issue_count,impact,recommendation
+P2,linea_turno_sec,sec_fuera_rango,11,Benchmark energético comprometido.,Revisar producción neta y consumo agregado por turno.

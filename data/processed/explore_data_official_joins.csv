@@ -1,0 +1,7 @@
+join_name,left_table,right_table,join_keys,join_type,purpose
+linea_turno_contexto,produccion_turno,contexto_operativo,"fecha, turno, planta_id",LEFT,Contextualizar productividad por presión operativa y precio
+linea_turno_energia,produccion_turno,consumos_energia_horarios (agregado),"fecha, turno, linea_id",LEFT,Calcular SEC y coste unitario por turno
+linea_eventos_parada,paradas,lineas_proceso,linea_id,INNER,Monetizar impacto de paradas por capacidad nominal
+equipo_eventos_desvio,desvios_proceso,equipos,equipo_id,INNER,Cuantificar riesgo y deterioro por subsistema
+iniciativa_capex,iniciativas_mejora,capex_proyectos,iniciativa_id,LEFT,Priorización técnico-económica
+linea_benchmark,lineas_proceso,benchmark_externo_proxy,familia_proceso + periodo,LEFT,Gap interno vs referencia externa

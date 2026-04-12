@@ -1,0 +1,49 @@
+sector_profile_id,iniciativa_id,categoria_iniciativa,categoria_sectorial,tipo_iniciativa,tipo_sectorial,quick_win_flag,mandatory_by_profile,recommended_wave_index
+petronor,INI_0000001,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000002,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000003,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000004,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000005,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000006,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000007,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000008,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000009,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000010,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000011,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000012,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000013,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000014,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000015,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000016,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000017,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000018,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000019,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000020,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000021,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000022,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000023,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000024,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000025,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000026,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000027,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000028,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000029,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000030,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000031,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000032,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000033,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000034,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000035,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000036,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000037,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000038,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000039,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000040,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000041,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000042,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000043,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000044,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4
+petronor,INI_0000045,EficienciaEnergetica,Eficiencia Energética Refino,QuickWinOperativo,Ajuste Operativo de Unidad,1,0,3
+petronor,INI_0000046,Confiabilidad,Integridad y Confiabilidad,MantenimientoPredictivo,Reliability Program,0,1,1
+petronor,INI_0000047,OptimizacionProceso,Optimización de Severidad Operativa,ControlAvanzado,APC / Optimización de Setpoints,0,0,2
+petronor,INI_0000048,TransformacionIndustrial,Transformación Tecnológica y Descarbonización,CAPEXTransformacional,Proyecto de Conversión y Eficiencia,0,1,4

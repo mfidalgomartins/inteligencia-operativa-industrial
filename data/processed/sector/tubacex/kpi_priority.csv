@@ -1,0 +1,6 @@
+sector_profile_id,kpi_name,priority_weight
+tubacex,availability_rate,0.2
+tubacex,emissions_per_unit,0.1
+tubacex,loss_value_proxy,0.15
+tubacex,oee_synthetic,0.25
+tubacex,sec,0.3

@@ -1,0 +1,5 @@
+prioridad,hallazgo,impacto
+1,La línea PLT_BIZ_L04 concentra la mayor criticidad integrada.,Riesgo alto de pérdida económica y degradación de continuidad.
+2,El equipo PLT_BIZ_L02_EQ06 lidera el riesgo de anomalía energética.,Penaliza coste energético y estabilidad operacional.
+3,La causa raíz dominante es InestabilidadTorque.,Explica la mayor fracción de pérdida operativa agregada.
+4,El turno C en PLT_BIZ_L02 muestra mayor varianza operativa.,Necesita estandarización operativa y control de rutina.

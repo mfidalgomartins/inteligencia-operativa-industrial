@@ -1,0 +1,5 @@
+domain,check,severity,status,observed,expected,detail,risk_type,evidence_grade,issue_id,waived_flag,waiver_id,waiver_status,effective_status
+financial validity,payback_range,HIGH,ERROR,1,0,Payback fuera de rango operativo-financiero.,financial-weakness,B,ISS_payback_range,0,,no_waiver,ERROR
+financial validity,financial_proxy_risk,HIGH,WARN,IRR/VaR y pérdidas usan proxies declarados,Modelo financiero auditado corporativamente,Modelo financiero aún proxy: no apto para committee-grade sin hardening financiero.,proxy-risk,C,ISS_financial_proxy_risk,0,,no_waiver,WARN
+release validity,dashboard_sections_consistency,CRITICAL,ERROR,0,1,Dashboard no contiene secciones ejecutivas obligatorias.,dashboard-report-inconsistency,A,ISS_dashboard_sections_consistency,0,,no_waiver,ERROR
+release validity,dashboard_density_control,HIGH,WARN,1,0,Gráficos demasiado densos para lectura ejecutiva rápida.,dashboard-readability,B,ISS_dashboard_density_control,0,,no_waiver,WARN

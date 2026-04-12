@@ -1,0 +1,5 @@
+sector_profile_id,sensitivity_name,sensitivity_value
+petronor,carbon_cost_beta,1.2
+petronor,demand_pressure_beta,0.98
+petronor,energy_price_beta,1.18
+petronor,staff_availability_beta,0.9

@@ -1,0 +1,4 @@
+planta_id,nombre_planta,tipo_planta,region,intensidad_energetica_base,criticidad_operativa,estrategia_mejora_actual
+PLT_BIZ,Planta Bizkaia Norte,Tubos sin soldadura,Pais Vasco,625.78,5,Eficiencia termica y estabilidad de proceso
+PLT_ALA,Planta Alava Precision,Acabado y tratamiento,Pais Vasco,524.97,4,Confiabilidad de equipos criticos
+PLT_CAN,Planta Cantabria Energy,Laminacion y conformado,Cantabria,571.73,4,Reduccion de consumo especifico

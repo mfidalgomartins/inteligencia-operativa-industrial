@@ -1,0 +1,8 @@
+check_name,status,observed,expected,detail
+row_count_int_line_hour,OK,210528,>0 filas,Cobertura de integración línea-hora
+sec_rango_mart_line_day,OK,0,0 fuera de rango,SEC dentro de rango razonable
+oee_rango_mart_line_day,OK,0,0 fuera de rango,OEE sintético dentro de rango
+energy_cost_consistency,OK,0,0 negativos,Consumo y coste no negativos en equipo-día
+capex_payback_positive,OK,0,0 no positivos,Payback válido en value pool
+null_candidate_keys_int_line_hour,OK,0,0 nulls,Claves obligatorias no nulas en integración
+emissions_consistency,OK,0,0 negativos,Emisiones no negativas en mart semanal

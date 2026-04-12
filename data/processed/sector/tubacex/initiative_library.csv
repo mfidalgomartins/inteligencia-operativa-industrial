@@ -1,0 +1,49 @@
+sector_profile_id,iniciativa_id,categoria_iniciativa,categoria_sectorial,tipo_iniciativa,tipo_sectorial,quick_win_flag,mandatory_by_profile,recommended_wave_index
+tubacex,INI_0000001,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000002,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000003,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000004,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000005,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000006,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000007,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000008,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000009,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000010,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000011,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000012,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000013,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000014,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000015,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000016,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000017,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000018,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000019,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000020,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000021,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000022,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000023,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000024,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000025,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000026,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000027,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000028,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000029,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000030,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000031,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000032,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000033,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000034,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000035,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000036,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000037,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000038,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000039,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000040,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000041,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000042,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000043,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000044,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4
+tubacex,INI_0000045,EficienciaEnergetica,Energia y Utilidades,QuickWinOperativo,Disciplina Operativa,1,0,1
+tubacex,INI_0000046,Confiabilidad,Confiabilidad de Activos,MantenimientoPredictivo,Fiabilidad Predictiva,0,1,2
+tubacex,INI_0000047,OptimizacionProceso,Optimizacion de Proceso,ControlAvanzado,Control Avanzado de Proceso,0,0,3
+tubacex,INI_0000048,TransformacionIndustrial,Transformacion de Activos,CAPEXTransformacional,Revamping Estructural,0,0,4

@@ -1,0 +1,12 @@
+orden,script,estado
+01,01_staging_energy.sql,OK
+02,02_staging_production.sql,OK
+03,03_staging_events.sql,OK
+04,04_integrated_line_hour.sql,OK
+05,05_integrated_equipment_day.sql,OK
+06,06_integrated_line_shift.sql,OK
+07,07_analytical_mart_line_day.sql,OK
+08,08_analytical_mart_equipment_day.sql,OK
+09,09_analytical_mart_plant_week.sql,OK
+10,10_kpi_queries.sql,OK
+11,11_validation_queries.sql,OK

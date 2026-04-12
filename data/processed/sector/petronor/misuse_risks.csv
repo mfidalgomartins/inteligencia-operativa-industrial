@@ -1,0 +1,4 @@
+sector_profile_id,risk_id,risk
+petronor,PETRONOR_R01,Tomar savings de energía como margen neto sin reconciliación de mercado.
+petronor,PETRONOR_R02,Subestimar riesgos de ventana de parada en unidades de proceso continuo.
+petronor,PETRONOR_R03,Comparar unidades con severidades y objetivos de producto distintos.

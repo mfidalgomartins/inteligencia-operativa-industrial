@@ -1,0 +1,15 @@
+tabla,filas,columnas,n_plantas,periodo_inicio,periodo_fin,n_lineas,n_equipos
+benchmark_externo_proxy,96,6,,2024-01,2025-12,,
+capex_proyectos,48,9,,,,,
+consumos_energia_horarios,1263168,11,3.0,2024-01-01 00:00:00,2025-12-31 23:00:00,12.0,72.0
+contexto_operativo,6579,8,3.0,2024-01-01,2025-12-31,,
+desvios_proceso,5939,13,3.0,2024-01-01 02:38:00,2025-12-31 22:32:00,12.0,72.0
+emisiones_estimadas,421056,8,3.0,2024-01-01 00:00:00,2025-12-31 23:00:00,12.0,
+equipos,72,9,,,,12.0,72.0
+escenarios_mejora,96,6,,2024-01-01,2025-12-01,,
+iniciativas_mejora,48,12,3.0,,,12.0,29.0
+lineas_proceso,12,8,3.0,,,12.0,
+mantenimientos,1383,12,3.0,,,12.0,71.0
+paradas,1266,12,3.0,,,12.0,71.0
+plantas,3,7,3.0,,,,
+produccion_turno,26316,13,3.0,2024-01-01,2025-12-31,12.0,

@@ -1,0 +1,30 @@
+check_name,status,observed_value,threshold,detail
+tabla_presente_plantas,OK,3,>0 filas,Validacion de existencia y no vacio para plantas
+tabla_presente_lineas_proceso,OK,12,>0 filas,Validacion de existencia y no vacio para lineas_proceso
+tabla_presente_equipos,OK,72,>0 filas,Validacion de existencia y no vacio para equipos
+tabla_presente_consumos_energia_horarios,OK,1263168,>0 filas,Validacion de existencia y no vacio para consumos_energia_horarios
+tabla_presente_produccion_turno,OK,26316,>0 filas,Validacion de existencia y no vacio para produccion_turno
+tabla_presente_desvios_proceso,OK,5939,>0 filas,Validacion de existencia y no vacio para desvios_proceso
+tabla_presente_paradas,OK,1266,>0 filas,Validacion de existencia y no vacio para paradas
+tabla_presente_mantenimientos,OK,1383,>0 filas,Validacion de existencia y no vacio para mantenimientos
+tabla_presente_emisiones_estimadas,OK,421056,>0 filas,Validacion de existencia y no vacio para emisiones_estimadas
+tabla_presente_iniciativas_mejora,OK,48,>0 filas,Validacion de existencia y no vacio para iniciativas_mejora
+tabla_presente_capex_proyectos,OK,48,>0 filas,Validacion de existencia y no vacio para capex_proyectos
+tabla_presente_contexto_operativo,OK,6579,>0 filas,Validacion de existencia y no vacio para contexto_operativo
+tabla_presente_benchmark_externo_proxy,OK,96,>0 filas,Validacion de existencia y no vacio para benchmark_externo_proxy
+tabla_presente_escenarios_mejora,OK,96,>0 filas,Validacion de existencia y no vacio para escenarios_mejora
+historico_minimo,OK,24,>=18 meses,Horizonte temporal sintetico
+multiples_plantas,OK,3,>=3,Cobertura multipla de plantas
+multiples_lineas,OK,12,>=8,Cobertura de lineas
+multiples_equipos,OK,72,>=40,Cobertura de activos
+scrap_rango,OK,True,"[0,30]",Rango fisico scrap
+utilization_rango,OK,True,"[0,1.1]",Rango utilization
+horas_operativas_validas,OK,True,"[0,8]",Horas operativas por turno
+consumo_positivo,OK,True,>0,Consumo energetico por equipo-hora
+factor_carga_rango,OK,True,"[0,1.2]",Factor de carga plausible
+paradas_planificadas_presentes,OK,True,al menos 1,Debe haber paradas planificadas
+paradas_no_planificadas_presentes,OK,True,al menos 1,Debe haber paradas no planificadas
+quickwins_presentes,OK,True,al menos 1,Quick wins necesarios
+capex_presentes,OK,True,al menos 1,Iniciativas transformacionales necesarias
+payback_corto_existente,OK,True,al menos 1,Debe existir algun caso de alto retorno
+payback_largo_existente,OK,True,al menos 1,Debe existir algun caso de retorno largo

@@ -1,0 +1,50 @@
+check,status,observed,expected,domain,severity,risk_type,evidence_grade,issue_id
+energy_rows_min,OK,1263168,>=100000,structural validity,BLOCKER,rowcount,A,ISS_energy_rows_min
+production_rows_min,OK,26316,>=10000,structural validity,BLOCKER,rowcount,A,ISS_production_rows_min
+line_day_rows_min,OK,8772,>=1000,structural validity,BLOCKER,rowcount,A,ISS_line_day_rows_min
+equipment_rows_min,OK,52632,>=10000,structural validity,BLOCKER,rowcount,A,ISS_equipment_rows_min
+scenario_rows_min,OK,192,>=100,structural validity,BLOCKER,rowcount,A,ISS_scenario_rows_min
+energy_grain_duplicates,OK,0,0,structural validity,BLOCKER,grain,A,ISS_energy_grain_duplicates
+line_day_key_nulls,OK,0,0,structural validity,BLOCKER,nullability,A,ISS_line_day_key_nulls
+energy_temporal_parse,OK,0,0,structural validity,BLOCKER,temporal,A,ISS_energy_temporal_parse
+metric_contract_errors,OK,0,0,semantic validity,BLOCKER,metric-contract,A,ISS_metric_contract_errors
+cross_output_consistency,OK,blocker_errors=0;critical_non_ok=0;errors=0;warns=0,blocker_errors=0;critical_non_ok=0,semantic validity,CRITICAL,semantic-drift,A,ISS_cross_output_consistency
+snapshot_metric_drift,OK,0.0,<=1e-6,semantic validity,CRITICAL,metric-drift,A,ISS_snapshot_metric_drift
+score_comparability_tags_valid,OK,0,0,semantic validity,CRITICAL,semantic-drift,A,ISS_score_comparability_tags_valid
+sec_range,OK,0,0,analytical validity,CRITICAL,plausibility,A,ISS_sec_range
+oee_range,OK,0,0,analytical validity,CRITICAL,plausibility,A,ISS_oee_range
+priority_formula_alignment,OK,1.4210854715202004e-14,<=1e-8,analytical validity,CRITICAL,score-stability,A,ISS_priority_formula_alignment
+score_stability_sensitivity_overlap,OK,0.9,>=0.70,analytical validity,HIGH,score-instability,B,ISS_score_stability_sensitivity_overlap
+anchored_outlier_stability_vs_legacy,OK,0,0,analytical validity,HIGH,score-instability,B,ISS_anchored_outlier_stability_vs_legacy
+anchored_ranking_robustness_vs_legacy,OK,0,0,analytical validity,HIGH,score-instability,B,ISS_anchored_ranking_robustness_vs_legacy
+emissions_consistency,OK,0,0,financial validity,CRITICAL,financial-reconciliation,A,ISS_emissions_consistency
+scenario_invest_alignment,OK,0.0,<=1e-6,financial validity,BLOCKER,financial-reconciliation,A,ISS_scenario_invest_alignment
+var_downside_bounds,OK,var_invalid=0;downside_invalid=0,var_invalid=0;downside_invalid=0,financial validity,CRITICAL,financial-reconciliation,A,ISS_var_downside_bounds
+payback_range,ERROR,1,0,financial validity,HIGH,financial-weakness,B,ISS_payback_range
+double_counting_prevention,OK,0,0,financial validity,CRITICAL,financial-reconciliation,A,ISS_double_counting_prevention
+financial_sign_logic,OK,0,0,financial validity,CRITICAL,financial-weakness,A,ISS_financial_sign_logic
+discounted_payback_consistency,OK,0,0,financial validity,HIGH,financial-weakness,B,ISS_discounted_payback_consistency
+scenario_sensitivity_consistency,OK,1.9953346080676027,>=1.05,financial validity,HIGH,financial-weakness,B,ISS_scenario_sensitivity_consistency
+financial_maturity_claim_consistency,OK,0,0,financial validity,CRITICAL,overclaim-risk,A,ISS_financial_maturity_claim_consistency
+financial_proxy_risk,WARN,IRR/VaR y pérdidas usan proxies declarados,Modelo financiero auditado corporativamente,financial validity,HIGH,proxy-risk,C,ISS_financial_proxy_risk
+portfolio_budget_constraints,OK,capex_ok=True;opex_ok=True,capex_ok=True;opex_ok=True,decision validity,BLOCKER,decision-integrity,A,ISS_portfolio_budget_constraints
+portfolio_dependency_consistency,OK,0,0,decision validity,CRITICAL,decision-integrity,A,ISS_portfolio_dependency_consistency
+selected_vs_decision_rule_consistency,OK,0,0,decision validity,CRITICAL,decision-integrity,A,ISS_selected_vs_decision_rule_consistency
+optimization_formalism_weakness,OK,solution=1;meta=1;status=solved_exact,solution=1;meta=1;status in allowed_status,decision validity,HIGH,optimization-weakness,B,ISS_optimization_formalism_weakness
+optimization_status_consistency,OK,status=solved_exact;degree=exact_for_formulation;timed_out=0;feasible=1,consistent metadata by status,decision validity,CRITICAL,optimization-weakness,A,ISS_optimization_status_consistency
+release_artifact_completeness,OK,missing=none,missing=none,release validity,BLOCKER,release-incompleteness,A,ISS_release_artifact_completeness
+dashboard_sections_consistency,ERROR,0,1,release validity,CRITICAL,dashboard-report-inconsistency,A,ISS_dashboard_sections_consistency
+dashboard_version_stamping,OK,1,1,release validity,CRITICAL,release-integrity,A,ISS_dashboard_version_stamping
+dashboard_payload_thresholds,OK,canonical=283737,canonical<=4000000,release validity,HIGH,release-incompleteness,B,ISS_dashboard_payload_thresholds
+dashboard_serving_audit_consistency,OK,1,1,release validity,HIGH,release-integrity,B,ISS_dashboard_serving_audit_consistency
+dashboard_single_official_html_enforced,OK,legacy=none,legacy=none,release validity,CRITICAL,dashboard-report-inconsistency,A,ISS_dashboard_single_official_html_enforced
+dashboard_dataset_stamping_consistency,OK,1,1,release validity,CRITICAL,dashboard-report-inconsistency,A,ISS_dashboard_dataset_stamping_consistency
+dashboard_density_control,WARN,1,0,release validity,HIGH,dashboard-readability,B,ISS_dashboard_density_control
+report_data_consistency,OK,line=1;equipment=1,line=1;equipment=1,release validity,HIGH,dashboard-report-inconsistency,B,ISS_report_data_consistency
+dashboard_decision_consistency,OK,line=1;equipment=1,line=1;equipment=1,release validity,CRITICAL,dashboard-report-inconsistency,A,ISS_dashboard_decision_consistency
+readme_runtime_claims_sync,OK,1,1,release validity,HIGH,dashboard-report-inconsistency,B,ISS_readme_runtime_claims_sync
+sql_validation_consistency,OK,0,0,release validity,CRITICAL,release-integrity,A,ISS_sql_validation_consistency
+overclaim_risk,OK,claim_hits=0,claim_hits=0 when weaknesses open,committee-readiness validity,CRITICAL,overclaim-risk,C,ISS_overclaim_risk
+readiness_overstated_vs_evidence,OK,0,0,committee-readiness validity,HIGH,readiness-overstated,C,ISS_readiness_overstated_vs_evidence
+waiver_expiry_control,OK,0,0,release validity,CRITICAL,waiver-expiry,B,ISS_waiver_expiry_control
+committee_state_alignment,WARN,domain=committee-grade;effective=not-committee-grade;overall=screening-grade-only,domain/effective aligned or explicitly downgraded by overall readiness,committee-readiness validity,CRITICAL,readiness-overstated,A,ISS_committee_state_alignment

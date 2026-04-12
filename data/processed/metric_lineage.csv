@@ -1,0 +1,14 @@
+metric_name,formula,owner,metric_version_set,registry_version,lineage_level,canonical_dataset,contract_match_flag
+production_volume,SUM(unidades_equivalentes),Operaciones,industrial_metrics_v1_1,1.1.0,metric lineage,line_day_features_scored,1
+oee_synthetic,availability_rate * performance_rate * quality_rate,Excelencia Operativa,industrial_metrics_v1_1,1.1.0,metric lineage,line_day_features_scored,1
+sec,SUM(consumo_kwh) / SUM(unidades_equivalentes),Energía,industrial_metrics_v1_1,1.1.0,metric lineage,line_day_features_scored,1
+loss_value_proxy,coste_energia_exceso + coste_paradas + coste_scrap + coste_emisiones_proxy,Performance Office,industrial_metrics_v1_1,1.1.0,metric lineage,line_day_features_scored,1
+annual_saving_proxy,net_captured_value_base_scenario (screening/pre-feasibility),Finanzas Industriales,industrial_metrics_v1_1,1.1.0,metric lineage,investment_prioritization_final,1
+npv_risk_adjusted,"discounted_value_base_scenario (expected capture, ramp-up y delay)",Finanzas Industriales,industrial_metrics_v1_1,1.1.0,metric lineage,investment_prioritization_final,1
+gross_technical_value,gross_technical_value_energy + avoided_loss + gross_technical_value_emissions,Finanzas Industriales,industrial_metrics_v1_1,1.1.0,metric lineage,,1
+net_captured_value,gross_technical_value * expected_capture_rate - implementation_opex,Finanzas Industriales,industrial_metrics_v1_1,1.1.0,metric lineage,,1
+downside_adjusted_value,discounted value con downside_capture_rate,Finanzas Industriales,industrial_metrics_v1_1,1.1.0,metric lineage,,1
+cost_of_delay_12m,discounted_value(t0) - discounted_value(t0 + 12 meses),Strategy + PMO,industrial_metrics_v1_1,1.1.0,metric lineage,,1
+screening_irr_pct,100 * net_captured_value_annual / capex_effective,Finanzas Industriales,industrial_metrics_v1_1,1.1.0,metric lineage,,1
+screening_var_95_npv,"max(0, discounted_value - downside_adjusted_value)",Finanzas Industriales,industrial_metrics_v1_1,1.1.0,metric lineage,,1
+improvement_priority_index,"composite score (valor, riesgo, factibilidad, relevancia)",Strategy + PMO,industrial_metrics_v1_1,1.1.0,metric lineage,investment_prioritization_final,1

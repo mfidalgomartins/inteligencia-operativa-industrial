@@ -1,0 +1,49 @@
+iniciativa_id,planta_id,linea_id,equipo_id,categoria_iniciativa,tipo_iniciativa,descripcion_resumida,impacto_esperado_energia_pct,impacto_esperado_oee_pct,impacto_esperado_emisiones_pct,dificultad_implementacion,quick_win_flag
+INI_0000001,PLT_BIZ,PLT_BIZ_L01,PLT_BIZ_L01_EQ05,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,5.396,1.368,3.528,1,1
+INI_0000002,PLT_BIZ,PLT_BIZ_L01,PLT_BIZ_L01_EQ04,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,2.336,3.135,0.94,4,0
+INI_0000003,PLT_BIZ,PLT_BIZ_L01,,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,6.924,4.008,5.474,4,0
+INI_0000004,PLT_BIZ,PLT_BIZ_L01,PLT_BIZ_L01_EQ04,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,7.615,6.762,9.176,4,0
+INI_0000005,PLT_BIZ,PLT_BIZ_L02,PLT_BIZ_L02_EQ04,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,2.685,1.387,4.116,1,1
+INI_0000006,PLT_BIZ,PLT_BIZ_L02,PLT_BIZ_L02_EQ04,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,1.381,4.117,1.678,4,0
+INI_0000007,PLT_BIZ,PLT_BIZ_L02,PLT_BIZ_L02_EQ01,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,6.698,3.567,6.153,3,0
+INI_0000008,PLT_BIZ,PLT_BIZ_L02,PLT_BIZ_L02_EQ02,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,16.652,3.912,10.147,5,0
+INI_0000009,PLT_BIZ,PLT_BIZ_L03,PLT_BIZ_L03_EQ06,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,4.235,1.247,3.773,1,1
+INI_0000010,PLT_BIZ,PLT_BIZ_L03,PLT_BIZ_L03_EQ01,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,1.308,2.995,1.839,4,0
+INI_0000011,PLT_BIZ,PLT_BIZ_L03,PLT_BIZ_L03_EQ01,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,6.318,5.323,3.003,4,0
+INI_0000012,PLT_BIZ,PLT_BIZ_L03,PLT_BIZ_L03_EQ06,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,17.795,3.505,13.496,5,0
+INI_0000013,PLT_BIZ,PLT_BIZ_L04,PLT_BIZ_L04_EQ02,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,4.398,0.952,3.132,2,1
+INI_0000014,PLT_BIZ,PLT_BIZ_L04,PLT_BIZ_L04_EQ02,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,1.433,2.224,1.955,3,0
+INI_0000015,PLT_BIZ,PLT_BIZ_L04,PLT_BIZ_L04_EQ06,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,4.639,2.17,6.073,3,0
+INI_0000016,PLT_BIZ,PLT_BIZ_L04,PLT_BIZ_L04_EQ02,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,17.715,4.784,17.276,5,0
+INI_0000017,PLT_ALA,PLT_ALA_L01,PLT_ALA_L01_EQ06,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,4.936,0.634,3.729,2,1
+INI_0000018,PLT_ALA,PLT_ALA_L01,PLT_ALA_L01_EQ04,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,0.995,1.638,0.846,4,0
+INI_0000019,PLT_ALA,PLT_ALA_L01,PLT_ALA_L01_EQ03,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,4.212,4.865,3.288,3,0
+INI_0000020,PLT_ALA,PLT_ALA_L01,PLT_ALA_L01_EQ04,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,10.203,7.446,11.384,5,0
+INI_0000021,PLT_ALA,PLT_ALA_L02,PLT_ALA_L02_EQ01,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,5.243,1.679,2.485,1,1
+INI_0000022,PLT_ALA,PLT_ALA_L02,,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,1.6,4.643,1.891,4,0
+INI_0000023,PLT_ALA,PLT_ALA_L02,PLT_ALA_L02_EQ04,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,4.82,5.596,4.132,3,0
+INI_0000024,PLT_ALA,PLT_ALA_L02,,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,13.371,6.225,12.758,4,0
+INI_0000025,PLT_ALA,PLT_ALA_L03,,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,4.503,0.4,3.225,1,1
+INI_0000026,PLT_ALA,PLT_ALA_L03,PLT_ALA_L03_EQ02,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,1.462,4.098,1.172,3,0
+INI_0000027,PLT_ALA,PLT_ALA_L03,PLT_ALA_L03_EQ02,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,4.481,4.162,4.324,4,0
+INI_0000028,PLT_ALA,PLT_ALA_L03,PLT_ALA_L03_EQ02,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,16.492,7.429,12.722,4,0
+INI_0000029,PLT_ALA,PLT_ALA_L04,PLT_ALA_L04_EQ02,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,2.918,1.78,1.394,2,1
+INI_0000030,PLT_ALA,PLT_ALA_L04,PLT_ALA_L04_EQ06,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,1.818,4.342,1.626,4,0
+INI_0000031,PLT_ALA,PLT_ALA_L04,PLT_ALA_L04_EQ03,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,7.04,3.398,5.87,3,0
+INI_0000032,PLT_ALA,PLT_ALA_L04,PLT_ALA_L04_EQ03,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,11.35,6.724,8.536,4,0
+INI_0000033,PLT_CAN,PLT_CAN_L01,PLT_CAN_L01_EQ01,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,2.757,0.868,3.991,1,1
+INI_0000034,PLT_CAN,PLT_CAN_L01,,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,1.325,4.22,1.219,4,0
+INI_0000035,PLT_CAN,PLT_CAN_L01,PLT_CAN_L01_EQ06,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,3.871,4.548,3.275,4,0
+INI_0000036,PLT_CAN,PLT_CAN_L01,,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,15.322,4.332,9.398,5,0
+INI_0000037,PLT_CAN,PLT_CAN_L02,PLT_CAN_L02_EQ01,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,3.199,0.595,1.403,1,1
+INI_0000038,PLT_CAN,PLT_CAN_L02,PLT_CAN_L02_EQ04,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,1.636,2.186,1.398,4,0
+INI_0000039,PLT_CAN,PLT_CAN_L02,PLT_CAN_L02_EQ05,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,3.475,4.617,5.786,3,0
+INI_0000040,PLT_CAN,PLT_CAN_L02,PLT_CAN_L02_EQ02,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,14.736,8.189,15.961,5,0
+INI_0000041,PLT_CAN,PLT_CAN_L03,PLT_CAN_L03_EQ03,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,5.097,0.595,3.529,2,1
+INI_0000042,PLT_CAN,PLT_CAN_L03,,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,1.556,2.195,2.189,2,0
+INI_0000043,PLT_CAN,PLT_CAN_L03,PLT_CAN_L03_EQ01,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,7.176,5.486,3.539,3,0
+INI_0000044,PLT_CAN,PLT_CAN_L03,PLT_CAN_L03_EQ06,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,9.033,5.735,10.852,4,0
+INI_0000045,PLT_CAN,PLT_CAN_L04,,EficienciaEnergetica,QuickWinOperativo,Ajuste fino de setpoints y secuencia de arranque/parada,4.464,1.046,1.858,2,1
+INI_0000046,PLT_CAN,PLT_CAN_L04,PLT_CAN_L04_EQ04,Confiabilidad,MantenimientoPredictivo,Analitica predictiva de fallo en equipos criticos,2.144,1.871,1.925,2,0
+INI_0000047,PLT_CAN,PLT_CAN_L04,PLT_CAN_L04_EQ03,OptimizacionProceso,ControlAvanzado,Control multivariable para reducir variabilidad de proceso,4.227,2.704,4.146,3,0
+INI_0000048,PLT_CAN,PLT_CAN_L04,PLT_CAN_L04_EQ04,TransformacionIndustrial,CAPEXTransformacional,Revamping de equipos termicos y recuperacion de calor,8.273,3.022,17.423,4,0

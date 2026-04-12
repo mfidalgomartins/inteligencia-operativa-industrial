@@ -1,0 +1,4 @@
+sector_profile_id,risk_id,risk
+tubacex,TUBACEX_R01,Confundir benchmark por familia con benchmark corporativo formal.
+tubacex,TUBACEX_R02,Sobreestimar ahorro de CAPEX sin validar ventana de parada real.
+tubacex,TUBACEX_R03,Comparar criticidad de equipos con funciones operativas no equivalentes.

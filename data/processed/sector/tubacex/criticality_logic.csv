@@ -1,0 +1,12 @@
+sector_profile_id,logic_group,logic_key,logic_value
+tubacex,equipment_type_multiplier,BombaRecirculacion,1.04
+tubacex,equipment_type_multiplier,CompresorAire,1.05
+tubacex,equipment_type_multiplier,HornoProceso,1.18
+tubacex,equipment_type_multiplier,LaminadorPrincipal,1.2
+tubacex,equipment_type_multiplier,ManipuladorCarga,1.0
+tubacex,equipment_type_multiplier,SistemaControl,1.1
+tubacex,weights,weight_downtime,0.28
+tubacex,weights,weight_emissions,0.12
+tubacex,weights,weight_process_deviation,0.1
+tubacex,weights,weight_scrap,0.2
+tubacex,weights,weight_sec_gap,0.3

@@ -1,0 +1,13 @@
+linea_id,planta_id,nombre_linea,familia_proceso,capacidad_nominal_hora,oee_objetivo,intensidad_energetica_objetivo,criticidad_linea
+PLT_BIZ_L01,PLT_BIZ,Linea_Laminacion_1,Laminacion,8.8,80.31,585.59,2
+PLT_BIZ_L02,PLT_BIZ,Linea_TratamientoTermico_2,TratamientoTermico,6.14,83.31,700.3,3
+PLT_BIZ_L03,PLT_BIZ,Linea_Acabado_3,Acabado,8.38,84.1,507.04,4
+PLT_BIZ_L04,PLT_BIZ,Linea_InspeccionFinal_4,InspeccionFinal,11.03,86.8,307.64,5
+PLT_ALA_L01,PLT_ALA,Linea_Laminacion_1,Laminacion,9.71,85.2,558.48,4
+PLT_ALA_L02,PLT_ALA,Linea_TratamientoTermico_2,TratamientoTermico,7.89,83.86,786.53,4
+PLT_ALA_L03,PLT_ALA,Linea_Acabado_3,Acabado,8.82,88.2,448.38,4
+PLT_ALA_L04,PLT_ALA,Linea_InspeccionFinal_4,InspeccionFinal,9.81,88.34,307.69,2
+PLT_CAN_L01,PLT_CAN,Linea_Laminacion_1,Laminacion,10.14,82.79,615.74,3
+PLT_CAN_L02,PLT_CAN,Linea_TratamientoTermico_2,TratamientoTermico,7.71,79.56,719.81,5
+PLT_CAN_L03,PLT_CAN,Linea_Acabado_3,Acabado,8.51,83.46,483.03,3
+PLT_CAN_L04,PLT_CAN,Linea_InspeccionFinal_4,InspeccionFinal,9.02,88.21,294.97,2

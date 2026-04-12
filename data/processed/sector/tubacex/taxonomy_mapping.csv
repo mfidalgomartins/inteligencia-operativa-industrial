@@ -1,0 +1,21 @@
+sector_profile_id,domain,source_value,target_value
+tubacex,familia_proceso,Laminacion,Conformado de Tubo
+tubacex,familia_proceso,TratamientoTermico,Tratamiento Termico Metalurgico
+tubacex,familia_proceso,Acabado,Acabado y Calibrado
+tubacex,familia_proceso,InspeccionFinal,Inspeccion y Ensayos Finales
+tubacex,tipo_equipo,HornoProceso,Horno de Tratamiento
+tubacex,tipo_equipo,LaminadorPrincipal,Tren Laminador
+tubacex,tipo_equipo,CompresorAire,Compresor de Servicios
+tubacex,tipo_equipo,BombaRecirculacion,Bomba Hidraulica de Recirculacion
+tubacex,tipo_equipo,SistemaControl,Sistema de Control de Linea
+tubacex,tipo_equipo,ManipuladorCarga,Manipulador de Material
+tubacex,categoria_iniciativa,EficienciaEnergetica,Energia y Utilidades
+tubacex,categoria_iniciativa,Confiabilidad,Confiabilidad de Activos
+tubacex,categoria_iniciativa,OptimizacionProceso,Optimizacion de Proceso
+tubacex,categoria_iniciativa,TransformacionIndustrial,Transformacion de Activos
+tubacex,tipo_iniciativa,QuickWinOperativo,Disciplina Operativa
+tubacex,tipo_iniciativa,MantenimientoPredictivo,Fiabilidad Predictiva
+tubacex,tipo_iniciativa,ControlAvanzado,Control Avanzado de Proceso
+tubacex,tipo_iniciativa,CAPEXTransformacional,Revamping Estructural
+tubacex,fuente_energia,Electricidad,Electricidad Red
+tubacex,fuente_energia,GasNatural,Gas Natural de Proceso

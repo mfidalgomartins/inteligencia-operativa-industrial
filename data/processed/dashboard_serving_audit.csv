@@ -1,0 +1,12 @@
+metric,value
+canonical_html_bytes,283737
+canonical_html_threshold_bytes,4000000
+canonical_under_threshold_flag,1
+canonical_dataset_bytes,38666
+legacy_outputs_removed_count,0
+legacy_outputs_remaining_count,0
+no_competing_html_flag,1
+line_day_rows_raw,8772
+equipment_rows_raw,52632
+invest_rows_raw,48
+payload_records,124

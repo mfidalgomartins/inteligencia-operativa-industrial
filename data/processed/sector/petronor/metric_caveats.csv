@@ -1,0 +1,3 @@
+sector_profile_id,metric_name,caveat,misuse_prevention
+petronor,emissions_per_unit,La intensidad de emisiones depende del mix de combustible y severidad de operación.,No usar sin segmentar por unidad y condición operativa.
+petronor,loss_value_proxy,"En refino, el valor perdido depende del crack spread y slate comercial.",Tratar como señal de screening y no como P&L auditado.

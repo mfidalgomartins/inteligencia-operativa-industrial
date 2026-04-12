@@ -12,10 +12,11 @@ data/processed/*.duckdb
 data/processed/*.wal
 
 # Generated raw/processed artifacts (regenerables)
-data/raw/*.csv
-data/processed/*.csv
-data/processed/*.json
-data/processed/sector/**
+# Publish all data and processed artifacts
+!data/raw/*.csv
+!data/processed/*.csv
+!data/processed/*.json
+!data/processed/sector/**
 
 # Generated outputs and release packs
 # Keep curated dashboard + charts for GitHub review
@@ -28,7 +29,7 @@ outputs/dashboard/*.html
 !outputs/release_packs/**
 
 # Generated manifests (rebuildable)
-manifests/build_manifest_latest.json
-manifests/environment_fingerprint.json
-manifests/artifact_fingerprints_latest.csv
-manifests/releases/*.json
+!manifests/build_manifest_latest.json
+!manifests/environment_fingerprint.json
+!manifests/artifact_fingerprints_latest.csv
+!manifests/releases/*.json

@@ -1,0 +1,5 @@
+issue_id,domain,severity,check,effective_status,detail,waived_flag,waiver_id
+ISS_dashboard_sections_consistency,release validity,CRITICAL,dashboard_sections_consistency,ERROR,Dashboard no contiene secciones ejecutivas obligatorias.,0,
+ISS_payback_range,financial validity,HIGH,payback_range,ERROR,Payback fuera de rango operativo-financiero.,0,
+ISS_financial_proxy_risk,financial validity,HIGH,financial_proxy_risk,WARN,Modelo financiero aún proxy: no apto para committee-grade sin hardening financiero.,0,
+ISS_dashboard_density_control,release validity,HIGH,dashboard_density_control,WARN,Gráficos demasiado densos para lectura ejecutiva rápida.,0,

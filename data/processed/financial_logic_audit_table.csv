@@ -1,0 +1,9 @@
+component,classification,maturity,committee_suitability,rationale
+Ahorro energético anual,defendible,screening/pre-feasibility,usable_with_caveat,Deriva de exposición energética baseline * reducción técnica * sensibilidad explícita de precio.
+Gross technical value,defendible,screening/pre-feasibility,usable_with_caveat,Separación explícita energía/avoidance/emisiones con guardas anti doble conteo.
+Discounted value / downside-adjusted value,proxy útil,pre-feasibility,not_final_business_case,Depende de curvas de captura sintéticas y tasa única de descuento.
+Screening IRR,proxy útil,screening,not_formal_irr,No equivale a IRR corporativa auditada; se usa solo para priorización temprana.
+Formal IRR candidate,débil,pre-feasibility,candidate_only,Bisección sobre flujos sintéticos; requiere cashflow real para comité.
+Screening VaR / robust risk candidate,débil,screening,not_committee_grade,No usa distribución histórica calibrada ni correlaciones reales.
+Cost of delay,proxy útil,pre-feasibility,usable_with_caveat,Calculado por desplazamiento +12 meses de captura descontada.
+Business case final,no apta para comité,out_of_scope,no,El motor actual no sustituye FID con supuestos auditados ERP/controlling.

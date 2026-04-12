@@ -1,0 +1,5 @@
+sector_profile_id,periodo,familia_proceso,sec_referencia,sec_multiplier,sec_referencia_sector,oee_referencia,oee_shift,oee_referencia_sector,disponibilidad_referencia,availability_shift,disponibilidad_referencia_sector,emisiones_referencia,emissions_multiplier,emisiones_referencia_sector
+tubacex,2025-12-01,Acabado,441.45,0.98,432.621,87.825,0.01,1.0,95.639,0.0,1.0,80.108,0.97,77.70476000000001
+tubacex,2025-12-01,InspeccionFinal,289.498,0.95,275.0231,90.923,0.01,1.0,96.698,0.01,1.0,49.5,0.95,47.025
+tubacex,2025-12-01,Laminacion,551.965,1.0,551.965,87.791,0.0,1.0,94.494,0.0,1.0,103.35,1.0,103.35
+tubacex,2025-12-01,TratamientoTermico,710.836,1.03,732.1610800000001,81.021,-0.01,1.0,92.689,-0.01,1.0,122.355,1.06,129.6963

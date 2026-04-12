@@ -1,0 +1,8 @@
+domain,state,open_blocker,open_critical,open_high,open_warning,waived_issues,evidence_grade,state_effective_from
+structural validity,structurally-valid,0,0,0,0,0,A,
+semantic validity,structurally-valid,0,0,0,0,0,A,
+analytical validity,analytically-acceptable,0,0,0,0,0,A,
+financial validity,screening-grade-only,0,0,2,0,0,B,
+decision validity,committee-candidate,0,0,0,0,0,A,
+release validity,structurally-valid,0,1,1,0,0,C,
+committee-readiness validity,not-committee-grade,0,0,0,0,0,A,effective_committee_state

@@ -1,0 +1,4 @@
+score_name,decision_output,rule_logic,priority
+improvement_priority_index,decision_rule,>=56 & uncertainty>=45 => piloto; >=48 => analizar; >=38 => pipeline; else descartar,1
+improvement_priority_index,selected_portfolio_flag,selección sujeta a constraints CAPEX/OPEX/capacidad/dependencias/conflictos,1
+payback_score,portfolio_wave,OLA_1 favorece payback<=24 y burden<=75,2

@@ -1,0 +1,12 @@
+sector_profile_id,logic_group,logic_key,logic_value
+petronor,equipment_type_multiplier,BombaRecirculacion,1.12
+petronor,equipment_type_multiplier,CompresorAire,1.15
+petronor,equipment_type_multiplier,HornoProceso,1.3
+petronor,equipment_type_multiplier,LaminadorPrincipal,1.18
+petronor,equipment_type_multiplier,ManipuladorCarga,0.92
+petronor,equipment_type_multiplier,SistemaControl,1.08
+petronor,weights,weight_downtime,0.24
+petronor,weights,weight_emissions,0.24
+petronor,weights,weight_process_deviation,0.16
+petronor,weights,weight_scrap,0.1
+petronor,weights,weight_sec_gap,0.26

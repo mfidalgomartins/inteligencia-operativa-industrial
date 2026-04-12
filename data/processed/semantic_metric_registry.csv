@@ -1,0 +1,14 @@
+metric_id,business_name,technical_name,formula,grain,unit,direction,owner,metric_version_set,registry_version
+production_volume,Volumen de producción,production_volume,SUM(unidades_equivalentes),"['linea_turno', 'linea_dia', 'planta_semana']",ton,higher_better,Operaciones,industrial_metrics_v1_1,1.1.0
+oee_synthetic,OEE sintético,oee_synthetic,availability_rate * performance_rate * quality_rate,"['linea_dia', 'planta_semana']",ratio,higher_better,Excelencia Operativa,industrial_metrics_v1_1,1.1.0
+sec,Specific Energy Consumption,sec,SUM(consumo_kwh) / SUM(unidades_equivalentes),"['linea_turno', 'linea_dia', 'planta_semana']",kWh/ton,lower_better,Energía,industrial_metrics_v1_1,1.1.0
+loss_value_proxy,Pérdida económica proxy,loss_value_proxy,coste_energia_exceso + coste_paradas + coste_scrap + coste_emisiones_proxy,"['linea_dia', 'planta_semana']",EUR,lower_better,Performance Office,industrial_metrics_v1_1,1.1.0
+annual_saving_proxy,Ahorro anual proxy,annual_saving_proxy,net_captured_value_base_scenario (screening/pre-feasibility),['iniciativa'],EUR/anual,higher_better,Finanzas Industriales,industrial_metrics_v1_1,1.1.0
+npv_risk_adjusted,NPV ajustado por riesgo,npv_risk_adjusted,"discounted_value_base_scenario (expected capture, ramp-up y delay)","['iniciativa', 'portfolio']",EUR,higher_better,Finanzas Industriales,industrial_metrics_v1_1,1.1.0
+gross_technical_value,Valor técnico bruto,gross_technical_value,gross_technical_value_energy + avoided_loss + gross_technical_value_emissions,"['iniciativa', 'escenario']",EUR/anual,higher_better,Finanzas Industriales,industrial_metrics_v1_1,1.1.0
+net_captured_value,Valor neto capturado,net_captured_value,gross_technical_value * expected_capture_rate - implementation_opex,"['iniciativa', 'escenario']",EUR/anual,higher_better,Finanzas Industriales,industrial_metrics_v1_1,1.1.0
+downside_adjusted_value,Valor ajustado por downside,downside_adjusted_value,discounted value con downside_capture_rate,"['iniciativa', 'escenario', 'portfolio']",EUR,higher_better,Finanzas Industriales,industrial_metrics_v1_1,1.1.0
+cost_of_delay_12m,Coste de retraso 12 meses,cost_of_delay_12m,discounted_value(t0) - discounted_value(t0 + 12 meses),"['iniciativa', 'escenario', 'portfolio']",EUR,lower_better,Strategy + PMO,industrial_metrics_v1_1,1.1.0
+screening_irr_pct,Screening IRR,screening_irr_pct,100 * net_captured_value_annual / capex_effective,"['iniciativa', 'escenario']",pct,higher_better,Finanzas Industriales,industrial_metrics_v1_1,1.1.0
+screening_var_95_npv,Screening VaR 95 NPV,screening_var_95_npv,"max(0, discounted_value - downside_adjusted_value)","['iniciativa', 'escenario', 'portfolio']",EUR,lower_better,Finanzas Industriales,industrial_metrics_v1_1,1.1.0
+improvement_priority_index,Índice de priorización,improvement_priority_index,"composite score (valor, riesgo, factibilidad, relevancia)",['iniciativa'],score_0_100,higher_better,Strategy + PMO,industrial_metrics_v1_1,1.1.0

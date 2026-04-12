@@ -1,0 +1,3 @@
+sector_profile_id,fuente_energia,factor_emision_base,factor_multiplier,factor_emision_sector,carbon_cost_eur_ton
+petronor,Electricidad,0.22055,1.1,0.24260500000000002,105.0
+petronor,GasNatural,0.18998,1.18,0.2241764,105.0

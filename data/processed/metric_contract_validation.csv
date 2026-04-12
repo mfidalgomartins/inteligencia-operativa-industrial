@@ -1,0 +1,21 @@
+asset,check_type,status,detail,failed_count
+mart_line_day,required_columns,OK,all_present,0
+mart_line_day,grain_uniqueness,OK,"grain=['fecha', 'planta_id', 'linea_id']",0
+mart_line_day,invariant,OK,sec_kwh_ton >= 0,0
+mart_line_day,invariant,OK,oee_synthetic >= 0,0
+mart_line_day,invariant,OK,oee_synthetic <= 1.1,0
+mart_line_day,invariant,OK,loss_value_proxy_eur >= 0,0
+line_day_features_scored,required_columns,OK,all_present,0
+line_day_features_scored,grain_uniqueness,OK,"grain=['fecha', 'planta_id', 'linea_id']",0
+line_day_features_scored,invariant,OK,sec >= 0,0
+line_day_features_scored,invariant,OK,oee_synthetic >= 0,0
+line_day_features_scored,invariant,OK,production_volume > 0,0
+investment_prioritization_final,required_columns,OK,all_present,0
+investment_prioritization_final,grain_uniqueness,OK,grain=['iniciativa_id'],0
+investment_prioritization_final,invariant,OK,annual_saving_proxy >= 0,0
+investment_prioritization_final,invariant,OK,net_captured_value >= 0,0
+investment_prioritization_final,invariant,OK,downside_adjusted_value <= discounted_value + 1e-6,0
+investment_prioritization_final,invariant,OK,screening_var_95_npv >= 0,0
+investment_prioritization_final,invariant,OK,payback_months > 0,0
+investment_prioritization_final,invariant,OK,improvement_priority_index >= 0,0
+investment_prioritization_final,invariant,OK,improvement_priority_index <= 100,0

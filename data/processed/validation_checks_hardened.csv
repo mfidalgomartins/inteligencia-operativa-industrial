@@ -1,0 +1,50 @@
+domain,check,severity,status,observed,expected,detail,risk_type,evidence_grade,issue_id
+structural validity,energy_rows_min,BLOCKER,OK,1263168,>=100000,Volumen por debajo del umbral mínimo.,rowcount,A,ISS_energy_rows_min
+structural validity,production_rows_min,BLOCKER,OK,26316,>=10000,Volumen por debajo del umbral mínimo.,rowcount,A,ISS_production_rows_min
+structural validity,line_day_rows_min,BLOCKER,OK,8772,>=1000,Volumen por debajo del umbral mínimo.,rowcount,A,ISS_line_day_rows_min
+structural validity,equipment_rows_min,BLOCKER,OK,52632,>=10000,Volumen por debajo del umbral mínimo.,rowcount,A,ISS_equipment_rows_min
+structural validity,scenario_rows_min,BLOCKER,OK,192,>=100,Volumen por debajo del umbral mínimo.,rowcount,A,ISS_scenario_rows_min
+structural validity,energy_grain_duplicates,BLOCKER,OK,0,0,Duplicados en grano equipo-hora-fuente.,grain,A,ISS_energy_grain_duplicates
+structural validity,line_day_key_nulls,BLOCKER,OK,0,0,Nulos en claves críticas de línea-día.,nullability,A,ISS_line_day_key_nulls
+structural validity,energy_temporal_parse,BLOCKER,OK,0,0,Timestamp inválido en energía.,temporal,A,ISS_energy_temporal_parse
+semantic validity,metric_contract_errors,BLOCKER,OK,0,0,Contrato de datos/métricas con errores.,metric-contract,A,ISS_metric_contract_errors
+semantic validity,cross_output_consistency,CRITICAL,OK,blocker_errors=0;critical_non_ok=0;errors=0;warns=0,blocker_errors=0;critical_non_ok=0,Inconsistencia SQL/Python/serving.,semantic-drift,A,ISS_cross_output_consistency
+semantic validity,snapshot_metric_drift,CRITICAL,OK,0.0,<=1e-6,Drift entre snapshot ejecutivo y cálculo canónico.,metric-drift,A,ISS_snapshot_metric_drift
+semantic validity,score_comparability_tags_valid,CRITICAL,OK,0,0,Tags de comparabilidad de scores fuera de taxonomía gobernada.,semantic-drift,A,ISS_score_comparability_tags_valid
+analytical validity,sec_range,CRITICAL,OK,0,0,SEC fuera de rango razonable.,plausibility,A,ISS_sec_range
+analytical validity,oee_range,CRITICAL,OK,0,0,OEE fuera de rango razonable.,plausibility,A,ISS_oee_range
+analytical validity,priority_formula_alignment,CRITICAL,OK,1.4210854715202004e-14,<=1e-8,Fórmula del score no reconciliada.,score-stability,A,ISS_priority_formula_alignment
+analytical validity,score_stability_sensitivity_overlap,HIGH,OK,0.9,>=0.70,Inestabilidad de ranking entre escenarios de sensibilidad.,score-instability,B,ISS_score_stability_sensitivity_overlap
+analytical validity,anchored_outlier_stability_vs_legacy,HIGH,OK,0,0,La escala anclada no mejora estabilidad frente a outliers en todos los scores.,score-instability,B,ISS_anchored_outlier_stability_vs_legacy
+analytical validity,anchored_ranking_robustness_vs_legacy,HIGH,OK,0,0,La robustez de ranking anclada no supera baseline legacy bajo shock de outlier.,score-instability,B,ISS_anchored_ranking_robustness_vs_legacy
+financial validity,emissions_consistency,CRITICAL,OK,0,0,Emisiones inconsistentes con consumo/factor.,financial-reconciliation,A,ISS_emissions_consistency
+financial validity,scenario_invest_alignment,BLOCKER,OK,0.0,<=1e-6,Ahorro desalineado entre scenario engine y priorización.,financial-reconciliation,A,ISS_scenario_invest_alignment
+financial validity,var_downside_bounds,CRITICAL,OK,var_invalid=0;downside_invalid=0,var_invalid=0;downside_invalid=0,VaR/Downside fuera de límites lógicos.,financial-reconciliation,A,ISS_var_downside_bounds
+financial validity,payback_range,HIGH,ERROR,1,0,Payback fuera de rango operativo-financiero.,financial-weakness,B,ISS_payback_range
+financial validity,double_counting_prevention,CRITICAL,OK,0,0,Detección de doble conteo entre avoided loss y exposición base no energética.,financial-reconciliation,A,ISS_double_counting_prevention
+financial validity,financial_sign_logic,CRITICAL,OK,0,0,Inconsistencia de lógica de signos en cadena de valor financiero.,financial-weakness,A,ISS_financial_sign_logic
+financial validity,discounted_payback_consistency,HIGH,OK,0,0,NPV positivo con payback descontado inconsistente.,financial-weakness,B,ISS_discounted_payback_consistency
+financial validity,scenario_sensitivity_consistency,HIGH,OK,1.9953346080676027,>=1.05,Sensibilidad financiera a precio energético no consistente con diseño del escenario.,financial-weakness,B,ISS_scenario_sensitivity_consistency
+financial validity,financial_maturity_claim_consistency,CRITICAL,OK,0,0,Claims de comité no alineados con madurez financiera real.,overclaim-risk,A,ISS_financial_maturity_claim_consistency
+financial validity,financial_proxy_risk,HIGH,WARN,IRR/VaR y pérdidas usan proxies declarados,Modelo financiero auditado corporativamente,Modelo financiero aún proxy: no apto para committee-grade sin hardening financiero.,proxy-risk,C,ISS_financial_proxy_risk
+decision validity,portfolio_budget_constraints,BLOCKER,OK,capex_ok=True;opex_ok=True,capex_ok=True;opex_ok=True,Cartera fuera de restricciones CAPEX/OPEX.,decision-integrity,A,ISS_portfolio_budget_constraints
+decision validity,portfolio_dependency_consistency,CRITICAL,OK,0,0,Dependencias de iniciativas no satisfechas en cartera seleccionada.,decision-integrity,A,ISS_portfolio_dependency_consistency
+decision validity,selected_vs_decision_rule_consistency,CRITICAL,OK,0,0,Iniciativas seleccionadas con regla de descarte.,decision-integrity,A,ISS_selected_vs_decision_rule_consistency
+decision validity,optimization_formalism_weakness,HIGH,OK,solution=1;meta=1;status=solved_exact,solution=1;meta=1;status in allowed_status,Selección de cartera sin evidencia suficiente de formulación de optimización.,optimization-weakness,B,ISS_optimization_formalism_weakness
+decision validity,optimization_status_consistency,CRITICAL,OK,status=solved_exact;degree=exact_for_formulation;timed_out=0;feasible=1,consistent metadata by status,Inconsistencia entre estado del optimizador y claim de optimalidad.,optimization-weakness,A,ISS_optimization_status_consistency
+release validity,release_artifact_completeness,BLOCKER,OK,missing=none,missing=none,Artefactos incompletos para publicación/revisión.,release-incompleteness,A,ISS_release_artifact_completeness
+release validity,dashboard_sections_consistency,CRITICAL,ERROR,0,1,Dashboard no contiene secciones ejecutivas obligatorias.,dashboard-report-inconsistency,A,ISS_dashboard_sections_consistency
+release validity,dashboard_version_stamping,CRITICAL,OK,1,1,Dashboard ejecutivo sin version stamping obligatorio.,release-integrity,A,ISS_dashboard_version_stamping
+release validity,dashboard_payload_thresholds,HIGH,OK,canonical=283737,canonical<=4000000,Tamaño del dashboard fuera de política de serving.,release-incompleteness,B,ISS_dashboard_payload_thresholds
+release validity,dashboard_serving_audit_consistency,HIGH,OK,1,1,Dashboard serving audit no consistente con thresholds.,release-integrity,B,ISS_dashboard_serving_audit_consistency
+release validity,dashboard_single_official_html_enforced,CRITICAL,OK,legacy=none,legacy=none,Existen dashboards legacy compitiendo con el HTML oficial canónico.,dashboard-report-inconsistency,A,ISS_dashboard_single_official_html_enforced
+release validity,dashboard_dataset_stamping_consistency,CRITICAL,OK,1,1,Dataset canónico del dashboard no alinea run/version/readiness con outputs oficiales.,dashboard-report-inconsistency,A,ISS_dashboard_dataset_stamping_consistency
+release validity,dashboard_density_control,HIGH,WARN,1,0,Gráficos demasiado densos para lectura ejecutiva rápida.,dashboard-readability,B,ISS_dashboard_density_control
+release validity,report_data_consistency,HIGH,OK,line=1;equipment=1,line=1;equipment=1,Informe analítico no refleja línea/equipo prioritarios canónicos.,dashboard-report-inconsistency,B,ISS_report_data_consistency
+release validity,dashboard_decision_consistency,CRITICAL,OK,line=1;equipment=1,line=1;equipment=1,Dashboard ejecutivo no refleja línea/equipo prioritarios del snapshot canónico.,dashboard-report-inconsistency,A,ISS_dashboard_decision_consistency
+release validity,readme_runtime_claims_sync,HIGH,OK,1,1,README no está sincronizado con snapshot canónico de KPIs y decisión.,dashboard-report-inconsistency,B,ISS_readme_runtime_claims_sync
+release validity,sql_validation_consistency,CRITICAL,OK,0,0,Errores en checks SQL de validación.,release-integrity,A,ISS_sql_validation_consistency
+committee-readiness validity,overclaim_risk,CRITICAL,OK,claim_hits=0,claim_hits=0 when weaknesses open,Narrativa puede sobreafirmar readiness frente a evidencia metodológica.,overclaim-risk,C,ISS_overclaim_risk
+committee-readiness validity,readiness_overstated_vs_evidence,HIGH,OK,0,0,Readiness potencialmente sobredeclarado frente a evidencia disponible.,readiness-overstated,C,ISS_readiness_overstated_vs_evidence
+release validity,waiver_expiry_control,CRITICAL,OK,0,0,Waivers caducados detectados; no pueden sostener excepciones activas.,waiver-expiry,B,ISS_waiver_expiry_control
+committee-readiness validity,committee_state_alignment,CRITICAL,WARN,domain=committee-grade;effective=not-committee-grade;overall=screening-grade-only,domain/effective aligned or explicitly downgraded by overall readiness,Evita falsa confianza cuando committee-readiness local contradice readiness global.,readiness-overstated,A,ISS_committee_state_alignment

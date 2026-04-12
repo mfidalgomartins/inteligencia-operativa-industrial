@@ -1,0 +1,6 @@
+sector_profile_id,kpi_name,priority_weight
+petronor,availability_rate,0.18
+petronor,emissions_per_unit,0.26
+petronor,loss_value_proxy,0.16
+petronor,oee_synthetic,0.16
+petronor,sec,0.24

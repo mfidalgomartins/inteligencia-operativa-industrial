@@ -1,0 +1,3 @@
+sector_profile_id,fuente_energia,factor_emision_base,factor_multiplier,factor_emision_sector,carbon_cost_eur_ton
+tubacex,Electricidad,0.22055,1.0,0.22055,85.0
+tubacex,GasNatural,0.18998,1.04,0.1975792,85.0

@@ -1,0 +1,4 @@
+profile,governance_status,governance_reason,overall_readiness_level,publish_decision,committee_readiness_state
+committee_pack,BLOCKED,"blocked_by_governance: readiness=screening-grade-only; publish_decision=publish with caveat; allowed_states=['committee-candidate', 'committee-grade']; allowed_publish=['publish']",screening-grade-only,publish with caveat,not-committee-grade
+github_reviewer,ALLOWED,allowed,screening-grade-only,publish with caveat,not-committee-grade
+minimal_public,ALLOWED,allowed,screening-grade-only,publish with caveat,not-committee-grade
