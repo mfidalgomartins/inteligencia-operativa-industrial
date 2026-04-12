@@ -21,7 +21,7 @@ data/processed/*.wal
 # Generated outputs and release packs
 # Keep curated dashboard + charts for GitHub review
 outputs/dashboard/*.html
-!outputs/dashboard/dashboard_inteligencia_operativa.html
+!outputs/dashboard/industrial-operating-command-center.html
 !outputs/reports/*.md
 !outputs/reports/*.csv
 !outputs/reports/*.json
