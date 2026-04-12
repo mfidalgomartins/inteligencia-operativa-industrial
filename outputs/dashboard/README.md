@@ -1,7 +1,11 @@
-# Dashboard Executivo (HTML)
+# Dashboard Executivo
 
-**Live (GitHub Pages):** https://mfidalgomartins.github.io/inteligencia-operativa-industrial/
+Esta pasta contém o dashboard interativo do projeto.
 
-**Arquivo oficial:** `industrial-operating-command-center.html`
+**Abrir dashboard (recomendado):**  
+https://mfidalgomartins.github.io/inteligencia-operativa-industrial/
 
-Este é o artefacto canónico do dashboard. Para revisão local, abra o HTML diretamente no browser. Para apresentação executiva, use o link live acima.
+**Alternativa local (secundária):**  
+`industrial-operating-command-center.html`
+
+Nota: no GitHub, abrir o `.html` mostra o código. Use o link acima para a versão interativa.
