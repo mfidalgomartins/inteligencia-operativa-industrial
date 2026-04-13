@@ -24,7 +24,7 @@ financial validity,payback_range,HIGH,ERROR,1,0,Payback fuera de rango operativo
 financial validity,double_counting_prevention,CRITICAL,OK,0,0,Detección de doble conteo entre avoided loss y exposición base no energética.,financial-reconciliation,A,ISS_double_counting_prevention
 financial validity,financial_sign_logic,CRITICAL,OK,0,0,Inconsistencia de lógica de signos en cadena de valor financiero.,financial-weakness,A,ISS_financial_sign_logic
 financial validity,discounted_payback_consistency,HIGH,OK,0,0,NPV positivo con payback descontado inconsistente.,financial-weakness,B,ISS_discounted_payback_consistency
-financial validity,scenario_sensitivity_consistency,HIGH,OK,1.9953346080676027,>=1.05,Sensibilidad financiera a precio energético no consistente con diseño del escenario.,financial-weakness,B,ISS_scenario_sensitivity_consistency
+financial validity,scenario_sensitivity_consistency,HIGH,OK,1.9953346080676022,>=1.05,Sensibilidad financiera a precio energético no consistente con diseño del escenario.,financial-weakness,B,ISS_scenario_sensitivity_consistency
 financial validity,financial_maturity_claim_consistency,CRITICAL,OK,0,0,Claims de comité no alineados con madurez financiera real.,overclaim-risk,A,ISS_financial_maturity_claim_consistency
 financial validity,financial_proxy_risk,HIGH,WARN,IRR/VaR y pérdidas usan proxies declarados,Modelo financiero auditado corporativamente,Modelo financiero aún proxy: no apto para committee-grade sin hardening financiero.,proxy-risk,C,ISS_financial_proxy_risk
 decision validity,portfolio_budget_constraints,BLOCKER,OK,capex_ok=True;opex_ok=True,capex_ok=True;opex_ok=True,Cartera fuera de restricciones CAPEX/OPEX.,decision-integrity,A,ISS_portfolio_budget_constraints
@@ -35,7 +35,7 @@ decision validity,optimization_status_consistency,CRITICAL,OK,status=solved_exac
 release validity,release_artifact_completeness,BLOCKER,OK,missing=none,missing=none,Artefactos incompletos para publicación/revisión.,release-incompleteness,A,ISS_release_artifact_completeness
 release validity,dashboard_sections_consistency,CRITICAL,ERROR,0,1,Dashboard no contiene secciones ejecutivas obligatorias.,dashboard-report-inconsistency,A,ISS_dashboard_sections_consistency
 release validity,dashboard_version_stamping,CRITICAL,OK,1,1,Dashboard ejecutivo sin version stamping obligatorio.,release-integrity,A,ISS_dashboard_version_stamping
-release validity,dashboard_payload_thresholds,HIGH,OK,canonical=283737,canonical<=4000000,Tamaño del dashboard fuera de política de serving.,release-incompleteness,B,ISS_dashboard_payload_thresholds
+release validity,dashboard_payload_thresholds,HIGH,OK,canonical=283760,canonical<=4000000,Tamaño del dashboard fuera de política de serving.,release-incompleteness,B,ISS_dashboard_payload_thresholds
 release validity,dashboard_serving_audit_consistency,HIGH,OK,1,1,Dashboard serving audit no consistente con thresholds.,release-integrity,B,ISS_dashboard_serving_audit_consistency
 release validity,dashboard_single_official_html_enforced,CRITICAL,OK,legacy=none,legacy=none,Existen dashboards legacy compitiendo con el HTML oficial canónico.,dashboard-report-inconsistency,A,ISS_dashboard_single_official_html_enforced
 release validity,dashboard_dataset_stamping_consistency,CRITICAL,OK,1,1,Dataset canónico del dashboard no alinea run/version/readiness con outputs oficiales.,dashboard-report-inconsistency,A,ISS_dashboard_dataset_stamping_consistency

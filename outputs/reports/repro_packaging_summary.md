@@ -9,9 +9,9 @@
 ## Packaging Audit
 | mode            |   repo_total_size_bytes |   pack_size_bytes |   pack_size_mb |   reduction_vs_full_repo_pct |   files_in_pack |   missing_files |
 |:----------------|------------------------:|------------------:|---------------:|-----------------------------:|----------------:|----------------:|
-| committee_pack  |               610179312 |               571 |          0.001 |                      100     |               1 |               0 |
-| github_reviewer |               610179312 |            382271 |          0.365 |                       99.937 |              21 |               0 |
-| minimal_public  |               610179312 |           2035433 |          1.941 |                       99.666 |              17 |               0 |
+| committee_pack  |               925343808 |               571 |          0.001 |                      100     |               1 |               0 |
+| github_reviewer |               925343808 |            376745 |          0.359 |                       99.959 |              21 |               0 |
+| minimal_public  |               925343808 |           2030674 |          1.937 |                       99.781 |              17 |               0 |
 
 ## Release Governance Audit
 | profile         | governance_status   | governance_reason                                                                                                                                                                   | overall_readiness_level   | publish_decision    | committee_readiness_state   |
@@ -24,13 +24,13 @@
 | artifact                                                            |   size_bytes | retention_policy       |
 |:--------------------------------------------------------------------|-------------:|:-----------------------|
 | data/raw/consumos_energia_horarios.csv                              |    152167503 | local_only_regenerable |
-| data/processed/int_line_hour.csv                                    |     56222699 | local_only_regenerable |
+| data/processed/int_line_hour.csv                                    |     56237505 | local_only_regenerable |
 | data/raw/emisiones_estimadas.csv                                    |     37563417 | local_only_regenerable |
-| data/processed/equipment_energy_anomaly_scores.csv                  |     18301983 | local_only_regenerable |
-| data/processed/analysis_support_equipment_energy_anomaly_scores.csv |     18299034 | local_only_regenerable |
-| data/processed/vw_equipment_efficiency_risk.csv                     |     13530526 | local_only_regenerable |
-| data/processed/equipment_day_features.csv                           |     13276935 | local_only_regenerable |
-| data/processed/mart_equipment_day.csv                               |     12275345 | local_only_regenerable |
+| data/processed/equipment_energy_anomaly_scores.csv                  |     18302373 | local_only_regenerable |
+| data/processed/analysis_support_equipment_energy_anomaly_scores.csv |     18299319 | local_only_regenerable |
+| data/processed/vw_equipment_efficiency_risk.csv                     |     13530647 | local_only_regenerable |
+| data/processed/equipment_day_features.csv                           |     13277216 | local_only_regenerable |
+| data/processed/mart_equipment_day.csv                               |     12275365 | local_only_regenerable |
 
 ## Sample Data Manifest
 | sample_file                                    | source_file                                        | status   |   rows_written |

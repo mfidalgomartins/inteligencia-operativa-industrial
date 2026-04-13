@@ -1,8 +1,8 @@
 metric,value
-canonical_html_bytes,283737
+canonical_html_bytes,283760
 canonical_html_threshold_bytes,4000000
 canonical_under_threshold_flag,1
-canonical_dataset_bytes,38666
+canonical_dataset_bytes,38673
 legacy_outputs_removed_count,0
 legacy_outputs_remaining_count,0
 no_competing_html_flag,1

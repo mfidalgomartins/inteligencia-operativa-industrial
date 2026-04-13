@@ -4,11 +4,12 @@ import json
 
 import pytest
 
-from tests._helpers import DATA_PROCESSED, DASHBOARD_HTML, OUTPUTS, read_csv
+from tests._helpers import DATA_PROCESSED, DASHBOARD_HTML, OUTPUTS, PROJECT_ROOT, read_csv
 
 
 CANONICAL_DATASET = DATA_PROCESSED / "dashboard_canonical_dataset.json"
 SERVING_AUDIT = DATA_PROCESSED / "dashboard_serving_audit.csv"
+DOCS_DASHBOARD_HTML = PROJECT_ROOT / "docs" / "index.html"
 LEGACY_HTMLS = [
     OUTPUTS / "dashboard" / "dashboard_executive_light.html",
     OUTPUTS / "dashboard" / "dashboard_full_offline.html",
@@ -25,8 +26,18 @@ LEGACY_DATASETS = [
 @pytest.mark.full
 def test_single_official_dashboard_html_exists_without_competitors() -> None:
     assert DASHBOARD_HTML.exists()
+    assert DOCS_DASHBOARD_HTML.exists()
     for path in LEGACY_HTMLS:
         assert not path.exists(), f"legacy dashboard must be absent: {path.name}"
+
+
+@pytest.mark.high
+@pytest.mark.quick
+@pytest.mark.full
+def test_pages_dashboard_entrypoint_is_synced_with_canonical_html() -> None:
+    canonical = DASHBOARD_HTML.read_text(encoding="utf-8")
+    pages = DOCS_DASHBOARD_HTML.read_text(encoding="utf-8")
+    assert pages == canonical
 
 
 @pytest.mark.critical
@@ -82,4 +93,3 @@ def test_dashboard_serving_audit_flags_and_thresholds() -> None:
     assert int(metric_map.get("canonical_html_bytes", 999999999)) <= int(
         metric_map.get("canonical_html_threshold_bytes", 4_000_000)
     )
-

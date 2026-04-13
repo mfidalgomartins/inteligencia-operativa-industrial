@@ -1,6 +1,6 @@
 {
-  "run_id": "20260411T221240Z",
-  "generated_at_utc": "2026-04-11T22:12:40",
+  "run_id": "20260413T005249Z",
+  "generated_at_utc": "2026-04-13T00:52:49",
   "overall_status": "RUNNING",
   "steps": [],
   "validation_readiness": {
@@ -20,7 +20,7 @@
     "lineage_ready": true
   },
   "version_dependency": {
-    "run_id": "20260411T220719Z",
+    "run_id": "20260411T221240Z",
     "metric_version_set": "industrial_metrics_v1_1",
     "metric_registry_version": "1.1.0",
     "data_contract_version": "1.1.0",
@@ -29,13 +29,13 @@
     "scenario_engine_code_sha256": "1bd09b5702b21613fc59ed1447801ef1bd0b8e3457df1e8ad36dde71bba8f61a",
     "investment_prioritization_code_sha256": "d41404198354ef37103e3910d63e0d296eee791e20ce597b5b04c42241d13108",
     "lineage_module_sha256": "d0708aca44bf5fb4c8b9ec17c1f131f911eca4e2f83671ad85f8656d9efa96e9",
-    "dashboard_sha256": "0cbf50e280b21b0f0ab892c9da975e33231aa14608ea4195d8779995ba986e53",
+    "dashboard_sha256": "6396dabd142a78e797409ece7359a41d40c2fed4583d81fd8ceb928b71410870",
     "validation_readiness_level": "screening-grade-only",
     "validation_publish_decision": "publish with caveat",
-    "generated_at_utc": "2026-04-11T22:10:14"
+    "generated_at_utc": "2026-04-11T22:14:39"
   },
   "environment_fingerprint": {
-    "generated_at_utc": "2026-04-11T22:10:14+00:00",
+    "generated_at_utc": "2026-04-11T22:14:39+00:00",
     "python_executable": "/Users/miguelfidalgo/Documents/sistema-inteligencia-eficiencia-operativa-industrial/.venv/bin/python",
     "python_version": "3.12.13",
     "platform": "macOS-15.5-arm64-arm-64bit",
@@ -50,8 +50,8 @@
   },
   "packaging_summary": {
     "packs_generated": 3,
-    "min_reduction_pct": 99.669,
-    "max_pack_size_mb": 1.939,
+    "min_reduction_pct": 99.666,
+    "max_pack_size_mb": 1.941,
     "profiles_blocked": 1,
     "profiles_allowed": 2
   }

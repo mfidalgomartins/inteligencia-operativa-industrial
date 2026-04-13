@@ -1,4 +1,4 @@
 mode,repo_total_size_bytes,pack_size_bytes,pack_size_mb,reduction_vs_full_repo_pct,files_in_pack,missing_files
-committee_pack,610179312,571,0.001,100.0,1,0
-github_reviewer,610179312,382271,0.365,99.937,21,0
-minimal_public,610179312,2035433,1.941,99.666,17,0
+committee_pack,925343808,571,0.001,100.0,1,0
+github_reviewer,925343808,376745,0.359,99.959,21,0
+minimal_public,925343808,2030674,1.937,99.781,17,0

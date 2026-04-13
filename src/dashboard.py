@@ -12,6 +12,7 @@ from .config import DATA_PROCESSED_DIR, OUTPUT_DASHBOARD_DIR, OUTPUT_REPORTS_DIR
 
 MAX_CANONICAL_SIZE_BYTES = 4_000_000
 CANONICAL_HTML = OUTPUT_DASHBOARD_DIR / "industrial-operating-command-center.html"
+DOCS_CANONICAL_HTML = Path(__file__).resolve().parents[1] / "docs" / "index.html"
 CANONICAL_DATASET_JSON = DATA_PROCESSED_DIR / "dashboard_canonical_dataset.json"
 SERVING_AUDIT_CSV = DATA_PROCESSED_DIR / "dashboard_serving_audit.csv"
 CHARTJS_BUNDLE = Path(__file__).resolve().parents[1] / "assets" / "vendor" / "chart.umd.min.js"
@@ -346,14 +347,14 @@ def _prepare_canonical_dataset() -> tuple[dict[str, Any], dict[str, Any]]:
             "priority_score_comparability": priority_comp,
         },
         "kpis": [
-            {"name": "Production Volume", "value": f"{_fmt(snapshot['production_volume'], ',.0f')} t"},
+            {"name": "Volumen de producción", "value": f"{_fmt(snapshot['production_volume'], ',.0f')} t"},
             {"name": "OEE sintético", "value": f"{_fmt(snapshot['oee_synthetic'], '.3f')}"},
             {"name": "SEC medio", "value": f"{_fmt(snapshot['sec'], '.1f')} kWh/t"},
             {"name": "Pérdidas económicas proxy", "value": f"{_fmt(snapshot['loss_value_proxy'], ',.0f')} EUR"},
             {"name": "Ahorro anual proxy", "value": f"{_fmt(snapshot['annual_saving_proxy'], ',.0f')} EUR/año"},
             {"name": "NPV ajustado por riesgo", "value": f"{_fmt(snapshot['portfolio_npv_risk_adjusted'], ',.0f')} EUR"},
             {"name": "Valor downside-adjusted", "value": f"{_fmt(downside_value, ',.0f')} EUR"},
-            {"name": "Cost of delay 12m", "value": f"{_fmt(snapshot.get('cost_of_delay_12m_portfolio', 0.0), ',.0f')} EUR"},
+            {"name": "Coste de demora 12m", "value": f"{_fmt(snapshot.get('cost_of_delay_12m_portfolio', 0.0), ',.0f')} EUR"},
             {"name": "Portfolio seleccionado", "value": f"{int(snapshot['portfolio_selected'])} iniciativas"},
         ],
         "callouts": [
@@ -622,10 +623,10 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
   <div class="ux-toolbar">
     <button id="btnTheme" class="ux-btn ux-btn-theme" type="button" aria-pressed="false">
       <span class="theme-dot" aria-hidden="true"></span>
-      <span id="btnThemeLabel">Dark mode</span>
+      <span id="btnThemeLabel">Modo oscuro</span>
     </button>
-    <button id="btnMethodology" class="ux-btn" type="button" aria-haspopup="dialog">Methodology</button>
-    <button id="btnPrint" class="ux-btn" type="button">Print</button>
+    <button id="btnMethodology" class="ux-btn" type="button" aria-haspopup="dialog">Metodología</button>
+    <button id="btnPrint" class="ux-btn" type="button">Imprimir</button>
   </div>
 
   <div class="quick-nav" aria-label="Navegación rápida">
@@ -767,7 +768,7 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
 <div id="methodologyModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="methodologyTitle">
   <div class="modal-card">
     <div class="modal-header">
-      <div id="methodologyTitle" class="modal-title">Methodology & Governance</div>
+      <div id="methodologyTitle" class="modal-title">Metodología y gobernanza</div>
       <button id="btnCloseMethodology" class="modal-close" type="button" aria-label="Cerrar">×</button>
     </div>
     <div class="modal-body">
@@ -1141,7 +1142,7 @@ function applyTheme(theme, persist=false){{
   const btnThemeLabel=document.getElementById('btnThemeLabel');
   const isDark=theme==='dark';
   if(btnTheme) btnTheme.setAttribute('aria-pressed', String(isDark));
-  if(btnThemeLabel) btnThemeLabel.textContent=isDark ? 'Light mode' : 'Dark mode';
+  if(btnThemeLabel) btnThemeLabel.textContent=isDark ? 'Modo claro' : 'Modo oscuro';
   if(persist) localStorage.setItem(THEME_STORAGE_KEY, theme);
   renderAllCharts();
 }}
@@ -1220,6 +1221,8 @@ def build_dashboard() -> Path:
 
     html = _render_canonical_html(dataset)
     CANONICAL_HTML.write_text(html, encoding="utf-8")
+    DOCS_CANONICAL_HTML.parent.mkdir(parents=True, exist_ok=True)
+    DOCS_CANONICAL_HTML.write_text(html, encoding="utf-8")
 
     removed_legacy, remaining_legacy = _cleanup_legacy_outputs()
     canonical_size = int(CANONICAL_HTML.stat().st_size)

@@ -54,3 +54,21 @@ pytest -q
 
 ## Herramientas
 Python, SQL, DuckDB, pandas y Chart.js.
+
+<!-- AUTO:KEY_FINDINGS:START -->
+- Línea más crítica: **PLT_BIZ_L04** (`line_criticality_score = 27.29`).
+- Equipo más anómalo: **PLT_BIZ_L02_EQ06** (`equipment_energy_anomaly_score = 61.62`).
+- Ahorro anual risk-adjusted **proxy** total: **28,041,632.26 EUR/año**.
+- NPV cartera ajustada por riesgo (**screening**): **50,763,712.71 EUR**.
+- Valor downside-adjusted de cartera (**screening**): **55,883,365.82 EUR**.
+- Readiness actual de validación: **screening-grade-only** (publish_decision: **publish with caveat**).
+<!-- AUTO:KEY_FINDINGS:END -->
+
+<!-- AUTO:EXEC_DECISION:START -->
+- Línea a intervenir primero: **PLT_BIZ_L04**.
+- Equipo a priorizar: **PLT_BIZ_L02_EQ06**.
+- Ahorro potencial de actuar ahora (**estimación proxy top-5**): **2,745,345.66 EUR/año**.
+- Riesgo si se retrasa: aumento de pérdida proxy acumulada y degradación de criticidad en nodos top.
+- Cuándo quick win: captura de valor <12 meses con bajo burden.
+- Cuándo CAPEX: brecha estructural SEC/OEE con criticidad alta persistente.
+<!-- AUTO:EXEC_DECISION:END -->

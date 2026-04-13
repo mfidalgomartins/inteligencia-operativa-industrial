@@ -1,15 +1,15 @@
 check,status,tier,observed,expected,detail
 sec_sql_vs_python,OK,BLOCKER,433.02470820618777,433.02470820618777,delta=0.00000000
-oee_sql_vs_python,OK,BLOCKER,0.9361037471967262,0.9361037471967262,delta=0.00000000
+oee_sql_vs_python,OK,BLOCKER,0.9361037471967264,0.9361037471967262,delta=0.00000000
 saving_scenario_vs_invest,OK,CRITICAL,0.0,0.0,delta=0.00000000
 net_captured_scenario_vs_invest,OK,CRITICAL,0.0,0.0,delta=0.00000000
 snapshot_production_vs_line_day,OK,BLOCKER,1504967.0920000002,1504967.0920000002,delta=0.00000000
 snapshot_loss_vs_line_day,OK,BLOCKER,118988891.02911326,118988891.02911326,delta=0.00000000
-snapshot_saving_vs_invest,OK,BLOCKER,28041632.262208812,28041632.262208812,delta=0.00000000
+snapshot_saving_vs_invest,OK,BLOCKER,28041632.2622088,28041632.2622088,delta=0.00000000
 decision_top_line_vs_scores,OK,CRITICAL,PLT_BIZ_L04,PLT_BIZ_L04,string_or_id_compare
 decision_top_equipment_vs_scores,OK,CRITICAL,PLT_BIZ_L02_EQ06,PLT_BIZ_L02_EQ06,string_or_id_compare
-snapshot_vs_decision_run_id,OK,CRITICAL,20260411T221240Z,20260411T221240Z,string_or_id_compare
+snapshot_vs_decision_run_id,OK,CRITICAL,20260413T005249Z,20260413T005249Z,string_or_id_compare
 snapshot_vs_decision_metric_version_set,OK,CRITICAL,industrial_metrics_v1_1,industrial_metrics_v1_1,string_or_id_compare
-dashboard_meta_run_id_present_and_trackable,OK,HIGH,20260411T220719Z,non_empty_run_id,stale_but_allowed_pre_dashboard_refresh
+dashboard_meta_run_id_present_and_trackable,OK,HIGH,20260411T221240Z,non_empty_run_id,stale_but_allowed_pre_dashboard_refresh
 dashboard_meta_metric_version_present,OK,HIGH,industrial_metrics_v1_1,non_empty_metric_version_set,presence_check
 dashboard_meta_validation_state_shape,OK,HIGH,screening-grade-only|publish with caveat,overall_readiness|publish_decision,validation_state_format
