@@ -63,6 +63,22 @@ def test_dashboard_kpi_cards_are_compact_and_overflow_safe() -> None:
 @pytest.mark.high
 @pytest.mark.quick
 @pytest.mark.full
+def test_dashboard_top_shell_is_compact_and_non_sticky() -> None:
+    html = DASHBOARD_HTML.read_text(encoding="utf-8")
+
+    expected = [
+        "html{scroll-behavior:smooth;scroll-padding-top:18px}",
+        '.topbar-shell{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}',
+        '.ux-toolbar{position:static;z-index:auto;display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end',
+        '.quick-nav{display:flex;flex:1 1 680px;flex-wrap:wrap;gap:8px;margin:0}',
+    ]
+    for token in expected:
+        assert token in html
+
+
+@pytest.mark.high
+@pytest.mark.quick
+@pytest.mark.full
 def test_dashboard_table_has_executive_filter_controls() -> None:
     html = DASHBOARD_HTML.read_text(encoding="utf-8")
 
