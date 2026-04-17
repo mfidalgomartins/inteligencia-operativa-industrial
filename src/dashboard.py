@@ -582,20 +582,20 @@ html{{scroll-behavior:smooth}}
 body{{font-family:'IBM Plex Sans','Avenir Next','Segoe UI',sans-serif;margin:0;color:var(--ink);background:
 radial-gradient(1200px 520px at -10% -20%,rgba(28,148,134,.22) 0%,transparent 58%),
 radial-gradient(920px 500px at 110% -12%,rgba(62,111,232,.18) 0%,transparent 52%),
-linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);overflow-x:hidden;transition:background .22s ease,color .22s ease}}
-.container{{position:relative;max-width:1280px;margin:0 auto;padding:18px 18px 28px}}
+linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);overflow-x:hidden;transition:background .22s ease,color .22s ease;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}}
+.container{{position:relative;max-width:1280px;margin:0 auto;padding:22px 20px 36px}}
 .ux-toolbar{{position:sticky;top:10px;z-index:90;display:flex;gap:10px;justify-content:flex-end;margin-bottom:12px}}
-.ux-btn{{border:1px solid color-mix(in srgb, var(--line-strong) 82%, transparent);background:color-mix(in srgb, var(--panel) 88%, transparent);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s ease;box-shadow:var(--shadow-sm);backdrop-filter:blur(14px)}}
+.ux-btn{{border:1px solid color-mix(in srgb, var(--line-strong) 82%, transparent);background:color-mix(in srgb, var(--panel) 88%, transparent);color:var(--ink);border-radius:999px;padding:10px 15px;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s ease;box-shadow:var(--shadow-sm);backdrop-filter:blur(14px)}}
 .ux-btn:hover{{transform:translateY(-1px);border-color:color-mix(in srgb, var(--accent-2) 52%, var(--line-strong));box-shadow:var(--shadow-md)}}
 .ux-btn-theme{{display:inline-flex;align-items:center;gap:8px}}
 .theme-dot{{width:10px;height:10px;border-radius:50%;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:inline-block;box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent)}}
-.quick-nav{{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}}
-.quick-nav a{{text-decoration:none;font-size:12px;font-weight:700;color:var(--ink-soft);background:color-mix(in srgb, var(--surface-elev) 90%, transparent);border:1px solid var(--line-strong);border-radius:999px;padding:8px 13px;transition:all .16s ease}}
+.quick-nav{{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}}
+.quick-nav a{{text-decoration:none;font-size:12px;font-weight:700;color:var(--ink-soft);background:color-mix(in srgb, var(--surface-elev) 92%, transparent);border:1px solid var(--line-strong);border-radius:999px;padding:8px 13px;transition:all .16s ease;box-shadow:0 2px 6px rgba(16,42,67,.03)}}
 .quick-nav a:hover{{transform:translateY(-1px);border-color:color-mix(in srgb, var(--accent-2) 46%, var(--line-strong));color:var(--ink)}}
 .hero-shell{{position:relative;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,.95fr);gap:16px;align-items:stretch}}
 .header{{position:relative;overflow:hidden;background:
 linear-gradient(137deg,#0d6c65 0%,#145e9b 42%,#264fca 100%);
-color:#fff;padding:22px 22px 20px;border-radius:var(--radius-2xl);box-shadow:var(--shadow-lg);min-height:100%}}
+color:#fff;padding:24px 24px 22px;border-radius:var(--radius-2xl);box-shadow:var(--shadow-lg);min-height:100%}}
 .header::before{{content:'';position:absolute;inset:0;background:
 linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 38%),
 radial-gradient(circle at 18% 18%,rgba(255,255,255,.14),transparent 32%)}}
@@ -612,21 +612,21 @@ radial-gradient(circle at 18% 18%,rgba(255,255,255,.14),transparent 32%)}}
 .hero-side{{display:grid;gap:10px}}
 .hero-readiness{{padding:14px 16px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}}
 .hero-readiness-label{{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;opacity:.82}}
-.hero-readiness-value{{margin-top:6px;font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:22px;line-height:1.1}}
+.hero-readiness-value{{margin-top:6px;font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:22px;line-height:1.1;letter-spacing:-.02em}}
 .hero-readiness-detail{{margin-top:6px;font-size:12px;opacity:.88;line-height:1.4}}
 .hero-summary-grid{{display:grid;gap:10px}}
-.hero-summary-card{{padding:14px 16px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.17),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px)}}
+.hero-summary-card{{padding:14px 16px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.17),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);box-shadow:0 10px 20px rgba(0,0,0,.08)}}
 .hero-summary-label{{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;opacity:.82}}
-.hero-summary-value{{margin-top:6px;font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:18px;line-height:1.18}}
+.hero-summary-value{{margin-top:6px;font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:18px;line-height:1.18;letter-spacing:-.02em}}
 .hero-summary-detail{{margin-top:5px;font-size:12px;opacity:.88;line-height:1.42}}
 .callouts{{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;margin-top:16px}}
-.callout{{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:12px 13px;border-radius:16px;font-size:12px;line-height:1.45;backdrop-filter:blur(8px)}}
+.callout{{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.10));border:1px solid rgba(255,255,255,.18);padding:12px 13px;border-radius:16px;font-size:12px;line-height:1.45;backdrop-filter:blur(8px);box-shadow:0 10px 20px rgba(0,0,0,.06)}}
 .kpi-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin:10px 0}}
-.kpi-card{{position:relative;background:var(--panel);border-radius:18px;padding:14px 14px 13px;border:1px solid var(--line);box-shadow:var(--shadow-sm);overflow:hidden;min-height:96px;display:flex;flex-direction:column;justify-content:flex-start;transition:transform .16s ease, box-shadow .16s ease,border-color .16s ease}}
+.kpi-card{{position:relative;background:linear-gradient(180deg,color-mix(in srgb, var(--panel) 98%, transparent),color-mix(in srgb, var(--surface-elev) 36%, var(--panel)));border-radius:18px;padding:14px 14px 13px;border:1px solid var(--line);box-shadow:var(--shadow-sm);overflow:hidden;min-height:96px;display:flex;flex-direction:column;justify-content:flex-start;transition:transform .16s ease, box-shadow .16s ease,border-color .16s ease}}
 .kpi-card:hover{{transform:translateY(-2px);box-shadow:var(--shadow-md)}}
 .kpi-card::before{{content:'';position:absolute;left:0;top:0;width:100%;height:4px;background:linear-gradient(90deg,#11867d,#2f72ca)}}
 .kpi-card.kpi-priority{{border-color:#a9d7d2;box-shadow:0 12px 28px rgba(15,118,110,.12)}}
-.kpi-card.kpi-prominent{{min-height:122px;padding-top:16px}}
+.kpi-card.kpi-prominent{{min-height:132px;padding-top:16px}}
 .kpi-card.kpi-priority::before{{background:linear-gradient(90deg,#0f766e,#2d66d1)}}
 .kpi-card.tone-risk::before{{background:linear-gradient(90deg,#b91c1c,#d97706)}}
 .kpi-card.tone-value::before{{background:linear-gradient(90deg,#0f766e,#0ea5e9)}}
@@ -636,14 +636,17 @@ radial-gradient(circle at 18% 18%,rgba(255,255,255,.14),transparent 32%)}}
 .kpi-topline{{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px}}
 .kpi-eyebrow{{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}}
 .kpi-name{{font-size:12px;font-weight:600;color:var(--ink-muted);line-height:1.25}}
-.kpi-value{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(18px,1.4vw,28px);font-weight:700;letter-spacing:-.03em;color:var(--ink);line-height:1.02;margin-top:8px;overflow-wrap:anywhere;word-break:break-word}}
+.kpi-value{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(18px,1.4vw,28px);font-weight:700;letter-spacing:-.03em;color:var(--ink);line-height:1.02;margin-top:8px;overflow-wrap:anywhere;word-break:break-word;font-variant-numeric:tabular-nums}}
+.kpi-card.kpi-prominent .kpi-value{{font-size:clamp(24px,2vw,34px)}}
 .kpi-card.kpi-long .kpi-value{{font-size:clamp(13px,.9vw,17px);line-height:1.2}}
-.section{{background:linear-gradient(180deg,color-mix(in srgb, var(--panel) 98%, transparent),color-mix(in srgb, var(--panel-soft) 70%, var(--panel)));border:1px solid var(--line);border-radius:22px;padding:18px 18px 16px;margin:14px 0;box-shadow:var(--shadow-sm);overflow:hidden}}
+.section{{position:relative;background:linear-gradient(180deg,color-mix(in srgb, var(--panel) 98%, transparent),color-mix(in srgb, var(--panel-soft) 70%, var(--panel)));border:1px solid var(--line);border-radius:22px;padding:18px 18px 16px;margin:16px 0;box-shadow:var(--shadow-sm);overflow:hidden}}
+.section::before{{content:'';position:absolute;left:18px;right:18px;top:0;height:1px;background:linear-gradient(90deg,color-mix(in srgb, var(--accent) 16%, transparent),transparent 70%)}}
 .section h2{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(22px,1.8vw,28px);letter-spacing:-.025em;color:var(--ink);margin:1px 0 8px;display:flex;align-items:center;gap:10px}}
 .section h2::before{{content:'';display:inline-block;width:10px;height:28px;border-radius:99px;background:linear-gradient(180deg,#0f766e,#1d4ed8)}}
 .section-subtitle{{font-size:13px;color:var(--ink-muted);margin:-2px 0 14px;max-width:760px;line-height:1.45}}
 .chart-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;align-items:stretch}}
-.chart-card{{background:linear-gradient(180deg,var(--panel-soft),var(--surface-elev));border:1px solid var(--line);border-radius:18px;padding:14px;min-width:0;overflow:hidden}}
+.chart-card{{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,var(--panel-soft),var(--surface-elev));border:1px solid var(--line);border-radius:18px;padding:14px;min-width:0;overflow:hidden}}
+.chart-card::before{{content:'';position:absolute;left:14px;right:14px;top:0;height:3px;border-radius:999px;background:linear-gradient(90deg,color-mix(in srgb, var(--accent) 70%, transparent),color-mix(in srgb, var(--accent-2) 70%, transparent))}}
 .chart-kicker{{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}}
 .chart-title{{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3}}
 .chart-note{{font-size:11.5px;color:var(--ink-muted);margin-bottom:10px;line-height:1.45;max-width:520px}}
@@ -665,7 +668,7 @@ radial-gradient(circle at 18% 18%,rgba(255,255,255,.14),transparent 32%)}}
 .badge.ok{{background:color-mix(in srgb,var(--success) 12%, var(--panel));border-color:color-mix(in srgb,var(--success) 40%, var(--line));color:var(--success)}}
 .table-toolbar{{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap}}
 .table-toolbar-main{{display:flex;gap:10px;align-items:center;flex-wrap:wrap;flex:1 1 560px}}
-.table-toolbar input,.table-toolbar select{{padding:10px 12px;border:1px solid var(--line-strong);border-radius:12px;min-width:250px;font-size:12px;background:var(--surface-elev);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.24)}}
+.table-toolbar input,.table-toolbar select{{padding:10px 12px;border:1px solid var(--line-strong);border-radius:12px;min-width:250px;font-size:12px;background:var(--surface-elev);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.24);appearance:none}}
 .table-toolbar select{{min-width:170px}}
 .table-status{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}
 .table-count{{padding:8px 10px;border-radius:999px;background:color-mix(in srgb, var(--accent-2) 10%, var(--panel));border:1px solid color-mix(in srgb, var(--accent-2) 18%, var(--line));font-size:11px;font-weight:700;color:var(--ink)}}
@@ -673,7 +676,7 @@ radial-gradient(circle at 18% 18%,rgba(255,255,255,.14),transparent 32%)}}
 .filter-chip{{border:1px solid var(--line-strong);background:var(--surface-elev);color:var(--ink-soft);border-radius:999px;padding:8px 12px;font-size:11px;font-weight:700;cursor:pointer;transition:all .16s ease}}
 .filter-chip:hover{{transform:translateY(-1px);border-color:color-mix(in srgb, var(--accent-2) 40%, var(--line-strong));color:var(--ink)}}
 .filter-chip.active{{background:linear-gradient(90deg,color-mix(in srgb, var(--accent) 14%, var(--panel)),color-mix(in srgb, var(--accent-2) 14%, var(--panel)));border-color:color-mix(in srgb, var(--accent-2) 30%, var(--line-strong));color:var(--ink)}}
-.table-wrap{{overflow:auto;max-height:420px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}}
+.table-wrap{{overflow:auto;max-height:420px;border:1px solid var(--line);border-radius:16px;background:var(--panel);box-shadow:inset 0 1px 0 rgba(255,255,255,.34)}}
 table{{width:100%;border-collapse:separate;border-spacing:0;font-size:12px}}
 th,td{{padding:10px 10px;border-bottom:1px solid var(--line);text-align:left;color:var(--ink);vertical-align:top}}
 tbody tr:nth-child(even) td{{background:color-mix(in srgb, var(--surface-elev) 40%, var(--panel))}}
@@ -681,6 +684,8 @@ tbody tr:hover td{{background:color-mix(in srgb, var(--accent-2) 6%, var(--panel
 th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft);font-size:11px;letter-spacing:.04em;text-transform:uppercase;z-index:2}}
 th:first-child,td:first-child{{position:sticky;left:0;z-index:1;background:inherit}}
 th:first-child{{z-index:3}}
+.cell-num{{text-align:right;font-variant-numeric:tabular-nums}}
+.cell-key{{font-weight:700;color:var(--ink)}}
 .table-badge{{display:inline-flex;align-items:center;justify-content:center;padding:4px 8px;border-radius:999px;border:1px solid transparent;font-size:10.5px;font-weight:700;white-space:nowrap}}
 .table-badge.ok{{background:color-mix(in srgb,var(--success) 12%, var(--panel));border-color:color-mix(in srgb,var(--success) 34%, var(--line));color:var(--success)}}
 .table-badge.warn{{background:color-mix(in srgb,var(--warn) 12%, var(--panel));border-color:color-mix(in srgb,var(--warn) 34%, var(--line));color:var(--warn)}}
@@ -699,6 +704,9 @@ th:first-child{{z-index:3}}
 .method-tech summary{{font-weight:700;font-size:13px;cursor:pointer;color:var(--ink-soft)}}
 .method-list.method-list-tech{{margin-top:8px}}
 .sr-only{{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}
+@media (min-width:1080px){{
+  .kpi-card.kpi-prominent{{grid-column:span 2}}
+}}
 @media (max-width:900px){{
   .ux-toolbar{{position:static;justify-content:flex-start}}
   .hero-shell{{grid-template-columns:1fr}}
@@ -972,13 +980,13 @@ function setChartFallback(message){{
   CHART_IDS.forEach((id)=>{{
     const wrap=document.querySelector(`.chart-canvas-wrap[data-chart-id="${{id}}"]`);
     if(!wrap) return;
-    wrap.innerHTML=`<div style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;color:#486581;font-size:12px;padding:10px;border:1px dashed #bfd2e6;border-radius:8px;background:#f8fbfe">${{message}}</div>`;
+    wrap.innerHTML=`<div style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;color:${{cssVar('--ink-soft') || '#486581'}};font-size:12px;padding:10px;border:1px dashed ${{cssVar('--line-strong') || '#bfd2e6'}};border-radius:12px;background:${{cssVar('--surface-elev') || '#f8fbfe'}}">${{message}}</div>`;
   }});
 }}
 function setChartFallbackSingle(id,message){{
   const wrap=document.querySelector(`.chart-canvas-wrap[data-chart-id="${{id}}"]`);
   if(!wrap) return;
-  wrap.innerHTML=`<div style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;color:#486581;font-size:12px;padding:10px;border:1px dashed #bfd2e6;border-radius:8px;background:#f8fbfe">${{message}}</div>`;
+  wrap.innerHTML=`<div style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;color:${{cssVar('--ink-soft') || '#486581'}};font-size:12px;padding:10px;border:1px dashed ${{cssVar('--line-strong') || '#bfd2e6'}};border-radius:12px;background:${{cssVar('--surface-elev') || '#f8fbfe'}}">${{message}}</div>`;
 }}
 function getBaseOptions(){{
   const palette=chartPalette();
@@ -1115,10 +1123,12 @@ function renderAllCharts(){{
       data:sanitizeSeries(d.data),
       borderColor:colors[i%colors.length],
       fill:false,
-      tension:.18,
-      pointRadius:2,
-      pointHoverRadius:3,
-      borderWidth:2
+      tension:.28,
+      cubicInterpolationMode:'monotone',
+      pointRadius:0,
+      pointHoverRadius:4,
+      pointHitRadius:10,
+      borderWidth:2.5
     }}));
     const secBounds=seriesBounds(secDatasets,0,100);
     const secPad=(secBounds.max-secBounds.min)*0.08;
@@ -1147,10 +1157,12 @@ function renderAllCharts(){{
       data:sanitizeSeries(d.data),
       borderColor:colors[i%colors.length],
       fill:false,
-      tension:.18,
-      pointRadius:2,
-      pointHoverRadius:3,
-      borderWidth:2
+      tension:.28,
+      cubicInterpolationMode:'monotone',
+      pointRadius:0,
+      pointHoverRadius:4,
+      pointHitRadius:10,
+      borderWidth:2.5
     }}));
     const oeeBounds=seriesBounds(oeeDatasets,0.8,1.0);
     const oeeMin=Math.max(0, (oeeBounds.hasData ? oeeBounds.min : 0.8)-0.01);
@@ -1185,7 +1197,7 @@ function renderAllCharts(){{
         'energyCostLine',
         'bar',
         energyLabels,
-        [{{label:'Coste energía (EUR)',data:energyValues,backgroundColor:'#1d4ed8'}}],
+        [{{label:'Coste energía (EUR)',data:energyValues,backgroundColor:'#1d4ed8',borderRadius:8,borderSkipped:false,maxBarThickness:24}}],
         {{...denseCategoryOptions(energyLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
       );
     }}
@@ -1199,7 +1211,7 @@ function renderAllCharts(){{
         'equipmentAnomaly',
         'bar',
         eqLabels,
-        [{{label:'Score de anomalía',data:eqValues,backgroundColor:'#b91c1c'}}],
+        [{{label:'Score de anomalía',data:eqValues,backgroundColor:'#b91c1c',borderRadius:8,borderSkipped:false,maxBarThickness:24}}],
         {{...denseCategoryOptions(eqLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
       );
     }}
@@ -1213,7 +1225,7 @@ function renderAllCharts(){{
         'rootCause',
         'bar',
         causeLabels,
-        [{{label:'Score de pérdida por causa raíz',data:causeValues,backgroundColor:'#0f766e'}}],
+        [{{label:'Score de pérdida por causa raíz',data:causeValues,backgroundColor:'#0f766e',borderRadius:8,borderSkipped:false,maxBarThickness:24}}],
         {{...denseCategoryOptions(causeLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
       );
     }}
@@ -1227,7 +1239,7 @@ function renderAllCharts(){{
         'shiftVariance',
         'bar',
         shiftLabels,
-        [{{label:'Score de variabilidad por turno',data:shiftValues,backgroundColor:'#334155'}}],
+        [{{label:'Score de variabilidad por turno',data:shiftValues,backgroundColor:'#334155',borderRadius:8,borderSkipped:false,maxBarThickness:24}}],
         {{...denseCategoryOptions(shiftLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
       );
     }}
@@ -1243,8 +1255,8 @@ function renderAllCharts(){{
         'bar',
         scenLabels,
         [
-          {{label:'Valor descontado',data:scenDisc,backgroundColor:'#0ea5e9'}},
-          {{label:'Valor ajustado por downside',data:scenDown,backgroundColor:'#0f766e'}}
+          {{label:'Valor descontado',data:scenDisc,backgroundColor:'#0ea5e9',borderRadius:8,borderSkipped:false,maxBarThickness:32}},
+          {{label:'Valor ajustado por downside',data:scenDown,backgroundColor:'#0f766e',borderRadius:8,borderSkipped:false,maxBarThickness:32}}
         ],
         {{...denseCategoryOptions(scenLabels,false)}}
       );
@@ -1259,8 +1271,8 @@ function renderAllCharts(){{
         'portfolioWave',
         'doughnut',
         waveLabels,
-        [{{data:waveValues,backgroundColor:['#047857','#1d4ed8','#7c3aed','#64748b']}}],
-        {{plugins:{{legend:{{display:true,position:'bottom'}}}}}}
+        [{{data:waveValues,backgroundColor:['#047857','#1d4ed8','#7c3aed','#64748b'],borderWidth:0}}],
+        {{cutout:'68%',plugins:{{legend:{{display:true,position:'bottom'}}}}}}
       );
     }}
 
@@ -1277,7 +1289,9 @@ function renderAllCharts(){{
         [{{
           label:'Prioridad vs viabilidad',
           data:scatterPoints,
-          backgroundColor:'rgba(180,83,9,.78)'
+          backgroundColor:'rgba(180,83,9,.72)',
+          borderColor:'rgba(140,65,4,.58)',
+          borderWidth:1
         }}],
         {{
           plugins:{{legend:{{display:false}}}},
@@ -1384,7 +1398,7 @@ function formatCell(column, value){{
 }}
 function renderTable(filteredRows){{
   if(tableCount) tableCount.textContent=`${{filteredRows.length}} iniciativas`;
-  table.innerHTML='<thead><tr>'+columns.map(c=>`<th>${{columnLabels[c] ?? c}}</th>`).join('')+'</tr></thead><tbody>'+filteredRows.map(r=>'<tr>'+columns.map(c=>`<td>${{formatCell(c,r[c])}}</td>`).join('')+'</tr>').join('')+'</tbody>';
+  table.innerHTML='<thead><tr>'+columns.map(c=>`<th class="${{['annual_saving_proxy','npv_risk_adjusted','payback_months','improvement_priority_index'].includes(c) ? 'cell-num' : ''}}">${{columnLabels[c] ?? c}}</th>`).join('')+'</tr></thead><tbody>'+filteredRows.map(r=>'<tr>'+columns.map(c=>`<td class="${{['annual_saving_proxy','npv_risk_adjusted','payback_months','improvement_priority_index'].includes(c) ? 'cell-num' : ''}} ${{['iniciativa_id','linea_id'].includes(c) ? 'cell-key' : ''}}">${{formatCell(c,r[c])}}</td>`).join('')+'</tr>').join('')+'</tbody>';
 }}
 function applyTableFilters(){{
   const q=search.value.trim().toLowerCase();
