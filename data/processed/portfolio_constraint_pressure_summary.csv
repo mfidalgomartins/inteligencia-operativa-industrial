@@ -1,5 +1,5 @@
 constraint_name,used,limit,utilization_pct,active_flag,marginal_unlocked_value_eur
 capex_budget,5464237.97,8000000.0,68.302974625,0,0.0
 opex_budget,227725.87919520834,1800000.0,12.651437733067128,0,0.0
-selection_capacity,24.0,24.0,100.0,1,6093572.529542163
+selection_capacity,24.0,24.0,100.0,1,6093572.529542156
 reliability_min_coverage,8.0,8.0,100.0,1,0.0

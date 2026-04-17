@@ -13,7 +13,7 @@ snapshot_metric_drift,OK,0.0,<=1e-6,semantic validity,CRITICAL,metric-drift,A,IS
 score_comparability_tags_valid,OK,0,0,semantic validity,CRITICAL,semantic-drift,A,ISS_score_comparability_tags_valid
 sec_range,OK,0,0,analytical validity,CRITICAL,plausibility,A,ISS_sec_range
 oee_range,OK,0,0,analytical validity,CRITICAL,plausibility,A,ISS_oee_range
-priority_formula_alignment,OK,1.4210854715202004e-14,<=1e-8,analytical validity,CRITICAL,score-stability,A,ISS_priority_formula_alignment
+priority_formula_alignment,OK,7.105427357601002e-15,<=1e-8,analytical validity,CRITICAL,score-stability,A,ISS_priority_formula_alignment
 score_stability_sensitivity_overlap,OK,0.9,>=0.70,analytical validity,HIGH,score-instability,B,ISS_score_stability_sensitivity_overlap
 anchored_outlier_stability_vs_legacy,OK,0,0,analytical validity,HIGH,score-instability,B,ISS_anchored_outlier_stability_vs_legacy
 anchored_ranking_robustness_vs_legacy,OK,0,0,analytical validity,HIGH,score-instability,B,ISS_anchored_ranking_robustness_vs_legacy
@@ -35,7 +35,7 @@ optimization_status_consistency,OK,status=solved_exact;degree=exact_for_formulat
 release_artifact_completeness,OK,missing=none,missing=none,release validity,BLOCKER,release-incompleteness,A,ISS_release_artifact_completeness
 dashboard_sections_consistency,ERROR,0,1,release validity,CRITICAL,dashboard-report-inconsistency,A,ISS_dashboard_sections_consistency
 dashboard_version_stamping,OK,1,1,release validity,CRITICAL,release-integrity,A,ISS_dashboard_version_stamping
-dashboard_payload_thresholds,OK,canonical=283760,canonical<=4000000,release validity,HIGH,release-incompleteness,B,ISS_dashboard_payload_thresholds
+dashboard_payload_thresholds,OK,canonical=297707,canonical<=4000000,release validity,HIGH,release-incompleteness,B,ISS_dashboard_payload_thresholds
 dashboard_serving_audit_consistency,OK,1,1,release validity,HIGH,release-integrity,B,ISS_dashboard_serving_audit_consistency
 dashboard_single_official_html_enforced,OK,legacy=none,legacy=none,release validity,CRITICAL,dashboard-report-inconsistency,A,ISS_dashboard_single_official_html_enforced
 dashboard_dataset_stamping_consistency,OK,1,1,release validity,CRITICAL,dashboard-report-inconsistency,A,ISS_dashboard_dataset_stamping_consistency

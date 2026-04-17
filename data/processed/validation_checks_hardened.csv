@@ -13,7 +13,7 @@ semantic validity,snapshot_metric_drift,CRITICAL,OK,0.0,<=1e-6,Drift entre snaps
 semantic validity,score_comparability_tags_valid,CRITICAL,OK,0,0,Tags de comparabilidad de scores fuera de taxonomía gobernada.,semantic-drift,A,ISS_score_comparability_tags_valid
 analytical validity,sec_range,CRITICAL,OK,0,0,SEC fuera de rango razonable.,plausibility,A,ISS_sec_range
 analytical validity,oee_range,CRITICAL,OK,0,0,OEE fuera de rango razonable.,plausibility,A,ISS_oee_range
-analytical validity,priority_formula_alignment,CRITICAL,OK,1.4210854715202004e-14,<=1e-8,Fórmula del score no reconciliada.,score-stability,A,ISS_priority_formula_alignment
+analytical validity,priority_formula_alignment,CRITICAL,OK,7.105427357601002e-15,<=1e-8,Fórmula del score no reconciliada.,score-stability,A,ISS_priority_formula_alignment
 analytical validity,score_stability_sensitivity_overlap,HIGH,OK,0.9,>=0.70,Inestabilidad de ranking entre escenarios de sensibilidad.,score-instability,B,ISS_score_stability_sensitivity_overlap
 analytical validity,anchored_outlier_stability_vs_legacy,HIGH,OK,0,0,La escala anclada no mejora estabilidad frente a outliers en todos los scores.,score-instability,B,ISS_anchored_outlier_stability_vs_legacy
 analytical validity,anchored_ranking_robustness_vs_legacy,HIGH,OK,0,0,La robustez de ranking anclada no supera baseline legacy bajo shock de outlier.,score-instability,B,ISS_anchored_ranking_robustness_vs_legacy
@@ -35,7 +35,7 @@ decision validity,optimization_status_consistency,CRITICAL,OK,status=solved_exac
 release validity,release_artifact_completeness,BLOCKER,OK,missing=none,missing=none,Artefactos incompletos para publicación/revisión.,release-incompleteness,A,ISS_release_artifact_completeness
 release validity,dashboard_sections_consistency,CRITICAL,ERROR,0,1,Dashboard no contiene secciones ejecutivas obligatorias.,dashboard-report-inconsistency,A,ISS_dashboard_sections_consistency
 release validity,dashboard_version_stamping,CRITICAL,OK,1,1,Dashboard ejecutivo sin version stamping obligatorio.,release-integrity,A,ISS_dashboard_version_stamping
-release validity,dashboard_payload_thresholds,HIGH,OK,canonical=283760,canonical<=4000000,Tamaño del dashboard fuera de política de serving.,release-incompleteness,B,ISS_dashboard_payload_thresholds
+release validity,dashboard_payload_thresholds,HIGH,OK,canonical=297707,canonical<=4000000,Tamaño del dashboard fuera de política de serving.,release-incompleteness,B,ISS_dashboard_payload_thresholds
 release validity,dashboard_serving_audit_consistency,HIGH,OK,1,1,Dashboard serving audit no consistente con thresholds.,release-integrity,B,ISS_dashboard_serving_audit_consistency
 release validity,dashboard_single_official_html_enforced,CRITICAL,OK,legacy=none,legacy=none,Existen dashboards legacy compitiendo con el HTML oficial canónico.,dashboard-report-inconsistency,A,ISS_dashboard_single_official_html_enforced
 release validity,dashboard_dataset_stamping_consistency,CRITICAL,OK,1,1,Dataset canónico del dashboard no alinea run/version/readiness con outputs oficiales.,dashboard-report-inconsistency,A,ISS_dashboard_dataset_stamping_consistency

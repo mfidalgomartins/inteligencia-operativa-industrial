@@ -1,9 +1,9 @@
 path,exists_flag,size_bytes,sha256,modified_utc
-README.md,1,3770,84dd14cf3900cc70cedb45377f472ea3803b5f50c85f5df65270f84a17d2a919,2026-04-13T00:55:45+00:00
-manifests/build_manifest_latest.json,1,2603,5785851edaa413b874c42c5d913cfe7180a3685634326a993077d83f22dac8ff,2026-04-13T00:52:49+00:00
-data/processed/executive_kpi_snapshot.csv,1,820,6858ab265d9227a746babcf32f22ecefb8c04a1ccd22b450600ed9a2dfca3dd9,2026-04-13T00:55:40+00:00
-data/processed/validation_readiness_summary.csv,1,499,b2f2d70b40f4a4ea19901b834f7b414e8f4c66c946979548c73bacda6ec5d963,2026-04-13T00:55:45+00:00
-data/processed/portfolio_summary.csv,1,1129,194d11d2660c6cede70b2df0de0322de4b1dc447bebd8270d195e9f3106020ae,2026-04-13T00:55:39+00:00
-data/processed/sector_profile_registry.csv,1,241,542fc3e35bd458002342601a728b2492f00bd9d1d1897ca208c5fa06dae26092,2026-04-13T00:55:41+00:00
-outputs/reports/validation_report.md,1,22851,69c3b77302486599cb0b8f768a118abf8e5672a7e8cb67b0cf6128b7fe18b540,2026-04-13T00:55:45+00:00
-outputs/dashboard/industrial-operating-command-center.html,1,283760,ab62a4cdc8447f53064cee4b8873f3be37f18d07bd85e17e173092463c5e96e5,2026-04-13T00:55:44+00:00
+README.md,1,3770,84dd14cf3900cc70cedb45377f472ea3803b5f50c85f5df65270f84a17d2a919,2026-04-17T00:14:31+00:00
+manifests/build_manifest_latest.json,1,2605,f2c183ff87e466c7f01762d0eb9cbace2624bd6e4a82a595a68c96c882028b04,2026-04-17T00:12:24+00:00
+data/processed/executive_kpi_snapshot.csv,1,826,c6cc29c634b6255382b016321930e4f25d58bdd7b4b530fd7bac2707c259c6f9,2026-04-17T00:14:24+00:00
+data/processed/validation_readiness_summary.csv,1,499,68171b02cce9a403758dfba85bf65778037fe4fa38c522309638fce8e8d503e3,2026-04-17T00:14:30+00:00
+data/processed/portfolio_summary.csv,1,1129,c491d83b6ce5aede7995e2ea0a576979da9cadf752ed757d62d641c9de1af331,2026-04-17T00:14:24+00:00
+data/processed/sector_profile_registry.csv,1,241,542fc3e35bd458002342601a728b2492f00bd9d1d1897ca208c5fa06dae26092,2026-04-17T00:14:25+00:00
+outputs/reports/validation_report.md,1,22851,a1f8eb4655d501b42fb4929e53b6fd39df3349b6b6efa3b2fb1c1b2af6b6f7b8,2026-04-17T00:14:30+00:00
+outputs/dashboard/industrial-operating-command-center.html,1,297707,9ba127860636976b33d854fa9978cd78042799f257efdc295bf1e50ad51a61d2,2026-04-17T00:14:29+00:00

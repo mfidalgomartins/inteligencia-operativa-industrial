@@ -58,3 +58,20 @@ def test_dashboard_kpi_cards_are_compact_and_overflow_safe() -> None:
     ]
     for token in expected:
         assert token in html
+
+
+@pytest.mark.high
+@pytest.mark.quick
+@pytest.mark.full
+def test_dashboard_table_has_executive_filter_controls() -> None:
+    html = DASHBOARD_HTML.read_text(encoding="utf-8")
+
+    expected = [
+        'id="waveFilter"',
+        'id="tableCount"',
+        'data-scope-filter="selected"',
+        'data-scope-filter="backlog"',
+        "const columnLabels={",
+    ]
+    for token in expected:
+        assert token in html

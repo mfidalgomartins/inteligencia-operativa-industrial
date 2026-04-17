@@ -1,10 +1,10 @@
 node_id,node_name,node_type,lineage_level,layer,owner,version,contract_ref,description
-dataset::mart_line_day,mart_line_day,dataset,dataset lineage,semantic_mart,Analytics Engineering,20260413T005249Z,contracts/data/data_contracts.json#mart_line_day,dataset lineage node
-dataset::line_day_features_scored,line_day_features_scored,dataset,dataset lineage,scores,Industrial Analytics,20260413T005249Z,contracts/data/data_contracts.json#line_day_features_scored,dataset lineage node
-dataset::scenario_table,scenario_table,dataset,dataset lineage,decision,Decision Science,20260413T005249Z,n/a,dataset lineage node
-dataset::investment_prioritization_final,investment_prioritization_final,dataset,dataset lineage,decision,Strategy + PMO Analytics,20260413T005249Z,contracts/data/data_contracts.json#investment_prioritization_final,dataset lineage node
-dataset::executive_kpi_snapshot,executive_kpi_snapshot,dataset,executive output lineage,executive_serving,BI Lead,20260413T005249Z,contracts/metrics/metric_registry.json,dataset lineage node
-dataset::industrial-operating-command-center.html,industrial-operating-command-center.html,dataset,executive output lineage,executive_serving,BI Lead,20260413T005249Z,outputs/dashboard/industrial-operating-command-center.html,dataset lineage node
+dataset::mart_line_day,mart_line_day,dataset,dataset lineage,semantic_mart,Analytics Engineering,20260417T001224Z,contracts/data/data_contracts.json#mart_line_day,dataset lineage node
+dataset::line_day_features_scored,line_day_features_scored,dataset,dataset lineage,scores,Industrial Analytics,20260417T001224Z,contracts/data/data_contracts.json#line_day_features_scored,dataset lineage node
+dataset::scenario_table,scenario_table,dataset,dataset lineage,decision,Decision Science,20260417T001224Z,n/a,dataset lineage node
+dataset::investment_prioritization_final,investment_prioritization_final,dataset,dataset lineage,decision,Strategy + PMO Analytics,20260417T001224Z,contracts/data/data_contracts.json#investment_prioritization_final,dataset lineage node
+dataset::executive_kpi_snapshot,executive_kpi_snapshot,dataset,executive output lineage,executive_serving,BI Lead,20260417T001224Z,contracts/metrics/metric_registry.json,dataset lineage node
+dataset::industrial-operating-command-center.html,industrial-operating-command-center.html,dataset,executive output lineage,executive_serving,BI Lead,20260417T001224Z,outputs/dashboard/industrial-operating-command-center.html,dataset lineage node
 metric::production_volume,production_volume,metric,metric lineage,semantic_layer,Operaciones,industrial_metrics_v1_1,contracts/metrics/metric_registry.json,metric lineage node
 metric::oee_synthetic,oee_synthetic,metric,metric lineage,semantic_layer,Excelencia Operativa,industrial_metrics_v1_1,contracts/metrics/metric_registry.json,metric lineage node
 metric::sec,sec,metric,metric lineage,semantic_layer,Energía,industrial_metrics_v1_1,contracts/metrics/metric_registry.json,metric lineage node
@@ -18,62 +18,62 @@ metric::cost_of_delay_12m,cost_of_delay_12m,metric,metric lineage,semantic_layer
 metric::screening_irr_pct,screening_irr_pct,metric,metric lineage,semantic_layer,Finanzas Industriales,industrial_metrics_v1_1,contracts/metrics/metric_registry.json,metric lineage node
 metric::screening_var_95_npv,screening_var_95_npv,metric,metric lineage,semantic_layer,Finanzas Industriales,industrial_metrics_v1_1,contracts/metrics/metric_registry.json,metric lineage node
 metric::improvement_priority_index,improvement_priority_index,metric,metric lineage,semantic_layer,Strategy + PMO,industrial_metrics_v1_1,contracts/metrics/metric_registry.json,metric lineage node
-score::energy_saving_score,energy_saving_score,score,score lineage,scores,Analytics Engineering,20260413T005249Z,contracts/metrics/metric_registry.json,score lineage node
-score::operational_impact_score,operational_impact_score,score,score lineage,scores,Analytics Engineering,20260413T005249Z,contracts/metrics/metric_registry.json,score lineage node
-score::emissions_reduction_score,emissions_reduction_score,score,score lineage,scores,Analytics Engineering,20260413T005249Z,contracts/metrics/metric_registry.json,score lineage node
-score::implementation_feasibility_score,implementation_feasibility_score,score,score lineage,scores,Analytics Engineering,20260413T005249Z,contracts/metrics/metric_registry.json,score lineage node
-score::payback_score,payback_score,score,score lineage,scores,Analytics Engineering,20260413T005249Z,contracts/metrics/metric_registry.json,score lineage node
-score::strategic_priority_score,strategic_priority_score,score,score lineage,scores,Analytics Engineering,20260413T005249Z,contracts/metrics/metric_registry.json,score lineage node
-score::uncertainty_index,uncertainty_index,score,score lineage,scores,Analytics Engineering,20260413T005249Z,contracts/metrics/metric_registry.json,score lineage node
-score::improvement_priority_index,improvement_priority_index,score,score lineage,scores,Analytics Engineering,20260413T005249Z,contracts/metrics/metric_registry.json,score lineage node
-decision::DEC_INI_0000013,DEC_INI_0000013,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000037,DEC_INI_0000037,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000017,DEC_INI_0000017,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000020,DEC_INI_0000020,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000039,DEC_INI_0000039,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000009,DEC_INI_0000009,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000019,DEC_INI_0000019,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000021,DEC_INI_0000021,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000015,DEC_INI_0000015,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000033,DEC_INI_0000033,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000045,DEC_INI_0000045,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000025,DEC_INI_0000025,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000027,DEC_INI_0000027,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000023,DEC_INI_0000023,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000005,DEC_INI_0000005,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000011,DEC_INI_0000011,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000016,DEC_INI_0000016,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000014,DEC_INI_0000014,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000003,DEC_INI_0000003,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000001,DEC_INI_0000001,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000041,DEC_INI_0000041,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000018,DEC_INI_0000018,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000035,DEC_INI_0000035,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000038,DEC_INI_0000038,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000007,DEC_INI_0000007,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000029,DEC_INI_0000029,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000034,DEC_INI_0000034,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000026,DEC_INI_0000026,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000010,DEC_INI_0000010,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000043,DEC_INI_0000043,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000047,DEC_INI_0000047,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000031,DEC_INI_0000031,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000022,DEC_INI_0000022,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000042,DEC_INI_0000042,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000002,DEC_INI_0000002,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000040,DEC_INI_0000040,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000006,DEC_INI_0000006,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000012,DEC_INI_0000012,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000048,DEC_INI_0000048,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000030,DEC_INI_0000030,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000046,DEC_INI_0000046,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000004,DEC_INI_0000004,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000032,DEC_INI_0000032,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000044,DEC_INI_0000044,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000024,DEC_INI_0000024,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000036,DEC_INI_0000036,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000028,DEC_INI_0000028,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-decision::DEC_INI_0000008,DEC_INI_0000008,decision,decision lineage,decision,Strategy + PMO,20260413T005249Z,data/processed/investment_prioritization_final.csv,decision lineage node
-output::EXEC_SNAPSHOT_MAIN,Executive KPI Snapshot,executive_output,executive output lineage,executive_serving,BI Lead,20260413T005249Z,data/processed/executive_kpi_snapshot.csv,executive output lineage node
-output::EXEC_DASHBOARD_DECISION,Dashboard Decision Block,executive_output,executive output lineage,executive_serving,BI Lead,20260413T005249Z,outputs/dashboard/industrial-operating-command-center.html,executive output lineage node
-output::EXEC_ADVANCED_ANALYSIS_REPORT,Advanced Analysis Report,executive_output,executive output lineage,executive_serving,BI Lead,20260413T005249Z,outputs/reports/advanced_analysis_report.md,executive output lineage node
+score::energy_saving_score,energy_saving_score,score,score lineage,scores,Analytics Engineering,20260417T001224Z,contracts/metrics/metric_registry.json,score lineage node
+score::operational_impact_score,operational_impact_score,score,score lineage,scores,Analytics Engineering,20260417T001224Z,contracts/metrics/metric_registry.json,score lineage node
+score::emissions_reduction_score,emissions_reduction_score,score,score lineage,scores,Analytics Engineering,20260417T001224Z,contracts/metrics/metric_registry.json,score lineage node
+score::implementation_feasibility_score,implementation_feasibility_score,score,score lineage,scores,Analytics Engineering,20260417T001224Z,contracts/metrics/metric_registry.json,score lineage node
+score::payback_score,payback_score,score,score lineage,scores,Analytics Engineering,20260417T001224Z,contracts/metrics/metric_registry.json,score lineage node
+score::strategic_priority_score,strategic_priority_score,score,score lineage,scores,Analytics Engineering,20260417T001224Z,contracts/metrics/metric_registry.json,score lineage node
+score::uncertainty_index,uncertainty_index,score,score lineage,scores,Analytics Engineering,20260417T001224Z,contracts/metrics/metric_registry.json,score lineage node
+score::improvement_priority_index,improvement_priority_index,score,score lineage,scores,Analytics Engineering,20260417T001224Z,contracts/metrics/metric_registry.json,score lineage node
+decision::DEC_INI_0000013,DEC_INI_0000013,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000037,DEC_INI_0000037,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000017,DEC_INI_0000017,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000020,DEC_INI_0000020,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000039,DEC_INI_0000039,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000009,DEC_INI_0000009,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000019,DEC_INI_0000019,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000021,DEC_INI_0000021,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000015,DEC_INI_0000015,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000033,DEC_INI_0000033,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000045,DEC_INI_0000045,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000025,DEC_INI_0000025,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000027,DEC_INI_0000027,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000023,DEC_INI_0000023,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000005,DEC_INI_0000005,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000011,DEC_INI_0000011,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000016,DEC_INI_0000016,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000014,DEC_INI_0000014,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000003,DEC_INI_0000003,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000001,DEC_INI_0000001,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000041,DEC_INI_0000041,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000018,DEC_INI_0000018,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000035,DEC_INI_0000035,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000038,DEC_INI_0000038,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000007,DEC_INI_0000007,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000029,DEC_INI_0000029,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000034,DEC_INI_0000034,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000026,DEC_INI_0000026,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000010,DEC_INI_0000010,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000043,DEC_INI_0000043,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000047,DEC_INI_0000047,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000031,DEC_INI_0000031,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000022,DEC_INI_0000022,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000042,DEC_INI_0000042,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000002,DEC_INI_0000002,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000040,DEC_INI_0000040,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000006,DEC_INI_0000006,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000012,DEC_INI_0000012,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000048,DEC_INI_0000048,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000030,DEC_INI_0000030,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000046,DEC_INI_0000046,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000004,DEC_INI_0000004,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000032,DEC_INI_0000032,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000044,DEC_INI_0000044,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000024,DEC_INI_0000024,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000036,DEC_INI_0000036,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000028,DEC_INI_0000028,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+decision::DEC_INI_0000008,DEC_INI_0000008,decision,decision lineage,decision,Strategy + PMO,20260417T001224Z,data/processed/investment_prioritization_final.csv,decision lineage node
+output::EXEC_SNAPSHOT_MAIN,Executive KPI Snapshot,executive_output,executive output lineage,executive_serving,BI Lead,20260417T001224Z,data/processed/executive_kpi_snapshot.csv,executive output lineage node
+output::EXEC_DASHBOARD_DECISION,Dashboard Decision Block,executive_output,executive output lineage,executive_serving,BI Lead,20260417T001224Z,outputs/dashboard/industrial-operating-command-center.html,executive output lineage node
+output::EXEC_ADVANCED_ANALYSIS_REPORT,Advanced Analysis Report,executive_output,executive output lineage,executive_serving,BI Lead,20260417T001224Z,outputs/reports/advanced_analysis_report.md,executive output lineage node

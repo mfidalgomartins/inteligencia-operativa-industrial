@@ -406,8 +406,29 @@ def _render_canonical_html(dataset: dict[str, Any]) -> str:
     meta = dataset["meta"]
     governance = dataset["governance"]
     decision = dataset["decision_summary"]
+    kpi_lookup = {row["name"]: row["value"] for row in dataset["kpis"]}
     priority_kpis = {"OEE sintético", "SEC medio", "Pérdidas económicas proxy", "Ahorro anual proxy", "NPV ajustado por riesgo"}
-    text_heavy_kpis = {"Validation state"}
+    prominent_kpis = {"Pérdidas económicas proxy", "Ahorro anual proxy", "NPV ajustado por riesgo"}
+    kpi_meta = {
+        "Volumen de producción": ("Escala", "tone-neutral"),
+        "OEE sintético": ("Rendimiento", "tone-operational"),
+        "SEC medio": ("Energía", "tone-energy"),
+        "Pérdidas económicas proxy": ("Pérdida", "tone-risk"),
+        "Ahorro anual proxy": ("Valor", "tone-value"),
+        "NPV ajustado por riesgo": ("Cartera", "tone-value"),
+        "Valor downside-adjusted": ("Robustez", "tone-confidence"),
+        "Coste de demora 12m": ("Urgencia", "tone-risk"),
+        "Portfolio seleccionado": ("Ejecución", "tone-execution"),
+    }
+    readiness_level, publish_decision = (str(meta["validation_state"]).split("|", 1) + [""])[:2]
+    readiness_label = readiness_level.replace("-", " ").strip().capitalize()
+    publish_label = publish_decision.strip().capitalize()
+    if "blocked" in readiness_level:
+        readiness_tone = "critical"
+    elif "screening" in readiness_level or "caveat" in publish_decision:
+        readiness_tone = "warn"
+    else:
+        readiness_tone = "ok"
     chartjs_inline = _load_chartjs_bundle()
     chartjs_tag = (
         f"<script>{chartjs_inline}</script>"
@@ -416,14 +437,45 @@ def _render_canonical_html(dataset: dict[str, Any]) -> str:
     )
     kpi_html = "".join(
         (
-            f"<div class='kpi-card {'kpi-priority' if row['name'] in priority_kpis else ''} "
-            f"{'kpi-textual' if row['name'] in text_heavy_kpis else ''} "
+            f"<div class='kpi-card {kpi_meta.get(row['name'], ('General', 'tone-neutral'))[1]} "
+            f"{'kpi-priority' if row['name'] in priority_kpis else ''} "
+            f"{'kpi-prominent' if row['name'] in prominent_kpis else ''} "
             f"{'kpi-long' if len(str(row['value'])) > 22 else ''}'>"
+            f"<div class='kpi-topline'><span class='kpi-eyebrow'>{kpi_meta.get(row['name'], ('General', 'tone-neutral'))[0]}</span></div>"
             f"<div class='kpi-name'>{row['name']}</div>"
             f"<div class='kpi-value'>{row['value']}</div>"
             "</div>"
         )
         for row in dataset["kpis"]
+    )
+    hero_summary_html = "".join(
+        (
+            "<div class='hero-summary-card'>"
+            f"<div class='hero-summary-label'>{card['label']}</div>"
+            f"<div class='hero-summary-value'>{card['value']}</div>"
+            f"<div class='hero-summary-detail'>{card['detail']}</div>"
+            "</div>"
+        )
+        for card in [
+            {
+                "label": "Intervención inmediata",
+                "value": f"{decision['linea_prioritaria']} / {decision['equipo_prioritario']}",
+                "detail": (
+                    f"Criticidad {decision['line_criticality_score']:.2f} · "
+                    f"Anomalía {decision['equipment_energy_anomaly_score']:.2f}"
+                ),
+            },
+            {
+                "label": "Valor capturable",
+                "value": kpi_lookup.get("Ahorro anual proxy", "N/D"),
+                "detail": f"NPV ajustado {kpi_lookup.get('NPV ajustado por riesgo', 'N/D')}",
+            },
+            {
+                "label": "Estado de release",
+                "value": readiness_label,
+                "detail": publish_label or "Sin publish_decision",
+            },
+        ]
     )
     callout_html = "".join(f"<div class='callout'>{row}</div>" for row in dataset["callouts"])
     insights_html = "".join(
@@ -457,6 +509,10 @@ def _render_canonical_html(dataset: dict[str, Any]) -> str:
         "</ul>"
         "</details>"
     )
+    wave_options = "".join(
+        f"<option value='{wave}'>{wave}</option>"
+        for wave in sorted({str(row['portfolio_wave']) for row in dataset['table'] if str(row['portfolio_wave'])})
+    )
     data_json = _compact_json(dataset)
     return f"""<!DOCTYPE html>
 <html lang="es">
@@ -468,36 +524,40 @@ def _render_canonical_html(dataset: dict[str, Any]) -> str:
 <style>
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
 :root{{
-  --bg:#ecf2f6;
-  --bg-2:#dfe9f1;
+  --bg:#edf3f8;
+  --bg-2:#dce8f2;
   --panel:#ffffff;
-  --panel-soft:#f6fafc;
-  --surface-elev:#f8fbff;
+  --panel-soft:#f7fafd;
+  --surface-elev:#f4f8fc;
   --ink:#102a43;
-  --ink-soft:#486581;
+  --ink-soft:#36516c;
   --ink-muted:#6b7c93;
-  --line:#d4dee8;
-  --line-strong:#c2d3e4;
+  --line:#d4e0eb;
+  --line-strong:#bfd2e5;
   --accent:#0f766e;
-  --accent-2:#1d4ed8;
-  --warn:#b45309;
+  --accent-2:#2456cf;
+  --accent-3:#0ea5e9;
+  --warn:#a95c16;
   --critical:#b91c1c;
   --success:#0f766e;
-  --chart-grid:rgba(39,73,109,.16);
-  --chart-text:#2f4f6d;
+  --chart-grid:rgba(39,73,109,.12);
+  --chart-text:#36516c;
   --chart-tooltip-bg:#ffffff;
   --chart-tooltip-text:#102a43;
-  --radius-xl:18px;
-  --radius-lg:14px;
-  --shadow-sm:0 4px 12px rgba(16,42,67,.08);
-  --shadow-md:0 10px 24px rgba(16,42,67,.12);
+  --radius-2xl:26px;
+  --radius-xl:20px;
+  --radius-lg:16px;
+  --radius-md:12px;
+  --shadow-sm:0 8px 20px rgba(16,42,67,.06);
+  --shadow-md:0 18px 42px rgba(16,42,67,.12);
+  --shadow-lg:0 24px 56px rgba(16,42,67,.16);
 }}
 [data-theme='dark']{{
   --bg:#0b1420;
   --bg-2:#0f1b2d;
   --panel:#111e31;
   --panel-soft:#13233a;
-  --surface-elev:#182b46;
+  --surface-elev:#152740;
   --ink:#e8f0fa;
   --ink-soft:#9eb7d1;
   --ink-muted:#7f97b2;
@@ -505,78 +565,127 @@ def _render_canonical_html(dataset: dict[str, Any]) -> str:
   --line-strong:#315778;
   --accent:#19a49a;
   --accent-2:#4a7cff;
+  --accent-3:#26b4f5;
   --warn:#d08a32;
   --critical:#ef4444;
   --success:#22c55e;
-  --chart-grid:rgba(173,204,237,.18);
+  --chart-grid:rgba(173,204,237,.12);
   --chart-text:#bdd2e9;
   --chart-tooltip-bg:#1b3049;
   --chart-tooltip-text:#e8f0fa;
   --shadow-sm:0 4px 12px rgba(0,0,0,.28);
   --shadow-md:0 12px 28px rgba(0,0,0,.36);
+  --shadow-lg:0 22px 54px rgba(0,0,0,.44);
 }}
 *{{box-sizing:border-box}}
 html{{scroll-behavior:smooth}}
 body{{font-family:'IBM Plex Sans','Avenir Next','Segoe UI',sans-serif;margin:0;color:var(--ink);background:
-radial-gradient(1200px 500px at -10% -20%,rgba(49,177,160,.22) 0%,transparent 55%),
-radial-gradient(900px 450px at 120% -20%,rgba(62,111,232,.18) 0%,transparent 50%),
+radial-gradient(1200px 520px at -10% -20%,rgba(28,148,134,.22) 0%,transparent 58%),
+radial-gradient(920px 500px at 110% -12%,rgba(62,111,232,.18) 0%,transparent 52%),
 linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);overflow-x:hidden;transition:background .22s ease,color .22s ease}}
-.container{{position:relative;max-width:1220px;margin:0 auto;padding:12px 16px 18px}}
-.ux-toolbar{{position:sticky;top:8px;z-index:80;display:flex;gap:8px;justify-content:flex-end;margin-bottom:8px}}
-.ux-btn{{border:1px solid var(--line-strong);background:color-mix(in srgb, var(--panel) 88%, transparent);color:var(--ink);border-radius:12px;padding:7px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s ease;box-shadow:var(--shadow-sm);backdrop-filter:blur(6px)}}
-.ux-btn:hover{{transform:translateY(-1px);border-color:color-mix(in srgb, var(--accent-2) 45%, var(--line-strong));box-shadow:var(--shadow-md)}}
+.container{{position:relative;max-width:1280px;margin:0 auto;padding:18px 18px 28px}}
+.ux-toolbar{{position:sticky;top:10px;z-index:90;display:flex;gap:10px;justify-content:flex-end;margin-bottom:12px}}
+.ux-btn{{border:1px solid color-mix(in srgb, var(--line-strong) 82%, transparent);background:color-mix(in srgb, var(--panel) 88%, transparent);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s ease;box-shadow:var(--shadow-sm);backdrop-filter:blur(14px)}}
+.ux-btn:hover{{transform:translateY(-1px);border-color:color-mix(in srgb, var(--accent-2) 52%, var(--line-strong));box-shadow:var(--shadow-md)}}
 .ux-btn-theme{{display:inline-flex;align-items:center;gap:8px}}
-.theme-dot{{width:10px;height:10px;border-radius:50%;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:inline-block}}
-.quick-nav{{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}}
-.quick-nav a{{text-decoration:none;font-size:12px;font-weight:700;color:var(--ink-soft);background:var(--surface-elev);border:1px solid var(--line-strong);border-radius:999px;padding:7px 12px;transition:all .16s ease}}
+.theme-dot{{width:10px;height:10px;border-radius:50%;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:inline-block;box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent)}}
+.quick-nav{{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}}
+.quick-nav a{{text-decoration:none;font-size:12px;font-weight:700;color:var(--ink-soft);background:color-mix(in srgb, var(--surface-elev) 90%, transparent);border:1px solid var(--line-strong);border-radius:999px;padding:8px 13px;transition:all .16s ease}}
 .quick-nav a:hover{{transform:translateY(-1px);border-color:color-mix(in srgb, var(--accent-2) 46%, var(--line-strong));color:var(--ink)}}
-.header{{position:relative;overflow:hidden;background:linear-gradient(128deg,#0d766e 0%,#176fb2 45%,#264fca 100%);color:#fff;padding:10px 14px 11px;border-radius:var(--radius-xl);box-shadow:var(--shadow-md)}}
-.header::after{{content:'';position:absolute;right:-120px;top:-110px;width:360px;height:360px;background:radial-gradient(circle,rgba(255,255,255,.26) 0%,rgba(255,255,255,0) 65%)}}
-.header h1{{position:relative;font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(20px,2.1vw,27px);line-height:1.12;letter-spacing:-.015em;margin:0 0 4px;max-width:1100px}}
-.header-subtitle{{position:relative;font-size:12.5px;opacity:.95;max-width:900px}}
-.header-stats{{position:relative;margin-top:6px;font-size:11.5px;opacity:.9}}
-.header-micro{{position:relative;margin-top:6px;display:flex;flex-wrap:wrap;gap:8px}}
-.header-pill{{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:5px 8px;border-radius:999px;font-size:11px}}
-.callouts{{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:7px;margin-top:8px}}
-.callout{{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);padding:7px 9px;border-radius:10px;font-size:11.5px;line-height:1.3;backdrop-filter:blur(2px)}}
+.hero-shell{{position:relative;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,.95fr);gap:16px;align-items:stretch}}
+.header{{position:relative;overflow:hidden;background:
+linear-gradient(137deg,#0d6c65 0%,#145e9b 42%,#264fca 100%);
+color:#fff;padding:22px 22px 20px;border-radius:var(--radius-2xl);box-shadow:var(--shadow-lg);min-height:100%}}
+.header::before{{content:'';position:absolute;inset:0;background:
+linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 38%),
+radial-gradient(circle at 18% 18%,rgba(255,255,255,.14),transparent 32%)}}
+.header::after{{content:'';position:absolute;right:-120px;top:-110px;width:360px;height:360px;background:radial-gradient(circle,rgba(255,255,255,.24) 0%,rgba(255,255,255,0) 65%)}}
+.hero-main,.hero-side{{position:relative;z-index:1}}
+.hero-kicker{{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}}
+.hero-kicker::before{{content:'';width:8px;height:8px;border-radius:50%;background:#9ff3df;box-shadow:0 0 0 4px rgba(159,243,223,.18)}}
+.header h1{{position:relative;font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(28px,3vw,42px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 10px;max-width:780px}}
+.header-subtitle{{position:relative;font-size:14px;line-height:1.5;opacity:.96;max-width:760px}}
+.header-lead{{position:relative;margin-top:14px;font-size:15px;font-weight:600;line-height:1.45;max-width:760px}}
+.header-stats{{position:relative;margin-top:12px;font-size:12px;opacity:.94}}
+.header-micro{{position:relative;margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}}
+.header-pill{{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:6px 10px;border-radius:999px;font-size:11px;font-weight:600}}
+.hero-side{{display:grid;gap:10px}}
+.hero-readiness{{padding:14px 16px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}}
+.hero-readiness-label{{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;opacity:.82}}
+.hero-readiness-value{{margin-top:6px;font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:22px;line-height:1.1}}
+.hero-readiness-detail{{margin-top:6px;font-size:12px;opacity:.88;line-height:1.4}}
+.hero-summary-grid{{display:grid;gap:10px}}
+.hero-summary-card{{padding:14px 16px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.17),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px)}}
+.hero-summary-label{{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;opacity:.82}}
+.hero-summary-value{{margin-top:6px;font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:18px;line-height:1.18}}
+.hero-summary-detail{{margin-top:5px;font-size:12px;opacity:.88;line-height:1.42}}
+.callouts{{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;margin-top:16px}}
+.callout{{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:12px 13px;border-radius:16px;font-size:12px;line-height:1.45;backdrop-filter:blur(8px)}}
 .kpi-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin:10px 0}}
-.kpi-card{{position:relative;background:var(--panel);border-radius:12px;padding:8px 10px;border:1px solid var(--line);box-shadow:var(--shadow-sm);overflow:hidden;min-height:78px;display:flex;flex-direction:column;justify-content:flex-start}}
+.kpi-card{{position:relative;background:var(--panel);border-radius:18px;padding:14px 14px 13px;border:1px solid var(--line);box-shadow:var(--shadow-sm);overflow:hidden;min-height:96px;display:flex;flex-direction:column;justify-content:flex-start;transition:transform .16s ease, box-shadow .16s ease,border-color .16s ease}}
+.kpi-card:hover{{transform:translateY(-2px);box-shadow:var(--shadow-md)}}
 .kpi-card::before{{content:'';position:absolute;left:0;top:0;width:100%;height:4px;background:linear-gradient(90deg,#11867d,#2f72ca)}}
-.kpi-card.kpi-priority{{border-color:#a9d7d2;box-shadow:0 8px 22px rgba(15,118,110,.16)}}
+.kpi-card.kpi-priority{{border-color:#a9d7d2;box-shadow:0 12px 28px rgba(15,118,110,.12)}}
+.kpi-card.kpi-prominent{{min-height:122px;padding-top:16px}}
 .kpi-card.kpi-priority::before{{background:linear-gradient(90deg,#0f766e,#2d66d1)}}
-.kpi-name{{font-size:11px;font-weight:600;color:var(--ink-muted)}}
-.kpi-value{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(14px,.95vw,18px);font-weight:700;letter-spacing:-.01em;color:var(--ink);line-height:1.16;margin-top:3px;overflow-wrap:anywhere;word-break:break-word}}
+.kpi-card.tone-risk::before{{background:linear-gradient(90deg,#b91c1c,#d97706)}}
+.kpi-card.tone-value::before{{background:linear-gradient(90deg,#0f766e,#0ea5e9)}}
+.kpi-card.tone-energy::before{{background:linear-gradient(90deg,#2456cf,#0ea5e9)}}
+.kpi-card.tone-confidence::before{{background:linear-gradient(90deg,#1e40af,#0f766e)}}
+.kpi-card.tone-execution::before{{background:linear-gradient(90deg,#7c3aed,#2456cf)}}
+.kpi-topline{{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px}}
+.kpi-eyebrow{{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}}
+.kpi-name{{font-size:12px;font-weight:600;color:var(--ink-muted);line-height:1.25}}
+.kpi-value{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(18px,1.4vw,28px);font-weight:700;letter-spacing:-.03em;color:var(--ink);line-height:1.02;margin-top:8px;overflow-wrap:anywhere;word-break:break-word}}
 .kpi-card.kpi-long .kpi-value{{font-size:clamp(13px,.9vw,17px);line-height:1.2}}
-.kpi-card.kpi-textual .kpi-value{{font-family:'IBM Plex Sans','Avenir Next','Segoe UI',sans-serif;font-size:clamp(12px,.95vw,16px);line-height:1.18;overflow-wrap:anywhere}}
-.section{{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;margin:9px 0;box-shadow:var(--shadow-sm);overflow:hidden}}
-.section h2{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(18px,1.4vw,22px);letter-spacing:-.01em;color:var(--ink);margin:1px 0 8px;display:flex;align-items:center;gap:8px}}
+.section{{background:linear-gradient(180deg,color-mix(in srgb, var(--panel) 98%, transparent),color-mix(in srgb, var(--panel-soft) 70%, var(--panel)));border:1px solid var(--line);border-radius:22px;padding:18px 18px 16px;margin:14px 0;box-shadow:var(--shadow-sm);overflow:hidden}}
+.section h2{{font-family:'Space Grotesk','Avenir Next','Segoe UI',sans-serif;font-size:clamp(22px,1.8vw,28px);letter-spacing:-.025em;color:var(--ink);margin:1px 0 8px;display:flex;align-items:center;gap:10px}}
 .section h2::before{{content:'';display:inline-block;width:10px;height:28px;border-radius:99px;background:linear-gradient(180deg,#0f766e,#1d4ed8)}}
-.section-subtitle{{font-size:12px;color:var(--ink-muted);margin:-2px 0 8px}}
-.chart-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px;align-items:stretch}}
-.chart-card{{background:var(--panel-soft);border:1px solid var(--line);border-radius:10px;padding:9px;min-width:0;overflow:hidden}}
-.chart-title{{font-size:12px;font-weight:700;color:var(--ink-soft);margin-bottom:7px;line-height:1.3}}
+.section-subtitle{{font-size:13px;color:var(--ink-muted);margin:-2px 0 14px;max-width:760px;line-height:1.45}}
+.chart-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;align-items:stretch}}
+.chart-card{{background:linear-gradient(180deg,var(--panel-soft),var(--surface-elev));border:1px solid var(--line);border-radius:18px;padding:14px;min-width:0;overflow:hidden}}
+.chart-kicker{{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}}
+.chart-title{{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3}}
+.chart-note{{font-size:11.5px;color:var(--ink-muted);margin-bottom:10px;line-height:1.45;max-width:520px}}
 .chart-canvas-wrap{{position:relative;height:260px;min-width:0}}
 .chart-canvas-wrap canvas{{position:absolute;inset:0;width:100% !important;height:100% !important;display:block}}
-.insight-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}}
-.insight-card{{background:linear-gradient(180deg,var(--surface-elev) 0%,var(--panel-soft) 100%);border:1px solid var(--line);border-radius:12px;padding:10px;min-width:0;box-shadow:0 2px 6px rgba(16,42,67,.05)}}
-.insight-title{{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px}}
-.insight-detail{{font-size:11px;color:var(--ink-soft);line-height:1.4}}
-.insight-action{{margin-top:6px;font-size:11px;color:var(--ink);background:color-mix(in srgb, var(--accent-2) 12%, var(--panel));border:1px solid color-mix(in srgb, var(--accent-2) 30%, var(--line));padding:5px 7px;border-radius:8px}}
+.insight-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}}
+.insight-card{{background:linear-gradient(180deg,var(--surface-elev) 0%,var(--panel-soft) 100%);border:1px solid var(--line);border-radius:18px;padding:14px;min-width:0;box-shadow:0 2px 6px rgba(16,42,67,.05)}}
+.insight-title{{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px}}
+.insight-detail{{font-size:12px;color:var(--ink-soft);line-height:1.5}}
+.insight-action{{margin-top:10px;font-size:11.5px;color:var(--ink);background:color-mix(in srgb, var(--accent-2) 10%, var(--panel));border:1px solid color-mix(in srgb, var(--accent-2) 26%, var(--line));padding:8px 9px;border-radius:12px;line-height:1.42}}
 
-.decision-card{{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;background:linear-gradient(180deg,var(--surface-elev),var(--panel));border:1px solid var(--line-strong);border-radius:12px;padding:10px}}
-.decision-item{{background:var(--panel-soft);border:1px solid var(--line);border-radius:10px;padding:8px}}
-.decision-item b{{display:block;font-size:12px;color:var(--ink-muted);margin-bottom:4px}}
-.decision-item span{{font-size:13px;font-weight:700;color:var(--ink)}}
+.decision-card{{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;background:linear-gradient(180deg,var(--surface-elev),var(--panel));border:1px solid var(--line-strong);border-radius:20px;padding:14px}}
+.decision-item{{background:linear-gradient(180deg,var(--panel-soft),var(--panel));border:1px solid var(--line);border-radius:16px;padding:12px}}
+.decision-item b{{display:block;font-size:11px;color:var(--ink-muted);margin-bottom:8px;letter-spacing:.05em;text-transform:uppercase}}
+.decision-item span{{font-size:15px;font-weight:700;color:var(--ink);line-height:1.35}}
 .badge{{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700;border:1px solid transparent}}
 .badge.critical{{background:color-mix(in srgb,var(--critical) 12%, var(--panel));border-color:color-mix(in srgb,var(--critical) 40%, var(--line));color:var(--critical)}}
 .badge.warn{{background:color-mix(in srgb,var(--warn) 12%, var(--panel));border-color:color-mix(in srgb,var(--warn) 40%, var(--line));color:var(--warn)}}
 .badge.ok{{background:color-mix(in srgb,var(--success) 12%, var(--panel));border-color:color-mix(in srgb,var(--success) 40%, var(--line));color:var(--success)}}
-.table-toolbar{{display:flex;gap:8px;align-items:center;margin-bottom:8px}}
-.table-toolbar input{{padding:7px 9px;border:1px solid var(--line-strong);border-radius:10px;min-width:250px;font-size:12px;background:var(--surface-elev);color:var(--ink)}}
-.table-wrap{{overflow:auto;max-height:360px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}}
-table{{width:100%;border-collapse:collapse;font-size:12px}}
-th,td{{padding:7px;border-bottom:1px solid var(--line);text-align:left;color:var(--ink)}}
-th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
+.table-toolbar{{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap}}
+.table-toolbar-main{{display:flex;gap:10px;align-items:center;flex-wrap:wrap;flex:1 1 560px}}
+.table-toolbar input,.table-toolbar select{{padding:10px 12px;border:1px solid var(--line-strong);border-radius:12px;min-width:250px;font-size:12px;background:var(--surface-elev);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.24)}}
+.table-toolbar select{{min-width:170px}}
+.table-status{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}
+.table-count{{padding:8px 10px;border-radius:999px;background:color-mix(in srgb, var(--accent-2) 10%, var(--panel));border:1px solid color-mix(in srgb, var(--accent-2) 18%, var(--line));font-size:11px;font-weight:700;color:var(--ink)}}
+.table-filters{{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}}
+.filter-chip{{border:1px solid var(--line-strong);background:var(--surface-elev);color:var(--ink-soft);border-radius:999px;padding:8px 12px;font-size:11px;font-weight:700;cursor:pointer;transition:all .16s ease}}
+.filter-chip:hover{{transform:translateY(-1px);border-color:color-mix(in srgb, var(--accent-2) 40%, var(--line-strong));color:var(--ink)}}
+.filter-chip.active{{background:linear-gradient(90deg,color-mix(in srgb, var(--accent) 14%, var(--panel)),color-mix(in srgb, var(--accent-2) 14%, var(--panel)));border-color:color-mix(in srgb, var(--accent-2) 30%, var(--line-strong));color:var(--ink)}}
+.table-wrap{{overflow:auto;max-height:420px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}}
+table{{width:100%;border-collapse:separate;border-spacing:0;font-size:12px}}
+th,td{{padding:10px 10px;border-bottom:1px solid var(--line);text-align:left;color:var(--ink);vertical-align:top}}
+tbody tr:nth-child(even) td{{background:color-mix(in srgb, var(--surface-elev) 40%, var(--panel))}}
+tbody tr:hover td{{background:color-mix(in srgb, var(--accent-2) 6%, var(--panel))}}
+th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft);font-size:11px;letter-spacing:.04em;text-transform:uppercase;z-index:2}}
+th:first-child,td:first-child{{position:sticky;left:0;z-index:1;background:inherit}}
+th:first-child{{z-index:3}}
+.table-badge{{display:inline-flex;align-items:center;justify-content:center;padding:4px 8px;border-radius:999px;border:1px solid transparent;font-size:10.5px;font-weight:700;white-space:nowrap}}
+.table-badge.ok{{background:color-mix(in srgb,var(--success) 12%, var(--panel));border-color:color-mix(in srgb,var(--success) 34%, var(--line));color:var(--success)}}
+.table-badge.warn{{background:color-mix(in srgb,var(--warn) 12%, var(--panel));border-color:color-mix(in srgb,var(--warn) 34%, var(--line));color:var(--warn)}}
+.table-badge.critical{{background:color-mix(in srgb,var(--critical) 12%, var(--panel));border-color:color-mix(in srgb,var(--critical) 34%, var(--line));color:var(--critical)}}
+.table-badge.muted{{background:color-mix(in srgb,var(--ink-soft) 10%, var(--panel));border-color:color-mix(in srgb,var(--ink-soft) 18%, var(--line));color:var(--ink-soft)}}
 .modal-backdrop{{position:fixed;inset:0;background:rgba(15,23,42,.48);display:none;align-items:center;justify-content:center;z-index:120;padding:16px}}
 .modal-backdrop.show{{display:flex}}
 .modal-card{{background:var(--panel);border-radius:16px;max-width:800px;width:100%;box-shadow:0 18px 44px rgba(15,23,42,.28);border:1px solid var(--line);overflow:hidden}}
@@ -592,27 +701,33 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
 .sr-only{{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}
 @media (max-width:900px){{
   .ux-toolbar{{position:static;justify-content:flex-start}}
+  .hero-shell{{grid-template-columns:1fr}}
+  .header{{padding:18px 18px 16px}}
   .ux-btn{{font-size:12px;padding:7px 11px}}
-  .header h1{{font-size:22px}}
+  .header h1{{font-size:24px}}
   .header-subtitle{{font-size:12px}}
+  .header-lead{{font-size:13px}}
   .kpi-grid{{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}}
-  .kpi-value{{font-size:16px}}
-  .kpi-card.kpi-textual .kpi-value{{font-size:14px}}
+  .kpi-card.kpi-prominent{{min-height:108px}}
+  .kpi-value{{font-size:18px}}
   .section h2{{font-size:17px}}
   .chart-grid{{grid-template-columns:1fr}}
   .chart-canvas-wrap{{height:230px}}
   .table-toolbar{{display:block}}
-  .table-toolbar input{{min-width:0;width:100%;box-sizing:border-box}}
+  .table-toolbar-main{{display:grid;gap:10px}}
+  .table-toolbar input,.table-toolbar select{{min-width:0;width:100%;box-sizing:border-box}}
 }}
 @media print{{
   body{{background:#fff}}
   .ux-toolbar,.quick-nav{{display:none !important}}
   .header{{box-shadow:none}}
+  .hero-shell{{grid-template-columns:1fr}}
   .section{{break-inside:avoid;box-shadow:none}}
   .kpi-card,.insight-card,.chart-card{{box-shadow:none}}
   .chart-canvas-wrap{{height:220px}}
   .table-wrap{{max-height:none}}
   th{{position:static}}
+  th:first-child,td:first-child{{position:static}}
   a{{color:inherit;text-decoration:none}}
   *{{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 }}
@@ -639,17 +754,32 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
     <a href="#sec-decision">Decisión</a>
   </div>
 
-  <div class="header">
-    <h1 style="margin:0">Cockpit Ejecutivo de Inteligencia Operativa Industrial</h1>
-    <div class="header-subtitle">Vista ejecutiva para priorizar pérdidas, riesgos operativos y captura de valor en planta industrial.</div>
-    <div class="header-stats">Cobertura: {meta['coverage_start']} a {meta['coverage_end']} · Plantas: {meta['n_plants']} · Líneas: {meta['n_lines']} · Equipos: {meta['n_equipment']}</div>
-    <div class="header-micro">
-      <span class="header-pill">Modo: ejecutivo</span>
-      <span class="header-pill">KPIs gobernados</span>
-      <span class="header-pill">Decisión: screening</span>
+  <div class="hero-shell">
+    <div class="header">
+      <div class="hero-main">
+        <div class="hero-kicker">Centro de mando de decisión</div>
+        <h1 style="margin:0">Cockpit Ejecutivo de Inteligencia Operativa Industrial</h1>
+        <div class="header-subtitle">Vista ejecutiva para priorizar pérdidas, riesgos operativos y captura de valor en planta industrial.</div>
+        <div class="header-lead">La prioridad inmediata está en <b>{decision['linea_prioritaria']}</b> y <b>{decision['equipo_prioritario']}</b>. El sistema cuantifica {kpi_lookup.get('Ahorro anual proxy', 'N/D')} de ahorro anual proxy y {kpi_lookup.get('Coste de demora 12m', 'N/D')} de coste de demora si no se actúa.</div>
+        <div class="header-stats">Cobertura: {meta['coverage_start']} a {meta['coverage_end']} · Plantas: {meta['n_plants']} · Líneas: {meta['n_lines']} · Equipos: {meta['n_equipment']}</div>
+        <div class="header-micro">
+          <span class="header-pill">Modo: ejecutivo</span>
+          <span class="header-pill">KPIs gobernados</span>
+          <span class="header-pill">Decisión: screening</span>
+        </div>
+        <div class="callouts">{callout_html}</div>
+        <div class="sr-only" aria-hidden="true">dashboard_mode: {meta['dashboard_mode']} | run_id: {meta['run_id']} | snapshot_id: {meta['snapshot_id']} | metric_version_set: {meta['metric_version_set']} | decision_model_version: {meta['decision_model_version']} | validation_state: {meta['validation_state']}</div>
+      </div>
     </div>
-    <div class="callouts">{callout_html}</div>
-    <div class="sr-only" aria-hidden="true">dashboard_mode: {meta['dashboard_mode']} | run_id: {meta['run_id']} | snapshot_id: {meta['snapshot_id']} | metric_version_set: {meta['metric_version_set']} | decision_model_version: {meta['decision_model_version']} | validation_state: {meta['validation_state']}</div>
+    <div class="hero-side">
+      <div class="hero-readiness">
+      <div class="hero-readiness-label">Estado de decisión</div>
+      <div class="hero-readiness-value">{readiness_label}</div>
+      <div class="hero-readiness-detail">{publish_label or 'Sin publish decision'}</div>
+      <div style="margin-top:10px"><span class="badge {readiness_tone}">{readiness_label} · {publish_label or 'Sin publish decision'}</span></div>
+    </div>
+      <div class="hero-summary-grid">{hero_summary_html}</div>
+    </div>
   </div>
 
   <div class="kpi-grid">{kpi_html}</div>
@@ -665,11 +795,15 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
     <div class="section-subtitle">Tendencias críticas de SEC y OEE para líneas con mayor impacto.</div>
     <div class="chart-grid">
       <div class="chart-card">
+        <div class="chart-kicker">Tendencia operativa</div>
         <div class="chart-title">Tendencia SEC por línea</div>
+        <div class="chart-note">Permite detectar deterioro sostenido de consumo específico en las líneas con mayor peso de decisión.</div>
         <div class="chart-canvas-wrap" data-chart-id="secTrend"><canvas id="secTrend"></canvas></div>
       </div>
       <div class="chart-card">
+        <div class="chart-kicker">Tendencia operativa</div>
         <div class="chart-title">Tendencia OEE sintético por línea</div>
+        <div class="chart-note">Hace visible qué líneas combinan menor desempeño y peor resiliencia operativa.</div>
         <div class="chart-canvas-wrap" data-chart-id="oeeTrend"><canvas id="oeeTrend"></canvas></div>
       </div>
     </div>
@@ -680,11 +814,15 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
     <div class="section-subtitle">Coste energético por línea y anomalías por equipo prioritario.</div>
     <div class="chart-grid">
       <div class="chart-card">
+        <div class="chart-kicker">Concentración económica</div>
         <div class="chart-title">Coste energético total por línea</div>
+        <div class="chart-note">Ordena las líneas por impacto económico para separar ruido operativo de pérdidas materiales.</div>
         <div class="chart-canvas-wrap" data-chart-id="energyCostLine"><canvas id="energyCostLine"></canvas></div>
       </div>
       <div class="chart-card">
+        <div class="chart-kicker">Anomalía por activo</div>
         <div class="chart-title">Top equipos por anomalía de consumo</div>
+        <div class="chart-note">Señala dónde intervenir primero a nivel de equipo antes de escalar CAPEX estructural.</div>
         <div class="chart-canvas-wrap" data-chart-id="equipmentAnomaly"><canvas id="equipmentAnomaly"></canvas></div>
       </div>
     </div>
@@ -695,11 +833,15 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
     <div class="section-subtitle">Drivers dominantes de pérdida y variabilidad operativa.</div>
     <div class="chart-grid">
       <div class="chart-card">
+        <div class="chart-kicker">Causa raíz</div>
         <div class="chart-title">Pérdida económica por causa raíz</div>
+        <div class="chart-note">Ayuda a diferenciar paradas estructurales de eventos más tácticos o de bajo retorno.</div>
         <div class="chart-canvas-wrap" data-chart-id="rootCause"><canvas id="rootCause"></canvas></div>
       </div>
       <div class="chart-card">
+        <div class="chart-kicker">Variabilidad</div>
         <div class="chart-title">Variabilidad operativa por línea-turno</div>
+        <div class="chart-note">Muestra dónde la disciplina de turno está amplificando scrap, SEC y volatilidad operativa.</div>
         <div class="chart-canvas-wrap" data-chart-id="shiftVariance"><canvas id="shiftVariance"></canvas></div>
       </div>
     </div>
@@ -710,15 +852,21 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
     <div class="section-subtitle">Valor capturable, downside y distribución de iniciativas.</div>
     <div class="chart-grid">
       <div class="chart-card">
+        <div class="chart-kicker">Escenarios</div>
         <div class="chart-title">Valor descontado vs valor downside-adjusted</div>
+        <div class="chart-note">Compara valor bruto frente a valor robusto para evitar decisiones optimistas sin protección de downside.</div>
         <div class="chart-canvas-wrap" data-chart-id="scenarioValue"><canvas id="scenarioValue"></canvas></div>
       </div>
       <div class="chart-card">
+        <div class="chart-kicker">Secuenciación</div>
         <div class="chart-title">Distribución de iniciativas por ola</div>
+        <div class="chart-note">Resume la carga de ejecución por ola para comprobar si la cartera es absorbible por la organización.</div>
         <div class="chart-canvas-wrap" data-chart-id="portfolioWave"><canvas id="portfolioWave"></canvas></div>
       </div>
       <div class="chart-card">
+        <div class="chart-kicker">Trade-off</div>
         <div class="chart-title">Prioridad compuesta vs viabilidad</div>
+        <div class="chart-note">Sitúa cada iniciativa entre impacto y facilidad de implementación para apoyar el comité de secuenciación.</div>
         <div class="chart-canvas-wrap" data-chart-id="priorityScatter"><canvas id="priorityScatter"></canvas></div>
       </div>
     </div>
@@ -728,7 +876,21 @@ th{{position:sticky;top:0;background:var(--surface-elev);color:var(--ink-soft)}}
     <h2>Tabla Final de Priorización</h2>
     <div class="section-subtitle">Filtra por iniciativa, línea o decisión para preparar el comité.</div>
     <div class="table-toolbar">
-      <input id="tableSearch" type="text" placeholder="Buscar iniciativa, línea, clase o decisión..." />
+      <div class="table-toolbar-main">
+        <input id="tableSearch" type="text" placeholder="Buscar iniciativa, línea, clase o decisión..." />
+        <select id="waveFilter" aria-label="Filtrar por ola">
+          <option value="all">Todas las olas</option>
+          {wave_options}
+        </select>
+      </div>
+      <div class="table-status">
+        <div id="tableCount" class="table-count">0 iniciativas</div>
+      </div>
+    </div>
+    <div class="table-filters" aria-label="Filtros rápidos de cartera">
+      <button class="filter-chip active" type="button" data-scope-filter="all">Todas</button>
+      <button class="filter-chip" type="button" data-scope-filter="selected">En cartera</button>
+      <button class="filter-chip" type="button" data-scope-filter="backlog">Backlog</button>
     </div>
     <div class="table-wrap"><table id="tbl"></table></div>
   </div>
@@ -1037,7 +1199,7 @@ function renderAllCharts(){{
         'equipmentAnomaly',
         'bar',
         eqLabels,
-        [{{label:'Anomaly score',data:eqValues,backgroundColor:'#b91c1c'}}],
+        [{{label:'Score de anomalía',data:eqValues,backgroundColor:'#b91c1c'}}],
         {{...denseCategoryOptions(eqLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
       );
     }}
@@ -1051,7 +1213,7 @@ function renderAllCharts(){{
         'rootCause',
         'bar',
         causeLabels,
-        [{{label:'Loss root cause score',data:causeValues,backgroundColor:'#0f766e'}}],
+        [{{label:'Score de pérdida por causa raíz',data:causeValues,backgroundColor:'#0f766e'}}],
         {{...denseCategoryOptions(causeLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
       );
     }}
@@ -1065,7 +1227,7 @@ function renderAllCharts(){{
         'shiftVariance',
         'bar',
         shiftLabels,
-        [{{label:'Shift variance score',data:shiftValues,backgroundColor:'#334155'}}],
+        [{{label:'Score de variabilidad por turno',data:shiftValues,backgroundColor:'#334155'}}],
         {{...denseCategoryOptions(shiftLabels,true),plugins:{{legend:{{display:false}}}},scales:{{x:{{beginAtZero:true,ticks:{{maxTicksLimit:6,font:{{size:11}}}}}}}}}}
       );
     }}
@@ -1081,8 +1243,8 @@ function renderAllCharts(){{
         'bar',
         scenLabels,
         [
-          {{label:'Discounted value',data:scenDisc,backgroundColor:'#0ea5e9'}},
-          {{label:'Downside-adjusted value',data:scenDown,backgroundColor:'#0f766e'}}
+          {{label:'Valor descontado',data:scenDisc,backgroundColor:'#0ea5e9'}},
+          {{label:'Valor ajustado por downside',data:scenDown,backgroundColor:'#0f766e'}}
         ],
         {{...denseCategoryOptions(scenLabels,false)}}
       );
@@ -1128,7 +1290,7 @@ function renderAllCharts(){{
     }}
   }} catch (error) {{
     console.error('Dashboard chart rendering failed:', error);
-    setChartFallback('Ocorreu um erro ao renderizar os gráficos. Regera o dashboard ou verifica a consola do browser.');
+    setChartFallback('Se produjo un error al renderizar los gráficos. Regenera el dashboard o revisa la consola del navegador.');
   }}
 }}
 function getPreferredTheme(){{
@@ -1159,22 +1321,94 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()
 }});
 
 const columns=['iniciativa_id','linea_id','initiative_class','annual_saving_proxy','npv_risk_adjusted','payback_months','improvement_priority_index','initiative_tier','portfolio_wave','decision_rule','selected_portfolio_flag'];
+const columnLabels={{
+  iniciativa_id:'Iniciativa',
+  linea_id:'Línea',
+  initiative_class:'Clase',
+  annual_saving_proxy:'Ahorro anual',
+  npv_risk_adjusted:'NPV ajustado',
+  payback_months:'Payback',
+  improvement_priority_index:'Índice prioridad',
+  initiative_tier:'Tier',
+  portfolio_wave:'Ola',
+  decision_rule:'Decisión',
+  selected_portfolio_flag:'En cartera'
+}};
 const table=document.getElementById('tbl');
 const search=document.getElementById('tableSearch');
+const waveFilter=document.getElementById('waveFilter');
+const tableCount=document.getElementById('tableCount');
+const scopeButtons=[...document.querySelectorAll('[data-scope-filter]')];
 const rows=DATA.table;
 const btnMethodology=document.getElementById('btnMethodology');
 const btnPrint=document.getElementById('btnPrint');
 const methodologyModal=document.getElementById('methodologyModal');
 const btnCloseMethodology=document.getElementById('btnCloseMethodology');
+let activeScope='all';
+
+function formatNumber(value, digits=0){{
+  const num=toFiniteNumber(value);
+  if(num===null) return '—';
+  return new Intl.NumberFormat('es-ES', {{
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits
+  }}).format(num);
+}}
+function decisionBadgeClass(value){{
+  const text=String(value ?? '').toLowerCase();
+  if(text.includes('ahora')) return 'critical';
+  if(text.includes('siguiente')) return 'warn';
+  return 'muted';
+}}
+function renderBadge(value, tone){{
+  return `<span class="table-badge ${{tone}}">${{value}}</span>`;
+}}
+function formatCell(column, value){{
+  switch(column){{
+    case 'annual_saving_proxy':
+    case 'npv_risk_adjusted':
+      return `${{formatNumber(value,0)}} EUR`;
+    case 'payback_months':
+      return `${{formatNumber(value,0)}} meses`;
+    case 'improvement_priority_index':
+      return formatNumber(value,1);
+    case 'selected_portfolio_flag':
+      return Number(value) === 1 ? renderBadge('Sí','ok') : renderBadge('No','muted');
+    case 'decision_rule':
+      return renderBadge(value, decisionBadgeClass(value));
+    case 'initiative_class':
+      return renderBadge(value, 'muted');
+    default:
+      return value ?? '—';
+  }}
+}}
 function renderTable(filteredRows){{
-  table.innerHTML='<thead><tr>'+columns.map(c=>`<th>${{c}}</th>`).join('')+'</tr></thead><tbody>'+filteredRows.map(r=>'<tr>'+columns.map(c=>`<td>${{r[c]}}</td>`).join('')+'</tr>').join('')+'</tbody>';
+  if(tableCount) tableCount.textContent=`${{filteredRows.length}} iniciativas`;
+  table.innerHTML='<thead><tr>'+columns.map(c=>`<th>${{columnLabels[c] ?? c}}</th>`).join('')+'</tr></thead><tbody>'+filteredRows.map(r=>'<tr>'+columns.map(c=>`<td>${{formatCell(c,r[c])}}</td>`).join('')+'</tr>').join('')+'</tbody>';
+}}
+function applyTableFilters(){{
+  const q=search.value.trim().toLowerCase();
+  const wave=waveFilter?.value ?? 'all';
+  const filtered=rows.filter((row)=>{{
+    const matchesScope =
+      activeScope === 'all'
+      || (activeScope === 'selected' && Number(row.selected_portfolio_flag) === 1)
+      || (activeScope === 'backlog' && Number(row.selected_portfolio_flag) !== 1);
+    const matchesWave = wave === 'all' || String(row.portfolio_wave) === wave;
+    const matchesText = !q || columns.some((column)=>String(row[column]).toLowerCase().includes(q));
+    return matchesScope && matchesWave && matchesText;
+  }});
+  renderTable(filtered);
 }}
 renderTable(rows);
-search.addEventListener('input',()=>{{
-  const q=search.value.trim().toLowerCase();
-  if(!q){{renderTable(rows);return;}}
-  const filtered=rows.filter(r=>columns.some(c=>String(r[c]).toLowerCase().includes(q)));
-  renderTable(filtered);
+search.addEventListener('input',applyTableFilters);
+waveFilter?.addEventListener('change',applyTableFilters);
+scopeButtons.forEach((button)=>{{
+  button.addEventListener('click',()=>{{
+    activeScope=button.dataset.scopeFilter || 'all';
+    scopeButtons.forEach((chip)=>chip.classList.toggle('active', chip===button));
+    applyTableFilters();
+  }});
 }});
 
 function openMethodology(){{

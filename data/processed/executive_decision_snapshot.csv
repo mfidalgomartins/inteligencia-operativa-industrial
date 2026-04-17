@@ -1,2 +1,2 @@
 run_id,metric_version_set,decision_snapshot_utc,linea_prioritaria,line_criticality_score,equipo_prioritario,equipment_energy_anomaly_score,ahorro_now_top5,decision_logic_version
-20260413T005249Z,industrial_metrics_v1_1,2026-04-13T00:55:40,PLT_BIZ_L04,27.29352553967522,PLT_BIZ_L02_EQ06,61.62111074596043,2745345.6612976734,executive_decision_v1
+20260417T001224Z,industrial_metrics_v1_1,2026-04-17T00:14:24,PLT_BIZ_L04,27.293525539675212,PLT_BIZ_L02_EQ06,61.6211107459604,2745345.6612976724,executive_decision_v1
